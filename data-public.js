@@ -7,7 +7,6 @@ const POOL_DATA = {
     cost_sek: 100,
     deadline: "2026-06-14T23:59:00+02:00",
     prize_split: { "1": 0.65, "2": 0.25, "3": 0.10 },
-    admin_password: "Admin-inloggning",
     show_countdown: true
   },
   matches: [
@@ -118,7 +117,7 @@ const POOL_DATA = {
      answers:{A:"Viktor Gyökeres",B:3,C:7,D:["Japan","Nederländerna"],E:["Frankrike","Norge"],F:6,G:"Erling Haaland",H:"Frankrike"},tiebreaker:18},
     {name:"John Söforth",contact:{phone:"",email:""},
      picks:{"1":["1","X"],"2":["1"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1","X"],"8":["X"],"9":["1"],"10":["1"],"11":["X","2"],"12":["1","X"],"13":["1","2"]},
-     answers:{A:"Gyökeres",B:7,C:6,D:["Japan","Nederländerna"],E:["Frankrike","Norge"],F:15,G:"Harry Kane",H:"England"},tiebreaker:44},
+     answers:{A:"Viktor Gyökeres",B:7,C:6,D:["Japan","Nederländerna"],E:["Frankrike","Norge"],F:15,G:"Harry Kane",H:"England"},tiebreaker:44},
     {name:"Pär Styrman",contact:{phone:"",email:""},
      picks:{"1":["1","X"],"2":["1","X"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1"],"8":["1","X"],"9":["1"],"10":["1"],"11":["2"],"12":["X","2"],"13":["X","2"]},
      answers:{A:"Lucas Bergvall",B:4,C:3,D:["Japan","Sverige"],E:["Frankrike","Norge"],F:9,G:"Kylian Mbappé",H:"Spanien"},tiebreaker:21},
@@ -130,9 +129,26 @@ const POOL_DATA = {
      answers:{A:"Viktor Gyökeres",B:2,C:3,D:["Japan","Nederländerna"],E:["Frankrike","Norge"],F:10,G:"Kylian Mbappé",H:"Spanien"},tiebreaker:35},
     {name:"Fredrik Norberg",contact:{phone:"",email:""},
      picks:{"1":["1","X"],"2":["1"],"3":["1","2"],"4":["1"],"5":["1"],"6":["1","X"],"7":["X","2"],"8":["1"],"9":["1"],"10":["1","2"],"11":["2"],"12":["X","2"],"13":["2"]},
-     answers:{A:"Viktor Gyökeres",B:2,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:10,G:"Kylian Mbappé",H:"Frankrike"},tiebreaker:36}
+     answers:{A:"Viktor Gyökeres",B:2,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:10,G:"Kylian Mbappé",H:"Frankrike"},tiebreaker:36},
+    {name:"Oscar Schilke",contact:{phone:"",email:""},
+     picks:{"1":["X","2"],"2":["1"],"3":["1","X"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1","X"],"8":["1"],"9":["1"],"10":["1","X"],"11":["2"],"12":["1"],"13":["X","2"]},
+     answers:{A:"Viktor Gyökeres",B:2,C:4,D:["Japan","Nederländerna"],E:["Frankrike","Norge"],F:9,G:"Harry Kane",H:"Tyskland"},tiebreaker:26},
+    {name:"Lennart Berglund",contact:{phone:"",email:""},
+     picks:{"1":["1"],"2":["1"],"3":["1","X"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1"],"8":["X","2"],"9":["1"],"10":["1","X"],"11":["2"],"12":["1","X"],"13":["1","X"]},
+     answers:{A:"Viktor Gyökeres",B:6,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:16,G:"Harry Kane",H:"Frankrike"},tiebreaker:59},
+    {name:"Marcus Aittamaa",contact:{phone:"",email:""},
+     picks:{"1":["1","2"],"2":["1","X"],"3":["1"],"4":["1"],"5":["1"],"6":["1"],"7":["1","2"],"8":["1","X"],"9":["1"],"10":["1"],"11":["X","2"],"12":["1"],"13":["X","2"]},
+     answers:{A:"Alexander Isak",B:5,C:4,D:["Japan","Nederländerna"],E:["Frankrike","Norge"],F:6,G:"Harry Kane",H:"Spanien"},tiebreaker:16},
+    {name:"Tomas Näslund",contact:{phone:"",email:""},
+     picks:{"1":["1","2"],"2":["1","X"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1"],"8":["1","X"],"9":["1"],"10":["X","2"],"11":["2"],"12":["1","2"],"13":["1"]},
+     answers:{A:"Alexander Isak",B:2,C:6,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:5,G:"Erling Haaland",H:"Frankrike"},tiebreaker:18},
+    {name:"Linus Näslund",contact:{phone:"",email:""},
+     picks:{"1":["1","X"],"2":["1"],"3":["1"],"4":["1"],"5":["1"],"6":["X","2"],"7":["X","2"],"8":["1","X"],"9":["1"],"10":["1","X"],"11":["1","X"],"12":["2"],"13":["2"]},
+     answers:{A:"Viktor Gyökeres",B:4,C:5,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:7,G:"Drogba!!",H:"Sverige"},tiebreaker:17}
   ]
 };
+
+POOL_DATA.meta.admin_password = "Admin-inloggning";
 
 if (typeof window !== "undefined") window.POOL_DATA = POOL_DATA;
 if (typeof module !== "undefined" && module.exports) module.exports = POOL_DATA;
