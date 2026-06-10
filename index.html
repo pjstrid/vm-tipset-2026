@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VM-tipset 2026 — Rättning & Tabell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3ecdc;
+    --paper-2:#ece2cd;
+    --ink:#1b1a16;
+    --ink-soft:#5a554a;
+    --line:#cbbf9f;
+    --pitch:#1f6b41;
+    --pitch-dark:#164d2f;
+    --goal:#cf3b22;
+    --gold:#c79a3a;
+    --ok:#1f6b41;
+    --bad:#cf3b22;
+    --pending:#a59a7e;
+    --shadow:0 2px 0 rgba(27,26,22,.12), 0 10px 28px rgba(27,26,22,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 12% -10%, rgba(31,107,65,.10), transparent 40%),
+      radial-gradient(circle at 110% 0%, rgba(207,59,34,.08), transparent 45%),
+      var(--paper);
+    background-attachment:fixed;
+    line-height:1.45;
+    padding-bottom:64px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+  /* Header */
+  header{
+    border-bottom:3px solid var(--ink);
+    padding:26px 0 18px;
+    margin-bottom:6px;
+  }
+  .kicker{font-family:"Oswald";text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--pitch);font-weight:600}
+  h1{font-family:"Anton";font-size:clamp(40px,11vw,72px);line-height:.92;letter-spacing:.01em;text-transform:uppercase}
+  h1 span{color:var(--goal)}
+  .sub{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px;font-size:13px;color:var(--ink-soft);font-weight:500}
+  .sub b{color:var(--ink)}
+
+  /* Pot strip */
+  .pot{
+    display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 4px;
+  }
+  .pot .cell{
+    flex:1;min-width:120px;background:var(--ink);color:var(--paper);
+    border-radius:10px;padding:10px 14px;box-shadow:var(--shadow);
+  }
+  .pot .cell.lead{background:var(--pitch)}
+  .pot .lbl{font-family:"Oswald";text-transform:uppercase;letter-spacing:.12em;font-size:10px;opacity:.8}
+  .pot .val{font-family:"Anton";font-size:22px;line-height:1.1;margin-top:2px}
+
+  /* Tabs */
+  nav.tabs{position:sticky;top:0;z-index:30;display:flex;gap:6px;padding:10px 0;background:linear-gradient(var(--paper) 70%, transparent)}
+  nav.tabs button{
+    flex:1;font-family:"Oswald";font-weight:600;text-transform:uppercase;letter-spacing:.08em;
+    font-size:14px;padding:11px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);
+    border-radius:9px;cursor:pointer;transition:.15s;
+  }
+  nav.tabs button.active{background:var(--ink);color:var(--paper)}
+
+  section{display:none;animation:fade .25s ease}
+  section.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  h2.block{font-family:"Oswald";text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--ink-soft);
+    margin:22px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+
+  /* Cards */
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:9px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+
+  /* Match facit rows */
+  .match{display:flex;align-items:center;gap:10px}
+  .match .no{font-family:"Anton";font-size:15px;color:var(--pitch);width:26px;flex:none}
+  .match .teams{flex:1;font-weight:600;font-size:14px}
+  .match .teams small{display:block;color:var(--ink-soft);font-weight:500;font-size:11px}
+  .signs{display:flex;gap:5px;flex:none}
+  .sign{width:34px;height:34px;border:2px solid var(--ink);background:var(--paper);border-radius:8px;
+    font-family:"Oswald";font-weight:700;font-size:15px;cursor:pointer;color:var(--ink);transition:.12s}
+  .sign:hover{transform:translateY(-1px)}
+  .sign.on{background:var(--pitch);border-color:var(--pitch);color:#fff}
+
+  /* Question facit */
+  .q .qhead{display:flex;gap:8px;align-items:baseline;margin-bottom:7px}
+  .q .qid{font-family:"Anton";color:var(--goal);font-size:16px;flex:none}
+  .q .qtext{font-weight:600;font-size:13.5px}
+  .q .pts{margin-left:auto;font-family:"Oswald";font-size:11px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;flex:none}
+  input[type=text],input[type=number],select{
+    font-family:"Hanken Grotesk";font-size:14px;padding:8px 10px;border:2px solid var(--line);
+    border-radius:8px;background:var(--paper);color:var(--ink);width:100%}
+  input:focus,select:focus{outline:none;border-color:var(--pitch)}
+  .twocol{display:flex;gap:8px}
+  .twocol select{flex:1}
+
+  .exportbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+  .btn{font-family:"Oswald";font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:13px;
+    padding:11px 16px;border:2px solid var(--ink);border-radius:9px;cursor:pointer;background:var(--goal);color:#fff;border-color:var(--goal)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .hint{font-size:12px;color:var(--ink-soft)}
+
+  /* Leaderboard */
+  #board{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:column;gap:4px}
+  @media(max-width:600px){#board{grid-template-columns:repeat(2,1fr)}}
+  .row{display:flex;align-items:center;gap:6px;background:var(--paper-2);border:1px solid var(--line);
+    border-radius:8px;padding:5px 8px;margin-bottom:0;cursor:pointer;transition:.12s;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .row:hover{background:var(--paper);border-color:var(--pitch)}
+  .row .rank{font-family:"Anton";font-size:16px;width:22px;flex:none;color:var(--ink-soft);text-align:center}
+  .row.r1 .rank{color:var(--gold)} .row.r2 .rank{color:#8a8a8a} .row.r3 .rank{color:#b07a3a}
+  .row.r1{border-color:var(--gold)}
+  .row .who{flex:1;min-width:0}
+  .row .nm{font-weight:700;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .meta{font-size:9.5px;color:var(--ink-soft)}
+  .row .score{font-family:"Anton";font-size:19px;color:var(--pitch);flex:none}
+  .row .score small{font-family:"Oswald";font-size:8px;color:var(--ink-soft);display:block;text-align:right;letter-spacing:.08em}
+
+  /* Detail modal */
+  .overlay{position:fixed;inset:0;background:rgba(27,26,22,.55);display:none;z-index:50;align-items:flex-start;justify-content:center;padding:18px;overflow:auto}
+  .overlay.show{display:flex}
+  .modal{background:var(--paper);border:3px solid var(--ink);border-radius:14px;max-width:620px;width:100%;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+  .modal .mhead{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--paper);border-radius:14px 14px 0 0}
+  .modal .mhead h3{font-family:"Anton";text-transform:uppercase;font-size:22px;flex:1}
+  .modal .mtot{font-family:"Anton";font-size:26px;color:var(--pitch)}
+  .modal .close{border:none;background:var(--ink);color:var(--paper);width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer;flex:none}
+  .modal .mbody{padding:6px 18px 20px}
+  .drow{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+  .drow .lab{font-family:"Oswald";font-weight:600;flex:none;width:36px;color:var(--ink-soft)}
+  .drow .info{flex:1}
+  .drow .info b{font-weight:700}
+  .drow .info .facit{color:var(--ink-soft);font-size:12px}
+  .tag{font-family:"Oswald";font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;
+    padding:3px 8px;border-radius:20px;flex:none}
+  .tag.ok{background:rgba(31,107,65,.15);color:var(--ok)}
+  .tag.bad{background:rgba(207,59,34,.13);color:var(--bad)}
+  .tag.part{background:rgba(199,154,58,.18);color:#9a7420}
+  .tag.pend{background:rgba(165,154,126,.2);color:var(--pending)}
+  .toggle{font-family:"Oswald";font-weight:700;font-size:11px;text-transform:uppercase;border:2px solid var(--ink);
+    background:var(--paper);border-radius:7px;padding:4px 9px;cursor:pointer;flex:none}
+  .toggle.t-ok{border-color:var(--ok);color:var(--ok);background:rgba(31,107,65,.12)}
+  .toggle.t-bad{border-color:var(--bad);color:var(--bad);background:rgba(207,59,34,.12)}
+
+  /* Sign buttons inside the detail modal (read-only coupon view) */
+  .dteams{flex:1;font-weight:600;font-size:12.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dsigns{display:flex;gap:3px;flex:none}
+  .sign-sm{width:28px;height:28px;border-radius:6px;border:2px solid var(--line);
+    font-family:"Oswald";font-weight:700;font-size:13px;display:inline-flex;
+    align-items:center;justify-content:center;flex:none;user-select:none}
+  /* Participant picked this sign (no result yet, or wrong pick) */
+  .sign-sm.s-pick{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  /* Participant picked this sign AND it is the correct result */
+  .sign-sm.s-ok{background:var(--ok);border-color:var(--ok);color:#fff}
+  /* Correct result that the participant did NOT pick */
+  .sign-sm.s-miss{background:transparent;border-color:var(--bad);color:var(--bad)}
+
+  /* Fixed-width match point indicator — prevents layout shift between "–" / "+1" / "0" */
+  .mpts{font-family:"Oswald";font-weight:700;font-size:13px;flex:none;
+    width:32px;text-align:center;color:var(--pending)}
+  .mpts.ok{color:var(--ok)} .mpts.bad{color:var(--bad)}
+
+  /* Question table */
+  .qtable{width:100%;border-collapse:collapse;font-size:13px;margin-top:2px}
+  .qtable thead th{font-family:"Oswald";font-size:10px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--ink-soft);padding:4px 6px 5px;border-bottom:2px solid var(--line);text-align:left;font-weight:600}
+  .qtable thead th:last-child{text-align:right}
+  .qtable tbody td{padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+  .qtd-id{font-family:"Anton";color:var(--goal);font-size:15px;width:28px;padding-left:10px!important}
+  .qtd-ans{font-weight:600}
+  .qtd-fac{color:var(--ink-soft);font-size:12px}
+  .qtd-pts{text-align:right;white-space:nowrap;width:70px}
+  .qtable tr.qr-ok  .qtd-id{border-left:3px solid var(--ok);  padding-left:7px!important}
+  .qtable tr.qr-bad .qtd-id{border-left:3px solid var(--bad); padding-left:7px!important}
+  .qtable tr.qr-part .qtd-id{border-left:3px solid #c79a3a;  padding-left:7px!important}
+
+  .empty{text-align:center;color:var(--ink-soft);padding:30px;font-size:14px}
+  footer{text-align:center;color:var(--ink-soft);font-size:11.5px;margin-top:30px}
+
+  /* Admin gear + password modal */
+  .admin-btn{flex:none!important;width:36px;height:36px;padding:0;border-radius:8px;font-size:18px;
+    display:flex;align-items:center;justify-content:center;line-height:1;
+    background:transparent;border:1.5px solid var(--line);color:var(--ink-soft);cursor:pointer;margin-left:auto;
+    transition:.12s}
+  .admin-btn:hover{background:var(--paper-2);border-color:var(--ink-soft)}
+  .admin-btn.unlocked{border-color:var(--bad);color:var(--bad);background:rgba(207,59,34,.10)}
+  .admin-btn .admin-icon{display:inline-block;transition:transform .2s}
+  .admin-btn:not(.unlocked) .admin-icon{transform:rotate(120deg)}
+  .pw-overlay{position:fixed;inset:0;background:rgba(27,26,22,.55);z-index:100;
+    display:none;align-items:center;justify-content:center;padding:20px}
+  .pw-overlay.show{display:flex}
+  .pw-box{background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:22px;
+    width:100%;max-width:300px}
+  .pw-box h4{font-family:"Oswald";text-transform:uppercase;letter-spacing:.1em;font-size:13px;
+    margin-bottom:14px;color:var(--ink-soft)}
+  .pw-actions{display:flex;gap:8px;margin-top:10px}
+  .pw-actions button{flex:1;padding:9px;font-family:"Oswald";font-weight:700;font-size:13px;
+    text-transform:uppercase;border:2px solid var(--ink);border-radius:8px;cursor:pointer}
+  .pw-submit{background:var(--pitch);color:#fff;border-color:var(--pitch)!important}
+  .pw-cancel{background:transparent;color:var(--ink)}
+  .pw-err{color:var(--bad);font-size:12px;margin-top:6px;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Tippa · Gissa · Vinn</div>
+    <h1>VM-tipset <span>2026</span></h1>
+    <div class="sub" id="subline"></div>
+    <div class="pot" id="pot"></div>
+  </header>
+
+  <nav class="tabs">
+    <button id="tab-table" class="active" onclick="showTab('table')">Tabell</button>
+    <button id="tab-facit" style="display:none" onclick="showTab('facit')">Facit &amp; rättning</button>
+    <button class="admin-btn" id="admin-btn" onclick="tryAdmin()" title="Admin-inloggning"><span class="admin-icon">✏</span></button>
+  </nav>
+
+  <!-- LEADERBOARD -->
+  <section id="sec-table" class="show">
+    <div id="board"></div>
+    <p class="hint" style="margin-top:8px">Tryck på en rad för att se hela kupongen mot facit. Vid lika poäng vinner den som är närmast på skiljefrågan.</p>
+  </section>
+
+  <!-- FACIT / ADMIN -->
+  <section id="sec-facit">
+    <h2 class="block">Matchfacit (1 poäng / rätt)</h2>
+    <div id="facit-matches"></div>
+
+    <h2 class="block">Frågor A–H</h2>
+    <div id="facit-questions"></div>
+
+    <h2 class="block">Skiljefråga</h2>
+    <div class="card q" id="facit-tiebreak"></div>
+
+    <div class="exportbar">
+      <button class="btn" onclick="exportData()">⬇ Spara facit (data-public.js)</button>
+      <span class="hint">Laddar ner en uppdaterad <b>data-public.js</b> — ersätt filen lokalt och på GitHub för att publicera nya resultat.</span>
+    </div>
+    <p class="hint" style="margin-top:10px">Tips: markera text-svar som rätt/fel i deltagarens kupong (klicka på raden i tabellen). Exporten sparar allt — inklusive textbedömningar.</p>
+  </section>
+
+  <footer>VM-tipset 2026 · lokal rättningssida · ingen data lämnar din dator</footer>
+</div>
+
+<!-- Admin password modal -->
+<div class="pw-overlay" id="pw-overlay" onclick="if(event.target===this)closePw()">
+  <div class="pw-box">
+    <h4>🔒 Admin-inloggning</h4>
+    <input type="password" id="pw-input" placeholder="Lösenord"
+      style="width:100%" autocomplete="current-password"
+      onkeydown="if(event.key==='Enter')submitPw()">
+    <div class="pw-err" id="pw-err">Fel lösenord — försök igen.</div>
+    <div class="pw-actions">
+      <button class="pw-cancel" onclick="closePw()">Avbryt</button>
+      <button class="pw-submit" onclick="submitPw()">Logga in</button>
+    </div>
+  </div>
+</div>
+
+<!-- Detail overlay -->
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="mhead">
+      <h3 id="m-name"></h3>
+      <div class="mtot"><span id="m-total">0</span>p</div>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+    <div class="mbody" id="m-body"></div>
+  </div>
+</div>
+
+<script src="data-public.js"></script>
+<script>
+/* ---------- state (clone so we can edit + export without touching the file) ---------- */
+const D = (typeof POOL_DATA !== "undefined") ? POOL_DATA : {meta:{},matches:[],questions:[],tiebreaker:{},participants:[]};
+const state = JSON.parse(JSON.stringify(D));
+const overrides = {};         // overrides[participantIndex][questionId] = true|false  (text Qs)
+let openIdx = null;
+
+const SIGNS = ["1","X","2"];
+const norm = s => (s==null?"":String(s)).trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+const named = () => state.participants.filter(p => (p.name||"").trim());
+
+/* ---------- scoring ---------- */
+function score(p, idx){
+  let pts = 0;
+  const matches = state.matches.map(m=>{
+    const picks = p.picks?.[m.id] || [];
+    const ok = m.result && picks.includes(m.result);
+    if(ok) pts += 1;
+    return {m, picks, result:m.result, ok};
+  });
+  const questions = state.questions.map(q=>{
+    const ans = p.answers?.[q.id];
+    let got = 0, status = "pending";
+    if(q.type==="number"){
+      const set = q.correct!=null && q.correct!=="";
+      if(set && ans!=null && ans!==""){
+        const within = Math.abs(Number(ans)-Number(q.correct)) <= (q.tolerance||0);
+        got = within ? q.points : 0; status = within ? "correct":"wrong";
+      } else if(set){ status="wrong"; }
+    }
+    else if(q.type==="twoteam"){
+      const cor = (q.correct||[]).filter(Boolean);
+      if(cor.length){
+        const cset = new Set(cor.map(norm));
+        const given = [...new Set((ans||[]).filter(Boolean).map(norm))];
+        const hits = given.filter(g=>cset.has(g)).length;
+        got = hits*2; status = hits>=2?"correct":hits===1?"partial":"wrong";
+      }
+    }
+    else if(q.type==="text"){
+      const set = q.correct!=null && q.correct!=="";
+      const auto = set && ans!=null && ans!=="" ? norm(ans)===norm(q.correct) : null;
+      const ov = overrides[idx]?.[q.id];
+      const eff = ov===undefined ? auto : ov;
+      if(!set) status="pending";
+      else if(eff===true){ got=q.points; status="correct"; }
+      else if(eff===false){ status="wrong"; }
+      else status="pending";
+    }
+    pts += got;
+    return {q, ans, got, status};
+  });
+  let tbDelta = null;
+  if(state.tiebreaker?.correct!=null && p.tiebreaker!=null && p.tiebreaker!=="")
+    tbDelta = Math.abs(Number(p.tiebreaker)-Number(state.tiebreaker.correct));
+  return {pts, matches, questions, tbDelta};
+}
+
+/* ---------- header + pot ---------- */
+function renderHeader(){
+  const n = named().length;
+  const pot = (state.meta.cost_sek||0) * n;
+  const dl = state.meta.deadline ? new Date(state.meta.deadline) : null;
+  document.getElementById("subline").innerHTML =
+    `<span><b>${n}</b> deltagare</span>`+
+    `<span>Insats <b>${state.meta.cost_sek||0} kr</b></span>`;
+  const split = state.meta.prize_split||{};
+  const cells = [["Pott",pot,"lead"],["1:a",Math.round(pot*(split["1"]||0))],["2:a",Math.round(pot*(split["2"]||0))],["3:a",Math.round(pot*(split["3"]||0))]];
+  document.getElementById("pot").innerHTML = cells.map(([l,v,c])=>
+    `<div class="cell ${c||""}"><div class="lbl">${l}</div><div class="val">${v} kr</div></div>`).join("");
+}
+
+/* ---------- leaderboard ---------- */
+function renderBoard(){
+  const list = named().map((p)=>{
+    const idx = state.participants.indexOf(p);
+    return {p, idx, s:score(p, idx)};
+  });
+  list.sort((a,b)=> b.s.pts-a.s.pts
+    || ((a.s.tbDelta??1e9)-(b.s.tbDelta??1e9))
+    || (a.p.name).localeCompare(b.p.name,"sv"));
+  const el = document.getElementById("board");
+  if(!list.length){ el.innerHTML = `<div class="empty">Inga deltagare med namn ännu.<br>Lägg till dem i <b>data-public.js</b>.</div>`; return; }
+  const cols = window.matchMedia("(max-width:600px)").matches ? 2 : 4;
+  el.style.gridTemplateRows = `repeat(${Math.ceil(list.length/cols)},auto)`;
+  el.innerHTML = list.map((it,i)=>{
+    const rank = i+1, r = rank<=3?`r${rank}`:"";
+    const tbVal = it.p.tiebreaker!=null ? `${it.p.tiebreaker} straffar` : '– straffar';
+    return `<div class="row ${r}" onclick="openModal(${it.idx})">
+      <div class="rank">${rank}</div>
+      <div class="who"><div class="nm">${esc(it.p.name)}</div><div class="meta">Skiljefråga: ${tbVal}</div></div>
+      <div class="score">${it.s.pts}p</div>
+    </div>`;
+  }).join("");
+}
+
+/* ---------- facit / admin ---------- */
+function renderMatches(){
+  document.getElementById("facit-matches").innerHTML = state.matches.map(m=>`
+    <div class="card match">
+      <div class="no">${m.id}</div>
+      <div class="teams">${esc(m.home)} – ${esc(m.away)}<small>${fmtKick(m.kickoff)}</small></div>
+      <div class="signs">${SIGNS.map(s=>
+        `<button class="sign ${m.result===s?"on":""}" onclick="setResult(${m.id},'${s}')">${s}</button>`).join("")}</div>
+    </div>`).join("");
+}
+function renderFacit(){
+  renderMatches();
+
+  document.getElementById("facit-questions").innerHTML = state.questions.map(q=>{
+    let field;
+    if(q.type==="number")
+      field = `<input type="number" value="${q.correct??""}" placeholder="rätt svar${q.tolerance?` (±${q.tolerance})`:""}" oninput="setQ('${q.id}',this.value,'num')">`;
+    else if(q.type==="twoteam")
+      field = `<div class="twocol">${[0,1].map(i=>
+        `<select onchange="setTeam('${q.id}',${i},this.value)">
+           <option value="">– lag ${i+1} –</option>
+           ${q.options.map(o=>`<option ${((q.correct||[])[i]===o)?"selected":""}>${esc(o)}</option>`).join("")}
+         </select>`).join("")}</div>`;
+    else
+      field = `<input type="text" value="${esc(q.correct??"")}" placeholder="rätt svar" oninput="setQ('${q.id}',this.value,'text')">`;
+    return `<div class="card q">
+      <div class="qhead"><span class="qid">${q.id}</span><span class="qtext">${esc(q.prompt)}</span><span class="pts">${q.points}p</span></div>
+      ${field}
+    </div>`;
+  }).join("");
+
+  const tb = state.tiebreaker;
+  document.getElementById("facit-tiebreak").innerHTML = `
+    <div class="qhead"><span class="qid">★</span><span class="qtext">${esc(tb.prompt||"")}</span></div>
+    <input type="number" value="${tb.correct??""}" placeholder="antal straffar" oninput="setTie(this.value)">`;
+}
+
+/* ---------- detail modal ---------- */
+function openModal(idx){
+  openIdx = idx;
+  const p = state.participants[idx], s = score(p, idx);
+  document.getElementById("m-name").textContent = p.name||"–";
+  document.getElementById("m-total").textContent = s.pts;
+  let html = `<div class="drow" style="border:none"><span class="lab" style="width:auto;color:var(--pitch);font-size:13px">MATCHER (${s.matches.filter(x=>x.ok).length}/13)</span></div>`;
+  html += s.matches.map(x=>{
+    const pts = x.result==null
+      ? `<span class="mpts">–</span>`
+      : (x.ok ? `<span class="mpts ok">+1</span>` : `<span class="mpts bad">0</span>`);
+    const signs = SIGNS.map(sg=>{
+      const picked = x.picks.includes(sg);
+      const isRes  = x.result === sg;
+      let cls = '';
+      if(x.result){ cls = isRes && picked ? 's-ok' : isRes ? 's-miss' : picked ? 's-pick' : ''; }
+      else         { cls = picked ? 's-pick' : ''; }
+      return `<span class="sign-sm ${cls}">${sg}</span>`;
+    }).join('');
+    return `<div class="drow">
+      <span class="lab">${x.m.id}</span>
+      <span class="dteams">${esc(x.m.home)} – ${esc(x.m.away)}</span>
+      <span class="dsigns">${signs}</span>
+      ${pts}</div>`;
+  }).join("");
+
+  /* ---------- question table ---------- */
+  html += `<div class="drow" style="border:none;margin-top:10px"><span class="lab" style="width:auto;color:var(--goal);font-size:13px">FRÅGOR</span></div>`;
+  html += `<table class="qtable"><thead><tr>
+    <th></th><th>Dina svar</th><th>Facit</th><th></th>
+  </tr></thead><tbody>`;
+  html += s.questions.map(x=>{
+    const a = Array.isArray(x.ans)?x.ans.filter(Boolean).join(" & "):(x.ans??"–");
+    const rawC = Array.isArray(x.q.correct)?(x.q.correct||[]).filter(Boolean).join(" & "):(x.q.correct??"");
+    let facitCell = rawC ? esc(rawC) : `<span style="color:var(--pending)">–</span>`;
+    if(x.q.type==="number" && x.q.tolerance!=null && x.q.correct!=null)
+      facitCell += ` <small style="color:var(--pending)">(±${x.q.tolerance})</small>`;
+
+    let ptsCell;
+    if(x.q.type==="text" && x.q.correct){
+      const ov=overrides[idx]?.[x.q.id];
+      const autoV=x.ans?norm(String(x.ans))===norm(x.q.correct):false;
+      const eff=ov===undefined?autoV:ov;
+      ptsCell=`<button class="toggle ${eff?"t-ok":"t-bad"}" onclick="toggleText(${idx},'${x.q.id}')">${eff?"✓ Rätt":"✗ Fel"}</button>`;
+    } else {
+      ptsCell = x.status==="correct" ? `<span class="tag ok">+${x.got}</span>`
+        : x.status==="partial"       ? `<span class="tag part">+${x.got}</span>`
+        : x.status==="wrong"         ? `<span class="tag bad">0</span>`
+        : `<span style="color:var(--pending);font-family:'Oswald';font-weight:700;font-size:12px">–</span>`;
+    }
+
+    const rowCls = x.status==="correct"?"qr-ok":x.status==="partial"?"qr-part":x.status==="wrong"?"qr-bad":"";
+    return `<tr class="${rowCls}">
+      <td class="qtd-id">${x.q.id}</td>
+      <td class="qtd-ans">${esc(String(a))||"–"}</td>
+      <td class="qtd-fac">${facitCell}</td>
+      <td class="qtd-pts">${ptsCell}</td>
+    </tr>`;
+  }).join("");
+  html += `</tbody></table>`;
+  const td = s.tbDelta;
+  const tbFacit = state.tiebreaker.correct!=null
+    ? esc(String(state.tiebreaker.correct))
+    : `<span style="color:var(--pending)">–</span>`;
+  const tbPts = td!=null
+    ? `<span class="tag pend">±${td}</span>`
+    : `<span style="color:var(--pending);font-family:'Oswald';font-weight:700;font-size:12px">–</span>`;
+  html += `<div class="drow" style="border:none;margin-top:16px">
+    <span class="lab" style="width:auto;color:var(--ink-soft);font-family:'Oswald';font-size:12px;
+      text-transform:uppercase;letter-spacing:.1em;font-weight:600">Skiljefråga</span>
+  </div>`;
+  html += `<table class="qtable"><thead><tr>
+    <th></th><th>Ditt svar</th><th>Facit</th><th></th>
+  </tr></thead><tbody><tr>
+    <td class="qtd-id" style="font-size:13px;color:var(--ink-soft)">★</td>
+    <td class="qtd-ans">${p.tiebreaker!=null ? p.tiebreaker+' straffar' : '–'}</td>
+    <td class="qtd-fac">${tbFacit}</td>
+    <td class="qtd-pts">${tbPts}</td>
+  </tr></tbody></table>`;
+  document.getElementById("m-body").innerHTML = html;
+  document.getElementById("overlay").classList.add("show");
+}
+function closeModal(){ document.getElementById("overlay").classList.remove("show"); openIdx=null; }
+function toggleText(idx, qid){
+  overrides[idx]=overrides[idx]||{};
+  const p=state.participants[idx], q=state.questions.find(x=>x.id===qid);
+  const autoV=q.correct&&p.answers?.[qid]?norm(String(p.answers[qid]))===norm(q.correct):false;
+  const cur=overrides[idx][qid];
+  const eff=cur===undefined?autoV:cur;
+  overrides[idx][qid]=!eff;
+  state.text_overrides[p.name+"|"+qid]=!eff;
+  openModal(idx); renderBoard();
+}
+
+/* ---------- admin auth ---------- */
+let adminUnlocked = false;
+
+function tryAdmin(){
+  if(adminUnlocked){ lockAdmin(); return; }
+  document.getElementById('pw-overlay').classList.add('show');
+  document.getElementById('pw-input').value='';
+  document.getElementById('pw-err').style.display='none';
+  setTimeout(()=>document.getElementById('pw-input').focus(), 60);
+}
+function submitPw(){
+  if(document.getElementById('pw-input').value === (state.meta.admin_password||'')){
+    adminUnlocked = true;
+    closePw();
+    document.getElementById('tab-facit').style.display='';
+    const btn = document.getElementById('admin-btn');
+    btn.querySelector('.admin-icon').textContent='✕'; btn.title='Admin aktiv — klicka för att stänga'; btn.classList.add('unlocked');
+    showTab('facit');
+  } else {
+    document.getElementById('pw-err').style.display='block';
+    document.getElementById('pw-input').select();
+  }
+}
+function closePw(){ document.getElementById('pw-overlay').classList.remove('show'); }
+function lockAdmin(){
+  adminUnlocked = false;
+  document.getElementById('tab-facit').style.display='none';
+  const btn = document.getElementById('admin-btn');
+  btn.querySelector('.admin-icon').textContent='✏'; btn.title='Admin-inloggning'; btn.classList.remove('unlocked');
+  showTab('table');
+}
+
+/* ---------- mutations ---------- */
+function setResult(id,s){ const m=state.matches.find(x=>x.id===id); m.result = (m.result===s?null:s); renderMatches(); renderBoard(); }
+function setQ(id,v,kind){ const q=state.questions.find(x=>x.id===id); q.correct = v===""?null:(kind==="num"?Number(v):v); renderBoard(); }
+function setTeam(id,i,v){ const q=state.questions.find(x=>x.id===id); q.correct = q.correct||["",""]; q.correct[i]=v; renderBoard(); }
+function setTie(v){ state.tiebreaker.correct = v===""?null:Number(v); renderBoard(); }
+
+/* ---------- export ---------- */
+function exportData(){
+  const out = JSON.parse(JSON.stringify(state));
+  const body = "/* VM-tipset 2026 — exporterat facit */\nconst POOL_DATA = "
+    + JSON.stringify(out, null, 2)
+    + ";\nif (typeof window !== \"undefined\") window.POOL_DATA = POOL_DATA;\n"
+    + "if (typeof module !== \"undefined\" && module.exports) module.exports = POOL_DATA;\n";
+  const blob = new Blob([body], {type:"text/javascript"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "data-public.js"; a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ---------- helpers ---------- */
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function fmtKick(iso){ if(!iso)return""; const d=new Date(iso); return d.toLocaleString("sv-SE",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}); }
+function showTab(t){
+  if(t==="facit" && !adminUnlocked) return;
+  document.getElementById("sec-table").classList.toggle("show", t==="table");
+  document.getElementById("sec-facit").classList.toggle("show", t==="facit");
+  document.getElementById("tab-table").classList.toggle("active", t==="table");
+  document.getElementById("tab-facit").classList.toggle("active", t==="facit");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){ closeModal(); closePw(); }
+});
+
+/* ---------- boot ---------- */
+if(!state.text_overrides) state.text_overrides={};
+Object.entries(state.text_overrides).forEach(([key,val])=>{
+  const sep=key.lastIndexOf("|");
+  const name=key.slice(0,sep), qid=key.slice(sep+1);
+  const idx=state.participants.findIndex(p=>p.name===name);
+  if(idx>=0){overrides[idx]=overrides[idx]||{}; overrides[idx][qid]=val;}
+});
+renderHeader(); renderFacit(); renderBoard();
+</script>
+</body>
+</html>
