@@ -7,7 +7,7 @@ const POOL_DATA = {
     cost_sek: 100,
     deadline: "2026-06-14T23:59:00+02:00",
     prize_split: { "1": 0.65, "2": 0.25, "3": 0.10 },
-    admin_password: "vm2026admin",
+    admin_password: "Admin-inloggning",
     show_countdown: true
   },
   matches: [
