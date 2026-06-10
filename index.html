@@ -220,7 +220,7 @@
   .cd-label{font-family:"Oswald";font-size:9px;color:#555;letter-spacing:.25em;
     text-transform:uppercase;margin-top:6px}
   .cd-digits{display:flex;gap:3px}
-  .cd-digit{width:52px;height:74px;background:#171717;border-radius:7px;border:1px solid #222;
+  .cd-digit{width:68px;height:96px;background:#171717;border-radius:8px;border:1px solid #222;
     position:relative;overflow:hidden;
     box-shadow:0 4px 16px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.03);
     display:flex;align-items:center;justify-content:center}
@@ -228,21 +228,21 @@
     background:rgba(0,0,0,.18);z-index:1;pointer-events:none}
   .cd-digit::after{content:'';position:absolute;left:0;right:0;top:calc(50% - 1px);
     height:2px;background:#080808;box-shadow:0 1px 4px #000;z-index:2}
-  .cd-digit span{font-family:"Anton";font-size:48px;color:#ffb300;
+  .cd-digit span{font-family:"Anton";font-size:64px;color:#ffb300;
     text-shadow:0 0 20px rgba(255,179,0,.45),0 0 40px rgba(255,179,0,.15);
     position:relative;z-index:0;line-height:1;user-select:none}
-  .cd-sep{font-family:"Anton";font-size:48px;color:#ffb300;opacity:.3;
-    margin-bottom:18px;line-height:1;user-select:none}
+  .cd-sep{font-family:"Anton";font-size:64px;color:#ffb300;opacity:.3;
+    margin-bottom:22px;line-height:1;user-select:none}
   .cd-msg{font-family:"Oswald";font-size:11px;color:#444;letter-spacing:.15em;
     text-transform:uppercase;margin-top:24px;padding-top:18px;border-top:1px solid #1e1e1e}
-  .cd-meta{display:flex;justify-content:center;gap:28px;margin-top:12px}
-  .cd-meta span{font-family:"Oswald";font-size:13px;color:#555;letter-spacing:.05em}
-  .cd-meta strong{color:#777}
+  .cd-meta{display:flex;justify-content:center;gap:28px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid #1e1e1e}
+  .cd-meta span{font-family:"Oswald";font-size:15px;color:#666;letter-spacing:.05em}
+  .cd-meta strong{color:#888}
   .cd-admin-bar{text-align:right;margin-bottom:6px}
-  .cd-admin-bar button{font-size:11px;padding:3px 10px;opacity:.6}
+  .cd-admin-bar button{font-size:12px;padding:4px 12px}
   @keyframes cdFlip{0%{opacity:0;transform:translateY(-5px)}100%{opacity:1;transform:translateY(0)}}
   .cd-anim{animation:cdFlip .13s ease-out}
-  @media(max-width:500px){.cd-digit{width:40px;height:58px} .cd-digit span{font-size:36px} .cd-sep{font-size:36px;margin-bottom:14px}}
+  @media(max-width:500px){.cd-digit{width:50px;height:72px} .cd-digit span{font-size:48px} .cd-sep{font-size:48px;margin-bottom:18px}}
 
   /* ---- Top-3 podium ---- */
   #podium{margin-bottom:16px}
@@ -281,7 +281,7 @@
   <section id="sec-table" class="show">
     <div id="podium"></div>
     <div id="board"></div>
-    <p class="hint" style="margin-top:8px">Tryck på en rad för att se hela kupongen mot facit. Vid lika poäng vinner den som är närmast på skiljefrågan.</p>
+    <p id="table-hint" class="hint" style="margin-top:8px">Tryck på en rad för att se hela kupongen mot facit. Vid lika poäng vinner den som är närmast på skiljefrågan.</p>
   </section>
 
   <!-- FACIT / ADMIN -->
@@ -436,7 +436,7 @@ function countdownHTML(list){
   const pot=(list.length*(state.meta.cost_sek||100)).toLocaleString("sv-SE");
   const digit=(id)=>`<div class="cd-digit" id="${id}"><span>0</span></div>`;
   return `<div class="cd-board">
-  <div class="cd-header">⚽&nbsp;&nbsp;VM-TIPSET 2026&nbsp;&nbsp;⚽</div>
+  <div class="cd-meta"><span><strong>${list.length}</strong> deltagare</span><span>Pott: <strong>${pot} kr</strong></span></div>
   <div class="cd-clock">
     <div class="cd-group"><div class="cd-digits">${digit("cd-d0")}${digit("cd-d1")}</div><div class="cd-label">Dagar</div></div>
     <div class="cd-sep">:</div>
@@ -447,7 +447,6 @@ function countdownHTML(list){
     <div class="cd-group"><div class="cd-digits">${digit("cd-s0")}${digit("cd-s1")}</div><div class="cd-label">Sekunder</div></div>
   </div>
   <div class="cd-msg">Resultatlistan publiceras vid midnatt måndag 15 juni</div>
-  <div class="cd-meta"><span><strong>${list.length}</strong> deltagare</span><span>Pott: <strong>${pot} kr</strong></span></div>
 </div>`;
 }
 
@@ -486,9 +485,13 @@ function renderBoard(){
     el.innerHTML=`<div class="empty">Inga deltagare med namn ännu.<br>Lägg till dem i <b>data-public.js</b>.</div>`;
     return;
   }
+  const hint = document.getElementById('table-hint');
+  const footer = document.querySelector('footer');
   // Countdown mode
   if(state.meta.show_countdown && !adminHideCountdown){
     stopCountdown();
+    if(hint) hint.style.display='none';
+    if(footer) footer.style.display='none';
     podEl.innerHTML = adminUnlocked
       ? `<div class="cd-admin-bar"><button class="btn" onclick="adminHideCountdown=true;renderBoard()">👁 Visa listan (admin)</button></div>`
       : '';
@@ -497,6 +500,8 @@ function renderBoard(){
     startCountdown(); return;
   }
   stopCountdown();
+  if(hint) hint.style.display='';
+  if(footer) footer.style.display='';
   // Admin "restore timer" bar
   const adminBar = (state.meta.show_countdown && adminHideCountdown && adminUnlocked)
     ? `<div class="cd-admin-bar"><button class="btn" onclick="adminHideCountdown=false;renderBoard()">⏱ Visa timer igen</button></div>`
@@ -668,6 +673,7 @@ function tryAdmin(){
 function submitPw(){
   if(document.getElementById('pw-input').value === (state.meta.admin_password||'')){
     adminUnlocked = true;
+    renderBoard();
     closePw();
     document.getElementById('tab-facit').style.display='';
     const btn = document.getElementById('admin-btn');
@@ -715,6 +721,7 @@ function showTab(t){
   document.getElementById("sec-facit").classList.toggle("show", t==="facit");
   document.getElementById("tab-table").classList.toggle("active", t==="table");
   document.getElementById("tab-facit").classList.toggle("active", t==="facit");
+  if(t==="table") renderBoard();
   window.scrollTo({top:0,behavior:"smooth"});
 }
 document.addEventListener("keydown",e=>{
