@@ -196,19 +196,26 @@
   .admin-btn.unlocked{border-color:var(--bad);color:var(--bad);background:rgba(207,59,34,.10)}
   .admin-btn .admin-icon{display:inline-block;transition:transform .2s}
   .admin-btn:not(.unlocked) .admin-icon{transform:rotate(120deg)}
-  .pw-overlay{position:fixed;inset:0;background:rgba(27,26,22,.55);z-index:100;
-    display:none;align-items:center;justify-content:center;padding:20px}
+  .pw-overlay{position:fixed;inset:0;background:rgba(27,26,22,.6);z-index:100;
+    display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
   .pw-overlay.show{display:flex}
-  .pw-box{background:var(--paper);border:2px solid var(--ink);border-radius:12px;padding:22px;
-    width:100%;max-width:300px}
-  .pw-box h4{font-family:"Oswald";text-transform:uppercase;letter-spacing:.1em;font-size:13px;
-    margin-bottom:14px;color:var(--ink-soft)}
-  .pw-actions{display:flex;gap:8px;margin-top:10px}
-  .pw-actions button{flex:1;padding:9px;font-family:"Oswald";font-weight:700;font-size:13px;
-    text-transform:uppercase;border:2px solid var(--ink);border-radius:8px;cursor:pointer}
-  .pw-submit{background:var(--pitch);color:#fff;border-color:var(--pitch)!important}
-  .pw-cancel{background:transparent;color:var(--ink)}
-  .pw-err{color:var(--bad);font-size:12px;margin-top:6px;display:none}
+  .pw-box{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:32px 28px 26px;
+    width:100%;max-width:320px;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+  .pw-box h4{font-family:"Oswald";text-transform:uppercase;letter-spacing:.18em;font-size:11px;
+    margin-bottom:20px;color:var(--ink-soft);text-align:center}
+  .pw-box input[type=password]{display:block;width:100%;box-sizing:border-box;
+    padding:14px 16px;font-size:16px;font-family:"Oswald";letter-spacing:.12em;
+    border:1.5px solid var(--line);border-radius:12px;background:var(--paper-2);
+    color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+  .pw-box input[type=password]:focus{border-color:var(--pitch);box-shadow:0 0 0 3px rgba(44,99,44,.15)}
+  .pw-actions{display:flex;gap:8px;margin-top:16px}
+  .pw-actions button{flex:1;padding:13px;font-family:"Oswald";font-weight:700;font-size:13px;
+    text-transform:uppercase;letter-spacing:.08em;border:none;border-radius:12px;cursor:pointer;transition:opacity .15s}
+  .pw-submit{background:var(--pitch);color:#fff}
+  .pw-submit:hover{opacity:.85}
+  .pw-cancel{background:var(--paper-2);color:var(--ink-soft)}
+  .pw-cancel:hover{opacity:.7}
+  .pw-err{color:var(--bad);font-size:11.5px;margin-top:10px;text-align:center;display:none;letter-spacing:.02em}
 
   /* ---- Countdown (retro split-flap board) ---- */
   .cd-board{background:#0f0f0f;border-radius:20px;padding:36px 24px 28px;text-align:center;
@@ -248,7 +255,7 @@
   #podium{margin-bottom:16px}
   .podium-wrap{display:flex;align-items:flex-end;justify-content:center;gap:6px}
   .podium-slot{flex:1;max-width:200px;min-width:0;display:flex;flex-direction:column;align-items:center}
-  .podium-slot .row{width:100%;border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom:none;margin-bottom:0;cursor:pointer}
+  .podium-slot .row{width:100%;margin-bottom:6px;cursor:pointer}
   .podium-block{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
     border-radius:8px 8px 0 0;border-top:3px solid rgba(255,255,255,.12);gap:1px}
   .pb-rank{font-family:"Anton";font-size:32px;line-height:1}
@@ -307,7 +314,7 @@
   <div class="pw-box">
     <h4>🔒 Admin-inloggning</h4>
     <input type="password" id="pw-input" placeholder="Lösenord"
-      style="width:100%" autocomplete="current-password"
+      autocomplete="current-password"
       onkeydown="if(event.key==='Enter')submitPw()">
     <div class="pw-err" id="pw-err">Fel lösenord — försök igen.</div>
     <div class="pw-actions">
