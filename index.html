@@ -403,7 +403,7 @@ function renderFacit(){
     else
       field = `<input type="text" value="${esc(q.correct??"")}" placeholder="rätt svar" oninput="setQ('${q.id}',this.value,'text')">`;
     return `<div class="card q">
-      <div class="qhead"><span class="qid">${q.id}</span><span class="qtext">${esc(q.prompt)}</span><span class="pts">${q.points}p</span></div>
+      <div class="qhead"><span class="qid">${q.id}</span><span class="qtext">${esc(q.prompt).replace(/&lt;br&gt;/g,'<br>')}</span><span class="pts">${q.points}p</span></div>
       ${field}
     </div>`;
   }).join("");
@@ -416,7 +416,7 @@ function renderFacit(){
 
 /* ---------- detail modal ---------- */
 function shortQ(q){
-  let t = q.prompt;
+  let t = q.prompt.replace(/<br>/gi, " ");
   if(q.id !== "F") t = t.replace(/\s*\([^)]*\)/g, "");
   return t.trim();
 }
