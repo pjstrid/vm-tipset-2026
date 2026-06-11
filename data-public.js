@@ -144,7 +144,16 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:2,C:6,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:5,G:"Erling Haaland",H:"Frankrike"},tiebreaker:18},
     {name:"Linus Näslund",contact:{phone:"",email:""},
      picks:{"1":["1","X"],"2":["1"],"3":["1"],"4":["1"],"5":["1"],"6":["X","2"],"7":["X","2"],"8":["1","X"],"9":["1"],"10":["1","X"],"11":["1","X"],"12":["2"],"13":["2"]},
-     answers:{A:"Viktor Gyökeres",B:4,C:5,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:7,G:"Drogba!!",H:"Sverige"},tiebreaker:17}
+     answers:{A:"Viktor Gyökeres",B:4,C:5,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:7,G:"Didier Drogba",H:"Sverige"},tiebreaker:17},
+    {name:"Jessi Barka",contact:{phone:"",email:""},
+     picks:{"1":["2"],"2":["1","X"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1","X"],"8":["1"],"9":["1"],"10":["1","X"],"11":["2"],"12":["1","X"],"13":["1","2"]},
+     answers:{A:"Viktor Gyökeres",B:4,C:5,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:8,G:"Kylian Mbappé",H:"Spanien"},tiebreaker:28},
+    {name:"Kalle Abrahamsson",contact:{phone:"",email:""},
+     picks:{"1":["X","2"],"2":["1"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1","2"],"8":["1","X"],"9":["1"],"10":["1","X"],"11":["2"],"12":["1","2"],"13":["2"]},
+     answers:{A:"Alexander Isak",B:5,C:5,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:8,G:"Harry Kane",H:"England"},tiebreaker:37},
+    {name:"Kristian Fantenberg",contact:{phone:"",email:""},
+     picks:{"1":["X","2"],"2":["1"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1","X"],"8":["1"],"9":["1"],"10":["1"],"11":["X","2"],"12":["X","2"],"13":["1","2"]},
+     answers:{A:"Alexander Isak",B:4,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:9,G:"Harry Kane",H:"Frankrike"},tiebreaker:46}
   ]
 };
 
