@@ -183,18 +183,35 @@ const POOL_DATA = {
      answers:{A:"Viktor Gyökeres",B:6,C:5,D:["Nederländerna","Sverige"],E:["Frankrike","Senegal"],F:12,G:"Harry Kane",H:"England"},tiebreaker:34},
     {name:"Anders Lindberg",contact:{phone:"",email:""},
      picks:{"1":["X","2"],"2":["1"],"3":["1"],"4":["1","X"],"5":["1"],"6":["1"],"7":["1","2"],"8":["1","X"],"9":["1"],"10":["1","X"],"11":["2"],"12":["X"],"13":["X","2"]},
-     answers:{A:"Viktor Gyökeres",B:4,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:16,G:"Lionel Messi",H:"Spanien"},tiebreaker:36}
+     answers:{A:"Viktor Gyökeres",B:4,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:16,G:"Lionel Messi",H:"Spanien"},tiebreaker:36},
+    {name:"Jan-Åke Svensson",contact:{phone:"",email:""},
+     picks:{"1":["1","X"],"2":["1"],"3":["1"],"4":["1","X"],"5":["1"],"6":["1","X"],"7":["1"],"8":["1"],"9":["1"],"10":["1","X"],"11":["2"],"12":["1","2"],"13":["X","2"]},
+     answers:{A:"Viktor Gyökeres",B:3,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:4,G:"Kylian Mbappé",H:"Argentina"},tiebreaker:15},
+    {name:"Hasse Jonsson",contact:{phone:"",email:""},
+     picks:{"1":["1","X"],"2":["1"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1"],"8":["1","X"],"9":["1"],"10":["1"],"11":["X","2"],"12":["X","2"],"13":["X","2"]},
+     answers:{A:"Viktor Gyökeres",B:2,C:3,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:3,G:"Kylian Mbappé",H:"Frankrike"},tiebreaker:9},
+    {name:"Robert Örnehag",contact:{phone:"",email:""},
+     picks:{"1":["X"],"2":["1"],"3":["1"],"4":["1","X"],"5":["1"],"6":["1","X"],"7":["1","X"],"8":["1"],"9":["1"],"10":["1","X"],"11":["X","2"],"12":["2"],"13":["X","2"]},
+     answers:{A:"Alexander Isak",B:6,C:3,D:["Nederländerna","Sverige"],E:["Frankrike","Senegal"],F:12,G:"Ollie Watkins",H:"England"},tiebreaker:29},
+    {name:"Mats Hansson",contact:{phone:"",email:""},
+     picks:{"1":["1","X"],"2":["1","X"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1"],"8":["1"],"9":["1"],"10":["1","X"],"11":["2"],"12":["X","2"],"13":["X","2"]},
+     answers:{A:"Viktor Gyökeres",B:4,C:3,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:7,G:"Kylian Mbappé",H:"Spanien"},tiebreaker:23}
   ],
   live_stats: {
     penalties: 0,
     haaland_goals: 0,
     et_matches: 0,
     top_scorers: [
-      {player:"Hwang In-Beom",   country:"Sydkorea", goals:1},
-      {player:"Julián Quiñones", country:"Mexiko",   goals:1},
-      {player:"Ladislav Krejci", country:"Tjeckien", goals:1},
-      {player:"Oh Hyeon-gyu",    country:"Sydkorea", goals:1},
-      {player:"Raúl Jiménez",    country:"Mexiko",   goals:1}
+      {player:"Folarin Balogun",  country:"USA",                    goals:2},
+      {player:"Cyle Larin",       country:"Kanada",                 goals:1},
+      {player:"Giovanni Reyna",   country:"USA",                    goals:1},
+      {player:"Hwang In-Beom",    country:"Sydkorea",               goals:1},
+      {player:"Jovo Lukic",       country:"Bosnien och Herzegovina",goals:1},
+      {player:"Julián Quiñones",  country:"Mexiko",                 goals:1},
+      {player:"Ladislav Krejci",  country:"Tjeckien",                goals:1},
+      {player:"Maurício",         country:"Brasilien",              goals:1},
+      {player:"Oh Hyeon-gyu",     country:"Sydkorea",               goals:1},
+      {player:"Raúl Jiménez",     country:"Mexiko",                 goals:1}
     ]
   }
 };
