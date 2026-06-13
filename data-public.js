@@ -64,7 +64,7 @@ const POOL_DATA = {
     {name:"Tomas Flodin",contact:{phone:"",email:""},
      picks:{"1":["1","2"],"2":["1","X"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1"],"8":["1","X"],"9":["1"],"10":["1"],"11":["X","2"],"12":["2"],"13":["1","2"]},
      answers:{A:"Viktor Gyökeres",B:4,C:7,D:["Nederländerna","Sverige"],E:["Frankrike","Senegal"],F:8,G:"Erling Haaland",H:"Brasilien"},tiebreaker:30},
-    {name:"Mats Ståby",contact:{phone:"",email:""},
+    {name:"Matz Ståby",contact:{phone:"",email:""},
      picks:{"1":["1","2"],"2":["X","2"],"3":["1"],"4":["1","X"],"5":["1"],"6":["1","2"],"7":["1"],"8":["1"],"9":["1"],"10":["1"],"11":["X","2"],"12":["1"],"13":["X","2"]},
      answers:{A:"Alexander Isak",B:5,C:6,D:["Japan","Nederländerna"],E:["Frankrike","Norge"],F:6,G:"Lamine Yamal",H:"Brasilien"},tiebreaker:12},
     {name:"Jimmy Pettersson",contact:{phone:"",email:""},
@@ -195,7 +195,10 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:6,C:3,D:["Nederländerna","Sverige"],E:["Frankrike","Senegal"],F:12,G:"Ollie Watkins",H:"England"},tiebreaker:29},
     {name:"Mats Hansson",contact:{phone:"",email:""},
      picks:{"1":["1","X"],"2":["1","X"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1"],"8":["1"],"9":["1"],"10":["1","X"],"11":["2"],"12":["X","2"],"13":["X","2"]},
-     answers:{A:"Viktor Gyökeres",B:4,C:3,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:7,G:"Kylian Mbappé",H:"Spanien"},tiebreaker:23}
+     answers:{A:"Viktor Gyökeres",B:4,C:3,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:7,G:"Kylian Mbappé",H:"Spanien"},tiebreaker:23},
+    {name:"Carina Svensk",contact:{phone:"",email:""},
+     picks:{"1":["1"],"2":["1","X"],"3":["1","X"],"4":["1"],"5":["1"],"6":["1"],"7":["1","X"],"8":["1"],"9":["1"],"10":["X","2"],"11":["X","2"],"12":["2"],"13":["1","2"]},
+     answers:{A:"Alexander Isak",B:3,C:7,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:4,G:"Harry Kane",H:"Frankrike"},tiebreaker:34}
   ],
   live_stats: {
     penalties: 0,
