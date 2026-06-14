@@ -273,7 +273,13 @@ const POOL_DATA = {
      answers:{A:"Viktor Gyökeres",B:6,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:9,G:"Kai Havertz",H:"Frankrike"},tiebreaker:40},
     {name:"Gustav Dahlin",contact:{phone:"",email:""},
      picks:{"1":["X","2"],"2":["1"],"3":["X","2"],"4":["1"],"5":["1","X"],"6":["X","2"],"7":["X","2"],"8":["1"],"9":["1"],"10":["1"],"11":["2"],"12":["X","2"],"13":["2"]},
-     answers:{A:"Benjamin Nygren",B:5,C:6,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:11,G:"Erling Haaland",H:"Frankrike"},tiebreaker:35}
+     answers:{A:"Benjamin Nygren",B:5,C:6,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:11,G:"Erling Haaland",H:"Frankrike"},tiebreaker:35},
+    {name:"Fredrik Ohlsson",contact:{phone:"",email:""},
+     picks:{"1":["1","2"],"2":["1"],"3":["X","2"],"4":["1"],"5":["1"],"6":["1"],"7":["1"],"8":["X","2"],"9":["1"],"10":["1","2"],"11":["2"],"12":["1","X"],"13":["X","2"]},
+     answers:{A:"Isak Hien",B:7,C:5,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:10,G:"Kylian Mbappé",H:"Frankrike"},tiebreaker:49},
+    {name:"Tirvan Ali",contact:{phone:"",email:""},
+     picks:{"1":["1","2"],"2":["1"],"3":["1","X"],"4":["1"],"5":["1"],"6":["1","2"],"7":["1"],"8":["1"],"9":["1"],"10":["1","X"],"11":["2"],"12":["X","2"],"13":["X","2"]},
+     answers:{A:"Viktor Gyökeres",B:0,C:5,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:4,G:"Kylian Mbappé",H:"Frankrike"},tiebreaker:6}
   ],
   live_stats: {
     penalties: 2,
@@ -304,7 +310,8 @@ const POOL_DATA = {
       {player:"Oh Hyeon-gyu",        country:"Sydkorea",                goals:1},
       {player:"Raúl Jiménez",        country:"Mexiko",                  goals:1},
       {player:"Vinícius Júnior",     country:"Brasilien",               goals:1},
-      {player:"Virgil van Dijk",     country:"Nederländerna",           goals:1}
+      {player:"Virgil van Dijk",     country:"Nederländerna",           goals:1},
+      {player:"Keito Nakamura",      country:"Japan",                   goals:1}
     ]
   }
 };
