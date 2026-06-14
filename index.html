@@ -181,6 +181,18 @@
   }
   nav.tabs button.active{background:var(--ink);color:var(--paper)}
 
+  /* Table bar (search + admin toggle) */
+  .table-bar{display:flex;align-items:center;gap:8px;margin:10px 0 8px}
+  .board-search{
+    flex:1;font-family:"Hanken Grotesk";font-size:14px;padding:8px 12px;
+    border:2px solid var(--line);border-radius:9px;background:var(--paper);
+    color:var(--ink);outline:none;transition:border-color .15s;min-width:0;
+  }
+  .board-search:focus{border-color:var(--pitch)}
+  .board-search::placeholder{color:var(--ink-soft)}
+  .row-found{background:rgba(31,107,65,.13)!important;border-color:rgba(31,107,65,.4)!important}
+  .row-dimmed{opacity:.28}
+
   section{display:none;animation:fade .25s ease}
   section.show{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -425,6 +437,10 @@
   <!-- LEADERBOARD -->
   <section id="sec-table" class="show">
     <div id="podium"></div>
+    <div id="table-bar" class="table-bar" style="display:none">
+      <div id="table-bar-admin"></div>
+      <input type="search" id="board-search" class="board-search" placeholder="Sök deltagare…" oninput="searchBoard(this.value)">
+    </div>
     <div id="board"></div>
     <p id="table-hint" class="hint" style="margin-top:8px">Tryck på en rad för att se hela kupongen mot facit. Vid lika poäng vinner den som är närmast på skiljefrågan.</p>
   </section>
@@ -726,6 +742,7 @@ function renderBoard(){
   const subline = document.getElementById('subline');
   const potEl = document.getElementById('pot');
   const statsEl = document.getElementById('live-stats');
+  const tableBar = document.getElementById('table-bar');
   // Countdown mode
   if(state.meta.show_countdown && !adminHideCountdown){
     stopCountdown();
@@ -734,6 +751,7 @@ function renderBoard(){
     if(subline) subline.style.display='none';
     if(potEl) potEl.style.display='none';
     if(statsEl) statsEl.style.display='none';
+    if(tableBar) tableBar.style.display='none';
     podEl.innerHTML = adminUnlocked
       ? `<div class="cd-admin-bar"><button class="btn" onclick="adminHideCountdown=true;renderBoard()">👁 Visa listan (admin)</button></div>`
       : '';
@@ -747,13 +765,17 @@ function renderBoard(){
   if(subline) subline.style.display='';
   if(potEl) potEl.style.display='';
   if(statsEl) statsEl.style.display='';
-  // Admin "restore timer" bar
-  const adminBar = (state.meta.show_countdown && adminHideCountdown && adminUnlocked)
-    ? `<div class="cd-admin-bar"><button class="btn" onclick="adminHideCountdown=false;renderBoard()">⏱ Visa timer igen</button></div>`
-    : '';
+  // Table bar — show with optional admin "restore timer" button on the left
+  if(tableBar){
+    tableBar.style.display='flex';
+    const adminSlot = document.getElementById('table-bar-admin');
+    if(adminSlot) adminSlot.innerHTML = (state.meta.show_countdown && adminHideCountdown && adminUnlocked)
+      ? `<button class="btn ghost" onclick="adminHideCountdown=false;renderBoard()">⏱ Visa timer igen</button>`
+      : '';
+  }
   // Podium
   const pot = list.length * (state.meta.cost_sek||100);
-  podEl.innerHTML = adminBar + (list.length>=3 ? renderPodiumHTML(list.slice(0,3), pot) : '');
+  podEl.innerHTML = list.length>=3 ? renderPodiumHTML(list.slice(0,3), pot) : '';
   // Grid — top 3 live on the podium; list starts at rank 4
   const restList = list.length >= 3 ? list.slice(3) : list;
   const rankOffset = list.length >= 3 ? 3 : 0;
@@ -769,6 +791,17 @@ function renderBoard(){
       <div class="score">${it.s.pts}p</div>
     </div>`;
   }).join("");
+  searchBoard(document.getElementById('board-search')?.value||'');
+}
+
+function searchBoard(val){
+  const q = val.trim().toLowerCase();
+  document.querySelectorAll('#board .row, #podium .row').forEach(r=>{
+    const name = (r.querySelector('.nm')||{}).textContent||'';
+    const match = !q || name.toLowerCase().includes(q);
+    r.classList.toggle('row-found', !!q && match);
+    r.classList.toggle('row-dimmed', !!q && !match);
+  });
 }
 
 /* ---------- facit / admin ---------- */
