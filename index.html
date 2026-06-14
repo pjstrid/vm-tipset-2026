@@ -99,6 +99,7 @@
     .ls-scorers-cell,.ls-stat-1,.ls-stat-2,.ls-stat-3{display:none}
     .row{padding:8px 10px}
     .row .nm{font-size:13px}
+    .row .meta{font-size:8.5px}
     .row .score{font-size:21px}
     #podium{margin-top:14px}
     .podium-slot .row{align-items:flex-start;gap:4px;padding:6px 8px}
@@ -393,12 +394,13 @@
 
   <!-- LEADERBOARD -->
   <section id="sec-table" class="show">
+    <p id="table-hint" class="hint" style="margin-top:8px">Tryck på en rad för att se den deltagarens tips och poäng · Vid lika poäng avgör närmast resultatet på skiljefrågan</p>
+  <br>
     <div id="podium"></div>
     <div id="table-bar" class="table-bar">
       <input type="search" id="board-search" class="board-search" placeholder="Sök deltagare…" oninput="searchBoard(this.value)">
     </div>
     <div id="board"></div>
-    <p id="table-hint" class="hint" style="margin-top:8px">Tryck på en rad för att se hela kupongen mot facit. Vid lika poäng vinner den som är närmast på skiljefrågan.</p>
   </section>
 
   <!-- FACIT / ADMIN -->
