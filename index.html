@@ -338,49 +338,6 @@
   .pw-cancel:hover{opacity:.7}
   .pw-err{color:var(--bad);font-size:11.5px;margin-top:10px;text-align:center;display:none;letter-spacing:.02em}
 
-  /* ---- Countdown (retro split-flap board) ---- */
-  .cd-board{background:#0f0f0f;border-radius:20px;padding:36px 24px 28px;text-align:center;
-    border:1px solid #1e1e1e;box-shadow:0 8px 40px rgba(0,0,0,.7)}
-  .cd-header{font-family:"Oswald";font-size:11px;letter-spacing:.4em;color:#444;
-    text-transform:uppercase;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid #1e1e1e}
-  .cd-clock{display:flex;align-items:flex-end;justify-content:center;gap:8px;flex-wrap:wrap}
-  .cd-group{display:flex;flex-direction:column;align-items:center}
-  .cd-label{font-family:"Oswald";font-size:9px;color:#555;letter-spacing:.25em;
-    text-transform:uppercase;margin-top:6px}
-  .cd-digits{display:flex;gap:3px}
-  .cd-digit{width:68px;height:96px;background:#171717;border-radius:8px;border:1px solid #222;
-    position:relative;overflow:hidden;
-    box-shadow:0 4px 16px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.03);
-    display:flex;align-items:center;justify-content:center}
-  .cd-digit::before{content:'';position:absolute;left:0;right:0;top:0;height:50%;
-    background:rgba(0,0,0,.18);z-index:1;pointer-events:none}
-  .cd-digit::after{content:'';position:absolute;left:0;right:0;top:calc(50% - 1px);
-    height:2px;background:#080808;box-shadow:0 1px 4px #000;z-index:2}
-  .cd-digit span{font-family:"Anton";font-size:64px;color:#ffb300;
-    text-shadow:0 0 20px rgba(255,179,0,.45),0 0 40px rgba(255,179,0,.15);
-    position:relative;z-index:0;line-height:1;user-select:none}
-  .cd-sep{font-family:"Anton";font-size:64px;color:#ffb300;opacity:.3;
-    margin-bottom:22px;line-height:1;user-select:none}
-  .cd-msg{font-family:"Oswald";font-size:11px;color:#444;letter-spacing:.15em;
-    text-transform:uppercase;margin-top:24px;padding-top:18px;border-top:1px solid #1e1e1e}
-  .cd-meta{display:flex;justify-content:center;gap:28px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid #1e1e1e}
-  .cd-meta span{font-family:"Oswald";font-size:15px;color:#666;letter-spacing:.05em}
-  .cd-meta strong{color:#888}
-  .cd-admin-bar{text-align:right;margin-bottom:6px}
-  .cd-admin-bar button{font-size:12px;padding:4px 12px}
-  @keyframes cdFlip{0%{opacity:0;transform:translateY(-5px)}100%{opacity:1;transform:translateY(0)}}
-  .cd-anim{animation:cdFlip .13s ease-out}
-  @media(max-width:600px){
-    .cd-board{padding:24px 14px 20px}
-    .cd-clock{gap:4px}
-    .cd-digit{width:32px;height:46px;border-radius:5px}
-    .cd-digit span{font-size:30px}
-    .cd-sep{font-size:30px;margin-bottom:12px}
-    .cd-label{font-size:7px;letter-spacing:.1em}
-    .cd-meta span{font-size:13px}
-    .cd-msg{font-size:10px;letter-spacing:.08em}
-  }
-
   /* ---- Top-3 podium ---- */
   #podium{margin-bottom:16px}
   .podium-wrap{display:flex;align-items:flex-end;justify-content:center;gap:6px}
@@ -437,8 +394,7 @@
   <!-- LEADERBOARD -->
   <section id="sec-table" class="show">
     <div id="podium"></div>
-    <div id="table-bar" class="table-bar" style="display:none">
-      <div id="table-bar-admin"></div>
+    <div id="table-bar" class="table-bar">
       <input type="search" id="board-search" class="board-search" placeholder="Sök deltagare…" oninput="searchBoard(this.value)">
     </div>
     <div id="board"></div>
@@ -652,50 +608,7 @@ function closeStats(){
   document.getElementById("stats-overlay").style.display="none";
 }
 
-/* ---------- leaderboard + countdown + podium ---------- */
-const COUNTDOWN_TARGET = new Date("2026-06-15T00:00:00+02:00");
-let cdInterval = null;
-let adminHideCountdown = false;
-
-function pad2(n){ return String(n).padStart(2,"0"); }
-function updateCountdown(){
-  let diff = Math.max(0, COUNTDOWN_TARGET - Date.now());
-  const d=Math.floor(diff/86400000); diff-=d*86400000;
-  const h=Math.floor(diff/3600000);  diff-=h*3600000;
-  const m=Math.floor(diff/60000);    diff-=m*60000;
-  const s=Math.floor(diff/1000);
-  [{k:"d",v:d},{k:"h",v:h},{k:"m",v:m},{k:"s",v:s}].forEach(({k,v})=>{
-    const str=pad2(v);
-    [0,1].forEach(i=>{
-      const el=document.getElementById(`cd-${k}${i}`); if(!el) return;
-      const sp=el.querySelector("span");
-      if(sp && sp.textContent!==str[i]){
-        sp.textContent=str[i];
-        sp.classList.remove("cd-anim"); void sp.offsetWidth; sp.classList.add("cd-anim");
-      }
-    });
-  });
-}
-function startCountdown(){ if(!cdInterval){updateCountdown();cdInterval=setInterval(updateCountdown,1000);} }
-function stopCountdown(){ if(cdInterval){clearInterval(cdInterval);cdInterval=null;} }
-
-function countdownHTML(list){
-  const pot=(list.length*(state.meta.cost_sek||100)).toLocaleString("sv-SE");
-  const digit=(id)=>`<div class="cd-digit" id="${id}"><span>0</span></div>`;
-  return `<div class="cd-board">
-  <div class="cd-meta"><span><strong>${list.length}</strong> deltagare</span><span>Pott: <strong>${pot} kr</strong></span></div>
-  <div class="cd-clock">
-    <div class="cd-group"><div class="cd-digits">${digit("cd-d0")}${digit("cd-d1")}</div><div class="cd-label">Dagar</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-group"><div class="cd-digits">${digit("cd-h0")}${digit("cd-h1")}</div><div class="cd-label">Timmar</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-group"><div class="cd-digits">${digit("cd-m0")}${digit("cd-m1")}</div><div class="cd-label">Minuter</div></div>
-    <div class="cd-sep">:</div>
-    <div class="cd-group"><div class="cd-digits">${digit("cd-s0")}${digit("cd-s1")}</div><div class="cd-label">Sekunder</div></div>
-  </div>
-  <div class="cd-msg">Tabellen visas vid midnatt måndag 15 juni</div>
-</div>`;
-}
+/* ---------- leaderboard + podium ---------- */
 
 function renderPodiumHTML(top3, pot){
   const split=state.meta.prize_split||{"1":.65,"2":.25,"3":.10};
@@ -737,42 +650,8 @@ function renderBoard(){
     el.innerHTML=`<div class="empty">Inga deltagare med namn ännu.<br>Lägg till dem i <b>data-public.js</b>.</div>`;
     return;
   }
-  const hint = document.getElementById('table-hint');
-  const footer = document.querySelector('footer');
-  const subline = document.getElementById('subline');
-  const potEl = document.getElementById('pot');
-  const statsEl = document.getElementById('live-stats');
   const tableBar = document.getElementById('table-bar');
-  // Countdown mode
-  if(state.meta.show_countdown && !adminHideCountdown){
-    stopCountdown();
-    if(hint) hint.style.display='none';
-    if(footer) footer.style.display='none';
-    if(subline) subline.style.display='none';
-    if(potEl) potEl.style.display='none';
-    if(statsEl) statsEl.style.display='none';
-    if(tableBar) tableBar.style.display='none';
-    podEl.innerHTML = adminUnlocked
-      ? `<div class="cd-admin-bar"><button class="btn" onclick="adminHideCountdown=true;renderBoard()">👁 Visa listan (admin)</button></div>`
-      : '';
-    el.style.display='block'; el.style.gridTemplateRows='';
-    el.innerHTML=countdownHTML(list);
-    startCountdown(); return;
-  }
-  stopCountdown();
-  if(hint) hint.style.display='';
-  if(footer) footer.style.display='';
-  if(subline) subline.style.display='';
-  if(potEl) potEl.style.display='';
-  if(statsEl) statsEl.style.display='';
-  // Table bar — show with optional admin "restore timer" button on the left
-  if(tableBar){
-    tableBar.style.display='flex';
-    const adminSlot = document.getElementById('table-bar-admin');
-    if(adminSlot) adminSlot.innerHTML = (state.meta.show_countdown && adminHideCountdown && adminUnlocked)
-      ? `<button class="btn ghost" onclick="adminHideCountdown=false;renderBoard()">⏱ Visa timer igen</button>`
-      : '';
-  }
+  if(tableBar) tableBar.style.display='flex';
   // Podium
   const pot = list.length * (state.meta.cost_sek||100);
   podEl.innerHTML = list.length>=3 ? renderPodiumHTML(list.slice(0,3), pot) : '';
