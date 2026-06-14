@@ -270,7 +270,10 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:3,C:5,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:10,G:"Michael Olise",H:"Portugal"},tiebreaker:22},
     {name:"Gustav Bergshem",contact:{phone:"",email:""},
      picks:{"1":["2"],"2":["1"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1","X"],"8":["1"],"9":["1"],"10":["1","2"],"11":["X","2"],"12":["X","2"],"13":["X","2"]},
-     answers:{A:"Viktor Gyökeres",B:6,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:9,G:"Kai Havertz",H:"Frankrike"},tiebreaker:40}
+     answers:{A:"Viktor Gyökeres",B:6,C:4,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:9,G:"Kai Havertz",H:"Frankrike"},tiebreaker:40},
+    {name:"Gustav Dahlin",contact:{phone:"",email:""},
+     picks:{"1":["X","2"],"2":["1"],"3":["X","2"],"4":["1"],"5":["1","X"],"6":["X","2"],"7":["X","2"],"8":["1"],"9":["1"],"10":["1"],"11":["2"],"12":["X","2"],"13":["2"]},
+     answers:{A:"Benjamin Nygren",B:5,C:6,D:["Nederländerna","Sverige"],E:["Frankrike","Norge"],F:11,G:"Erling Haaland",H:"Frankrike"},tiebreaker:35}
   ],
   live_stats: {
     penalties: 2,
