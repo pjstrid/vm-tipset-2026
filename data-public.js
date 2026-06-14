@@ -205,16 +205,23 @@ const POOL_DATA = {
     haaland_goals: 0,
     et_matches: 0,
     top_scorers: [
-      {player:"Folarin Balogun",  country:"USA",                    goals:2},
-      {player:"Cyle Larin",       country:"Kanada",                 goals:1},
-      {player:"Giovanni Reyna",   country:"USA",                    goals:1},
-      {player:"Hwang In-Beom",    country:"Sydkorea",               goals:1},
-      {player:"Jovo Lukic",       country:"Bosnien och Herzegovina",goals:1},
-      {player:"Julián Quiñones",  country:"Mexiko",                 goals:1},
-      {player:"Ladislav Krejci",  country:"Tjeckien",                goals:1},
-      {player:"Maurício",         country:"Brasilien",              goals:1},
-      {player:"Oh Hyeon-gyu",     country:"Sydkorea",               goals:1},
-      {player:"Raúl Jiménez",     country:"Mexiko",                 goals:1}
+      {player:"Folarin Balogun",   country:"USA",                     goals:2},
+      {player:"Boualem Khoukhi",   country:"Qatar",                   goals:1},
+      {player:"Breel Embolo",      country:"Schweiz",                 goals:1},
+      {player:"Connor Metcalfe",   country:"Australien",              goals:1},
+      {player:"Cyle Larin",        country:"Kanada",                  goals:1},
+      {player:"Giovanni Reyna",    country:"USA",                     goals:1},
+      {player:"Hwang In-Beom",     country:"Sydkorea",                goals:1},
+      {player:"Ismael Saibari",    country:"Marocko",                 goals:1},
+      {player:"John McGinn",       country:"Skottland",               goals:1},
+      {player:"Jovo Lukic",        country:"Bosnien och Herzegovina", goals:1},
+      {player:"Julián Quiñones",   country:"Mexiko",                  goals:1},
+      {player:"Ladislav Krejci",   country:"Tjeckien",                goals:1},
+      {player:"Maurício",          country:"Paraguay",                goals:1},
+      {player:"Nestory Irankunda", country:"Australien",              goals:1},
+      {player:"Oh Hyeon-gyu",      country:"Sydkorea",                goals:1},
+      {player:"Raúl Jiménez",      country:"Mexiko",                  goals:1},
+      {player:"Vinícius Júnior",   country:"Brasilien",               goals:1}
     ]
   }
 };
