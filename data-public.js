@@ -303,7 +303,8 @@ const POOL_DATA = {
       {player:"Nico Schlotterbeck",  country:"Tyskland",                goals:1},
       {player:"Oh Hyeon-gyu",        country:"Sydkorea",                goals:1},
       {player:"Raúl Jiménez",        country:"Mexiko",                  goals:1},
-      {player:"Vinícius Júnior",     country:"Brasilien",               goals:1}
+      {player:"Vinícius Júnior",     country:"Brasilien",               goals:1},
+      {player:"Virgil van Dijk",     country:"Nederländerna",           goals:1}
     ]
   }
 };
