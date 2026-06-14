@@ -293,7 +293,7 @@ const POOL_DATA = {
       {player:"Jovo Lukic",          country:"Bosnien och Herzegovina", goals:1},
       {player:"Julián Quiñones",     country:"Mexiko",                  goals:1},
       {player:"Ladislav Krejci",     country:"Tjeckien",                goals:1},
-      {player:"Livano Comenencia",   country:"Nederländerna",           goals:1},
+      {player:"Livano Comenencia",   country:"Curaçao",                 goals:1},
       {player:"Maurício",            country:"Paraguay",                goals:1},
       {player:"Nathaniel Brown",     country:"Tyskland",                goals:1},
       {player:"Nestory Irankunda",   country:"Australien",              goals:1},
