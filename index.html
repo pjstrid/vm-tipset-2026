@@ -534,7 +534,7 @@ function renderHeader(){
 }
 
 /* ---------- live stats ---------- */
-function sortedScorers(ls){ return (ls&&ls.top_scorers?ls.top_scorers:[]).slice().sort((a,b)=>b.goals-a.goals||a.player.localeCompare(b.player,"sv")); }
+function sortedScorers(ls){ return (ls&&ls.top_scorers?ls.top_scorers:[]).slice().sort((a,b)=>b.goals-a.goals||a.country.localeCompare(b.country,"sv")||a.player.localeCompare(b.player,"sv")); }
 function withRanks(list){ return list.map((s,i)=>({...s,rank:(i===0||s.goals!==list[i-1].goals)?i+1:null})); }
 
 function renderStats(){
@@ -575,7 +575,7 @@ function renderStats(){
     `<div class="ls-cell ls-stat-3"><div class="ls-lbl">Antal förlängningar</div><div class="ls-val">${ls.et_matches??0} st</div></div>`;
 }
 function openScorers(){
-  const top10 = withRanks(sortedScorers(state.live_stats).slice(0, 10));
+  const top10 = withRanks(sortedScorers(state.live_stats));
   const hdr = `<div class="scorer-row scorer-header-row">
       <div class="scorer-rank">#</div>
       <div class="scorer-name">Namn</div>
@@ -598,7 +598,7 @@ function closeScorers(){
 function openStats(){
   const ls = state.live_stats;
   if(!ls) return;
-  const top10 = withRanks(sortedScorers(ls).slice(0, 10));
+  const top10 = withRanks(sortedScorers(ls));
   const hdr = `<div class="scorer-row scorer-header-row">
       <div class="scorer-rank">#</div>
       <div class="scorer-name">Namn</div>
@@ -617,7 +617,7 @@ function openStats(){
     `<div class="stats-row"><span class="stats-lbl">Antal straffar</span><span class="stats-val">${ls.penalties??0} st</span></div>` +
     `<div class="stats-row"><span class="stats-lbl">Mål av Haaland</span><span class="stats-val">${ls.haaland_goals??0} st</span></div>` +
     `<div class="stats-row stats-row-last"><span class="stats-lbl">Antal förlängningar</span><span class="stats-val">${ls.et_matches??0} st</span></div>` +
-    `<div class="stats-section">Skytteliga Topp 10</div>${rows}`;
+    `<div class="stats-section">Skytteliga</div>${rows}`;
   document.getElementById("stats-overlay").style.display="flex";
 }
 function closeStats(){
