@@ -11,7 +11,7 @@
 <style>
   :root{
     --paper:#f3ecdc;
-    --paper-2:#ece2cd;
+    --paper-2:#f3ecdc;
     --ink:#1b1a16;
     --ink-soft:#5a554a;
     --line:#cbbf9f;
@@ -28,11 +28,7 @@
   body{
     font-family:"Hanken Grotesk",system-ui,sans-serif;
     color:var(--ink);
-    background:
-      radial-gradient(circle at 12% -10%, rgba(31,107,65,.10), transparent 40%),
-      radial-gradient(circle at 110% 0%, rgba(207,59,34,.08), transparent 45%),
-      var(--paper);
-    background-attachment:fixed;
+    background:var(--paper);
     line-height:1.45;
     padding-bottom:64px;
     -webkit-font-smoothing:antialiased;
@@ -97,20 +93,18 @@
   }
   .ls-mobile-btn:hover{border-color:var(--pitch)}
   @media(max-width:600px){
-    body{background-attachment:scroll}
-    header{margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px}
     .live-stats-bar{grid-template-columns:1fr;grid-template-rows:auto auto}
     .ls-pot{grid-column:1;grid-row:1}
     .ls-mobile-btn{display:block}
     .ls-scorers-cell,.ls-stat-1,.ls-stat-2,.ls-stat-3{display:none}
-    nav.tabs{margin:0 -16px;padding:10px 16px}
     .row{padding:8px 10px}
     .row .nm{font-size:13px}
     .row .score{font-size:21px}
-    .podium-slot .row{flex-direction:column;align-items:stretch;gap:1px;padding:6px 8px}
+    #podium{margin-top:14px}
+    .podium-slot .row{align-items:flex-start;gap:4px;padding:6px 8px}
     .podium-slot .row .rank{display:none}
-    .podium-slot .row .score{order:-1;align-self:flex-end;font-size:14px;line-height:1.2}
-    .podium-slot .row .who{width:100%}
+    .podium-slot .row .score{font-size:14px;line-height:1.4}
+    .podium-slot .row .who{flex:1;min-width:0}
     .podium-slot .row .nm{white-space:normal;word-break:break-word;font-size:11px;line-height:1.4}
     .podium-slot .row .nm-fn{display:block;font-weight:700}
     .podium-slot .row .nm-ln{display:block}
@@ -180,7 +174,6 @@
 
   /* Tabs */
   nav.tabs{position:sticky;top:0;z-index:30;display:flex;gap:6px;padding:10px 0;background:var(--paper)}
-  nav.tabs::after{content:'';position:absolute;top:100%;left:0;right:0;height:28px;background:linear-gradient(var(--paper),transparent);pointer-events:none}
   nav.tabs button{
     flex:1;font-family:"Oswald";font-weight:600;text-transform:uppercase;letter-spacing:.08em;
     font-size:14px;padding:11px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);
