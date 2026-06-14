@@ -29,7 +29,7 @@ const POOL_DATA = {
     { id: "B", type: "number",  points: 2, tolerance: 0, prompt: "Hur många gula kort blir det i Argentina–Österrike? (mån 22 juni 19:00)",                                           correct: null },
     { id: "C", type: "number",  points: 2, tolerance: 0, prompt: "Hur många mål gör Erling Haaland i VM? (mål under avgörande straffläggning räknas EJ)",                             correct: null },
     { id: "D", type: "twoteam", points: 4, scoring: "per_team_unordered", prompt: "Vilka två lag kommer 1:a och 2:a i grupp F?", options: ["Nederländerna","Japan","Sverige","Tunisien"], correct: null },
-    { id: "E", type: "twoteam", points: 4, scoring: "per_team_unordered", prompt: "Vilka två lag kommer 1:a och 2:a i grupp I?", options: ["Frankrike","Iran","Norge","Senegal"],      correct: null },
+    { id: "E", type: "twoteam", points: 4, scoring: "per_team_unordered", prompt: "Vilka två lag kommer 1:a och 2:a i grupp I?", options: ["Frankrike","Irak","Norge","Senegal"],      correct: null },
     { id: "F", type: "number",  points: 2, tolerance: 1, prompt: "Hur många av slutspelets 32 matcher går till förlängning eller straffläggning?<br>(+/- 1 match ger rätt)",             correct: null },
     { id: "G", type: "text",    points: 2,              prompt: "Vem vinner VM:s skytteliga? (delad skytteligavinst räknas som korrekt)",                                             correct: null },
     { id: "H", type: "text",    points: 2,              prompt: "Vilket land blir världsmästare?",                                                                                     correct: null }
