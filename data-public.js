@@ -12,7 +12,7 @@ const POOL_DATA = {
   matches: [
     { id: 1,  kickoff: "2026-06-15T01:00", home: "Elfenbenskusten", away: "Ecuador",      result: "1" },
     { id: 2,  kickoff: "2026-06-15T04:00", home: "Sverige",         away: "Tunisien",     result: "1" },
-    { id: 3,  kickoff: "2026-06-15T21:00", home: "Belgien",         away: "Egypten",      result: null },
+    { id: 3,  kickoff: "2026-06-15T21:00", home: "Belgien",         away: "Egypten",      result: "X" },
     { id: 4,  kickoff: "2026-06-16T21:00", home: "Frankrike",       away: "Senegal",      result: null },
     { id: 5,  kickoff: "2026-06-17T19:00", home: "Portugal",        away: "DR Kongo",     result: null },
     { id: 6,  kickoff: "2026-06-17T22:00", home: "England",         away: "Kroatien",     result: null },
@@ -326,6 +326,8 @@ const POOL_DATA = {
       {player:"Omar Rekik",           country:"Tunisien",                goals:1},
       {player:"Viktor Gyökeres",      country:"Sverige",                 goals:1},
       {player:"Mattias Svanberg",     country:"Sverige",                 goals:1},
+      {player:"Emam Ashour",          country:"Egypten",                 goals:1},
+      {player:"Romelu Lukaku",        country:"Belgien",                 goals:1}
     ]
   }
 };
