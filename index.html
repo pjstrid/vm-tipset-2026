@@ -184,11 +184,12 @@
   nav.tabs button.active{background:var(--ink);color:var(--paper)}
 
   /* Table bar (search + admin toggle) */
-  .table-bar{display:flex;align-items:center;gap:8px;margin:10px 0 8px}
+  .table-bar{display:block;margin:10px 0 8px}
   .board-search{
-    flex:1;font-family:"Hanken Grotesk";font-size:14px;padding:8px 12px;
+    display:block;width:100%;box-sizing:border-box;
+    font-family:"Hanken Grotesk";font-size:14px;padding:8px 12px;
     border:2px solid var(--line);border-radius:9px;background:var(--paper);
-    color:var(--ink);outline:none;transition:border-color .15s;min-width:0;
+    color:var(--ink);outline:none;transition:border-color .15s;
   }
   .board-search:focus{border-color:var(--pitch)}
   .board-search::placeholder{color:var(--ink-soft)}
@@ -736,7 +737,7 @@ function openModal(idx){
   openIdx = idx;
   const p = state.participants[idx], s = score(p, idx);
   document.getElementById("m-name").textContent = p.name||"–";
-  document.getElementById("m-submitted").textContent = p.submitted ? `Skickades ${p.submitted}` : '';
+  document.getElementById("m-submitted").textContent = p.submitted ? `Inlämnat ${p.submitted}` : '';
   document.getElementById("m-total").textContent = s.pts;
   let html = `<div class="drow" style="border:none"><span class="lab" style="width:auto;color:var(--pitch);font-size:13px">MATCHER (${s.matches.filter(x=>x.ok).length}/13)</span></div>`;
   html += s.matches.map(x=>{
