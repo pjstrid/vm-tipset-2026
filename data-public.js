@@ -25,7 +25,7 @@ const POOL_DATA = {
     { id: 13, kickoff: "2026-06-28T04:00", home: "Algeriet",        away: "Österrike",    result: null }
   ],
   questions: [
-    { id: "A", type: "text",    points: 2,              prompt: "Vem gör Sveriges första mål i VM?",                                                                                   correct: null },
+    { id: "A", type: "text",    points: 2,              prompt: "Vem gör Sveriges första mål i VM?",                                                                                   correct:"Yasin Ayari"},
     { id: "B", type: "number",  points: 2, tolerance: 0, prompt: "Hur många gula kort blir det i Argentina–Österrike? (mån 22 juni 19:00)",                                           correct: null },
     { id: "C", type: "number",  points: 2, tolerance: 0, prompt: "Hur många mål gör Erling Haaland i VM? (mål under avgörande straffläggning räknas EJ)",                             correct: null },
     { id: "D", type: "twoteam", points: 4, scoring: "per_team_unordered", prompt: "Vilka två lag kommer 1:a och 2:a i grupp F?", options: ["Nederländerna","Japan","Sverige","Tunisien"], correct: null },
