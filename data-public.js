@@ -10,7 +10,7 @@ const POOL_DATA = {
     show_countdown: false
   },
   matches: [
-    { id: 1,  kickoff: "2026-06-15T01:00", home: "Elfenbenskusten", away: "Ecuador",      result: null },
+    { id: 1,  kickoff: "2026-06-15T01:00", home: "Elfenbenskusten", away: "Ecuador",      result: "1" },
     { id: 2,  kickoff: "2026-06-15T04:00", home: "Sverige",         away: "Tunisien",     result: null },
     { id: 3,  kickoff: "2026-06-15T21:00", home: "Belgien",         away: "Egypten",      result: null },
     { id: 4,  kickoff: "2026-06-16T21:00", home: "Frankrike",       away: "Senegal",      result: null },
