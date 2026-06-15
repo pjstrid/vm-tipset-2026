@@ -284,9 +284,9 @@ const POOL_DATA = {
      picks:{"1":["1","X"],"2":["1"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["X","2"],"8":["1","X"],"9":["1"],"10":["1"],"11":["X","2"],"12":["1","X"],"13":["2"]},
      answers:{A:"Alexander Isak",B:4,C:5,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:9,G:"Kylian Mbappé",H:"Frankrike"},tiebreaker:13,submitted:"26-06-14, 23:34"},
     {name:"Anders Östlund",contact:{phone:"",email:""},
-     picks:{"1":["X"],"2":["X"],"3":["X"],"4":["X"],"5":["X"],"6":["X"],"7":["X"],"8":["X"],"9":["X"],"10":["X"],"11":["X"],"12":["X"],"13":["X"]},
-     answers:{A:"xx",B:0,C:0,D:["xx","xx"],E:["xx","xx"],F:9,G:"xx",H:"xx"},tiebreaker:50,submitted:"26-06-14, 23:43"}
-  ],
+     picks:{"1":["X","2"],"2":["X","2"],"3":["1"],"4":["1"],"5":["1"],"6":["1","X"],"7":["1"],"8":["1","2"],"9":["1"],"10":["1"],"11":["X","2"],"12":["1"],"13":["X","2"]},
+     answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32},
+    ],
   live_stats: {
     penalties: 2,
     haaland_goals: 0,
