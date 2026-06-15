@@ -322,7 +322,8 @@ const POOL_DATA = {
       {player:"Giovanni Reyna",       country:"USA",                     goals:1},
       {player:"Amad Diallo",          country:"Elfenbenskusten",         goals:1},
       {player:"Yasin Ayari",          country:"Sverige",                 goals:1},
-      {player:"Alexander Isak",       country:"Sverige",                 goals:1}
+      {player:"Alexander Isak",       country:"Sverige",                 goals:1},
+      {player:"Omar Rekik",           country:"Tunisien",                goals:1}
     ]
   }
 };
