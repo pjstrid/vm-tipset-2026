@@ -317,7 +317,8 @@ const POOL_DATA = {
       {player:"Nathaniel Brown",      country:"Tyskland",                goals:1},
       {player:"Nico Schlotterbeck",   country:"Tyskland",                goals:1},
       {player:"Giovanni Reyna",       country:"USA",                     goals:1},
-      {player:"Amad Diallo",          country:"Elfenbenskusten",         goals:1}
+      {player:"Amad Diallo",          country:"Elfenbenskusten",         goals:1},
+      {player:"Yasin Ayari",          country:"Sverige",         goals:1}
     ]
   }
 };
