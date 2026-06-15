@@ -788,7 +788,7 @@ function buildDetailHtml(p, s, idx){
   }).join("");
   html += `<div class="drow" style="border:none;margin-top:10px"><span class="lab" style="width:auto;color:var(--goal);font-size:13px">FRÅGOR</span></div>`;
   html += `<table class="qtable"><thead><tr>
-    <th></th><th>Dina svar</th><th>Facit</th><th></th>
+    <th></th><th>Svar</th><th>Facit</th><th></th>
   </tr></thead><tbody>`;
   html += s.questions.map(x=>{
     const a = Array.isArray(x.ans)?x.ans.filter(Boolean).join(" & "):(x.ans??"–");
@@ -829,7 +829,7 @@ function buildDetailHtml(p, s, idx){
       text-transform:uppercase;letter-spacing:.1em;font-weight:600">Skiljefråga</span>
   </div>`;
   html += `<table class="qtable"><thead><tr>
-    <th></th><th>Ditt svar</th><th>Facit</th><th></th>
+    <th></th><th>Svar</th><th>Facit</th><th></th>
   </tr></thead><tbody><tr>
     <td class="qtd-id" style="font-size:13px;color:var(--ink-soft)">★</td>
     <td class="qtd-ans"><div class="qtd-qlbl">${esc(shortQ(state.tiebreaker))}</div>${p.tiebreaker!=null ? p.tiebreaker+' straffar' : '–'}</td>
