@@ -253,8 +253,8 @@
   .overlay{position:fixed;inset:0;background:rgba(27,26,22,.55);display:none;z-index:50;align-items:flex-start;justify-content:center;padding:18px;overflow:auto}
   .overlay.show{display:flex}
   .modal{background:var(--paper);border:3px solid var(--ink);border-radius:14px;max-width:620px;width:100%;box-shadow:0 30px 60px rgba(0,0,0,.4)}
-  .modal .mhead{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--paper);border-radius:14px 14px 0 0}
-  .modal .mhead h3{font-family:"Anton";text-transform:uppercase;font-size:22px;flex:1}
+  .modal .mhead{display:flex;align-items:flex-start;gap:10px;padding:14px 18px 12px;border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--paper);border-radius:14px 14px 0 0}
+  .modal .mhead h3{font-family:"Anton";text-transform:uppercase;font-size:22px;line-height:1.1}
   .modal .mtot{font-family:"Anton";font-size:26px;color:var(--pitch)}
   .modal .close{border:none;background:var(--ink);color:var(--paper);width:32px;height:32px;border-radius:8px;font-size:18px;cursor:pointer;flex:none}
   .modal .mbody{padding:6px 18px 20px}
@@ -444,7 +444,10 @@
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <div class="mhead">
-      <h3 id="m-name"></h3>
+      <div style="flex:1;min-width:0">
+        <h3 id="m-name"></h3>
+        <div id="m-submitted" style="font-size:10px;color:var(--ink-soft);margin-top:1px"></div>
+      </div>
       <div class="mtot"><span id="m-total">0</span>p</div>
       <button class="close" onclick="closeModal()">×</button>
     </div>
@@ -733,6 +736,7 @@ function openModal(idx){
   openIdx = idx;
   const p = state.participants[idx], s = score(p, idx);
   document.getElementById("m-name").textContent = p.name||"–";
+  document.getElementById("m-submitted").textContent = p.submitted ? `Skickades ${p.submitted}` : '';
   document.getElementById("m-total").textContent = s.pts;
   let html = `<div class="drow" style="border:none"><span class="lab" style="width:auto;color:var(--pitch);font-size:13px">MATCHER (${s.matches.filter(x=>x.ok).length}/13)</span></div>`;
   html += s.matches.map(x=>{
