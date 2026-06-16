@@ -289,7 +289,7 @@ const POOL_DATA = {
     ],
   live_stats: {
     penalties: 2,
-    haaland_goals: 0,
+    haaland_goals: 1,
     et_matches: 0,
     top_scorers: [
       {player:"Kylian Mbappé",         country:"Frankrike",               goals:2},
@@ -316,6 +316,7 @@ const POOL_DATA = {
       {player:"Raúl Jiménez",          country:"Mexiko",                  goals:1},
       {player:"Crysencio Summerville", country:"Nederländerna",           goals:1},
       {player:"Virgil van Dijk",       country:"Nederländerna",           goals:1},
+      {player:"Erling Haaland",        country:"Norge",                   goals:1},
       {player:"Maurício",              country:"Paraguay",                goals:1},
       {player:"Självmål",              country:"Qatar",                   goals:1},
       {player:"Abdulelah Al Amri",     country:"Saudiarabien",            goals:1},
