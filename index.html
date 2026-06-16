@@ -295,6 +295,14 @@
   /* Sign buttons inside the detail modal (read-only coupon view) */
   .dteams{flex:1;font-weight:600;font-size:12.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .dsigns{display:flex;gap:3px;flex:none}
+  /* Match-clock style score: two paper squares with a dash inside a single black frame */
+  .dscore{display:inline-flex;align-items:center;flex:none;border:2px solid var(--ink);
+    border-radius:6px;overflow:hidden;background:var(--paper);height:28px}
+  .dscore .sc{width:22px;height:100%;background:var(--paper);color:var(--ink);
+    font-family:"Oswald";font-weight:700;font-size:14px;display:inline-flex;
+    align-items:center;justify-content:center;user-select:none}
+  .dscore .sep{font-family:"Oswald";font-weight:700;font-size:14px;color:var(--ink);
+    padding:0 1px;user-select:none}
   .sign-sm{width:28px;height:28px;border-radius:6px;border:2px solid var(--line);
     font-family:"Oswald";font-weight:700;font-size:13px;display:inline-flex;
     align-items:center;justify-content:center;flex:none;user-select:none}
@@ -780,9 +788,14 @@ function buildDetailHtml(p, s, idx){
       else         { cls = picked ? 's-pick' : ''; }
       return `<span class="sign-sm ${cls}">${sg}</span>`;
     }).join('');
+    const sc = x.m.score ? String(x.m.score).split(/[-–:]/) : null;
+    const h = sc && sc.length===2 ? esc(sc[0].trim()) : '';
+    const a = sc && sc.length===2 ? esc(sc[1].trim()) : '';
+    const scoreBox = `<span class="dscore"><span class="sc">${h}</span><span class="sep">-</span><span class="sc">${a}</span></span>`;
     return `<div class="drow">
       <span class="lab">${x.m.id}</span>
       <span class="dteams">${esc(x.m.home)} – ${esc(x.m.away)}</span>
+      ${scoreBox}
       <span class="dsigns">${signs}</span>
       ${pts}</div>`;
   }).join("");
