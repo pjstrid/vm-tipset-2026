@@ -307,6 +307,7 @@ const POOL_DATA = {
       {player:"Amad Diallo",           country:"Elfenbenskusten",         goals:1},
       {player:"Mohammad Mohebi",       country:"Iran",                    goals:1},
       {player:"Bradley Barcola",       country:"Frankrike",               goals:1},
+      {player:"Aymen Hussein",         country:"Irak",                    goals:1},
       {player:"Ramin Rezaeian",        country:"Iran",                    goals:1},
       {player:"Daichi Kamada",         country:"Japan",                   goals:1},
       {player:"Keito Nakamura",        country:"Japan",                   goals:1},
