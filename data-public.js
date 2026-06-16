@@ -293,6 +293,7 @@ const POOL_DATA = {
     et_matches: 0,
     top_scorers: [
       {player:"Kylian Mbappé",         country:"Frankrike",               goals:2},
+      {player:"Erling Haaland",        country:"Norge",                   goals:2},
       {player:"Elijah Just",           country:"Nya Zeeland",             goals:2},
       {player:"Yasin Ayari",           country:"Sverige",                 goals:2},
       {player:"Kai Havertz",           country:"Tyskland",                goals:2},
@@ -317,7 +318,7 @@ const POOL_DATA = {
       {player:"Raúl Jiménez",          country:"Mexiko",                  goals:1},
       {player:"Crysencio Summerville", country:"Nederländerna",           goals:1},
       {player:"Virgil van Dijk",       country:"Nederländerna",           goals:1},
-      {player:"Erling Haaland",        country:"Norge",                   goals:2},
+      {player:"Leo Østigård",          country:"Norge",                   goals:1},
       {player:"Maurício",              country:"Paraguay",                goals:1},
       {player:"Självmål",              country:"Qatar",                   goals:1},
       {player:"Abdulelah Al Amri",     country:"Saudiarabien",            goals:1},
