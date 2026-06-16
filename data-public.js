@@ -298,6 +298,7 @@ const POOL_DATA = {
       {player:"Folarin Balogun",       country:"USA",                     goals:2},
       {player:"Connor Metcalfe",       country:"Australien",              goals:1},
       {player:"Nestory Irankunda",     country:"Australien",              goals:1},
+      {player:"Självmål",              country:"Belgien",                 goals:1},
       {player:"Jovo Lukic",            country:"Bosnien och Herzegovina", goals:1},
       {player:"Vinícius Júnior",       country:"Brasilien",               goals:1},
       {player:"Livano Comenencia",     country:"Curaçao",                 goals:1},
@@ -314,6 +315,7 @@ const POOL_DATA = {
       {player:"Crysencio Summerville", country:"Nederländerna",           goals:1},
       {player:"Virgil van Dijk",       country:"Nederländerna",           goals:1},
       {player:"Maurício",              country:"Paraguay",                goals:1},
+      {player:"Självmål",              country:"Qatar",                   goals:1},
       {player:"Abdulelah Al Amri",     country:"Saudiarabien",            goals:1},
       {player:"Breel Embolo",          country:"Schweiz",                 goals:1},
       {player:"John McGinn",           country:"Skottland",               goals:1},
@@ -330,7 +332,8 @@ const POOL_DATA = {
       {player:"Nathaniel Brown",       country:"Tyskland",                goals:1},
       {player:"Nico Schlotterbeck",    country:"Tyskland",                goals:1},
       {player:"Maximiliano Araújo",    country:"Uruguay",                 goals:1},
-      {player:"Giovanni Reyna",        country:"USA",                     goals:1}
+      {player:"Giovanni Reyna",        country:"USA",                     goals:1},
+      {player:"Självmål",              country:"USA",                     goals:1}
     ]
   }
 };
