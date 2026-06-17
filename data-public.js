@@ -293,7 +293,7 @@ const POOL_DATA = {
     et_matches: 0,
     top_scorers: [
       {player:"Lionel Messi",          country:"Argentina",               goals:3},
-      {player:"Harry Kane",            country:"England",                 goals:1},
+      {player:"Harry Kane",            country:"England",                 goals:2},
       {player:"Kylian Mbappé",         country:"Frankrike",               goals:2},
       {player:"Erling Haaland",        country:"Norge",                   goals:2},
       {player:"Elijah Just",           country:"Nya Zeeland",             goals:2},
