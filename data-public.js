@@ -343,6 +343,7 @@ const POOL_DATA = {
       {player:"Maximiliano Araújo",    country:"Uruguay",                 goals:1},
       {player:"Giovanni Reyna",        country:"USA",                     goals:1},
       {player:"Självmål",              country:"USA",                     goals:1},
+      {player:"Marko Arnautovic",      country:"Österrike",               goals:1},
       {player:"Romano Schmid",         country:"Österrike",               goals:1},
       {player:"Självmål",              country:"Österrike",               goals:1},
     ]
