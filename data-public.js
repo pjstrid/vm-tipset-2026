@@ -319,6 +319,7 @@ const POOL_DATA = {
       {player:"Crysencio Summerville", country:"Nederländerna",           goals:1},
       {player:"Virgil van Dijk",       country:"Nederländerna",           goals:1},
       {player:"Leo Østigård",          country:"Norge",                   goals:1},
+      {player:"Självmål",              country:"Norge",                   goals:1},
       {player:"Maurício",              country:"Paraguay",                goals:1},
       {player:"Självmål",              country:"Qatar",                   goals:1},
       {player:"Abdulelah Al Amri",     country:"Saudiarabien",            goals:1},
