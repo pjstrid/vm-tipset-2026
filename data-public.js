@@ -288,7 +288,7 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32},
     ],
   live_stats: {
-    penalties: 2,
+    penalties: 3,
     haaland_goals: 2,
     et_matches: 0,
     top_scorers: [
