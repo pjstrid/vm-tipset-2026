@@ -14,8 +14,8 @@ const POOL_DATA = {
     { id: 2,  kickoff: "2026-06-15T04:00", home: "Sverige",         away: "Tunisien",     result: "1", score: "5-1" },
     { id: 3,  kickoff: "2026-06-15T21:00", home: "Belgien",         away: "Egypten",      result: "X", score: "1-1" },
     { id: 4,  kickoff: "2026-06-16T21:00", home: "Frankrike",       away: "Senegal",      result: "1", score: "3-1" },
-    { id: 5,  kickoff: "2026-06-17T19:00", home: "Portugal",        away: "DR Kongo",     result: null, score: null },
-    { id: 6,  kickoff: "2026-06-17T22:00", home: "England",         away: "Kroatien",     result: null, score: null },
+    { id: 5,  kickoff: "2026-06-17T19:00", home: "Portugal",        away: "DR Kongo",     result: "X", score: "1-1" },
+    { id: 6,  kickoff: "2026-06-17T22:00", home: "England",         away: "Kroatien",     result: "1", score: "4-2" },
     { id: 7,  kickoff: "2026-06-19T03:00", home: "Mexiko",          away: "Sydkorea",     result: null, score: null },
     { id: 8,  kickoff: "2026-06-19T21:00", home: "USA",             away: "Australien",   result: null, score: null },
     { id: 9,  kickoff: "2026-06-21T18:00", home: "Spanien",         away: "Saudiarabien", result: null, score: null },
@@ -288,11 +288,12 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32},
     ],
   live_stats: {
-    penalties: 3,
+    penalties: 4,
     haaland_goals: 2,
     et_matches: 0,
     top_scorers: [
       {player:"Lionel Messi",          country:"Argentina",               goals:3},
+      {player:"Harry Kane",            country:"England",                 goals:1},
       {player:"Kylian Mbappé",         country:"Frankrike",               goals:2},
       {player:"Erling Haaland",        country:"Norge",                   goals:2},
       {player:"Elijah Just",           country:"Nya Zeeland",             goals:2},
@@ -305,8 +306,11 @@ const POOL_DATA = {
       {player:"Jovo Lukic",            country:"Bosnien och Herzegovina", goals:1},
       {player:"Vinícius Júnior",       country:"Brasilien",               goals:1},
       {player:"Livano Comenencia",     country:"Curaçao",                 goals:1},
+      {player:"Yoane Wissa",           country:"DR Kongo",                goals:1},
       {player:"Emam Ashour",           country:"Egypten",                 goals:1},
       {player:"Amad Diallo",           country:"Elfenbenskusten",         goals:1},
+      {player:"Jude Bellingham",       country:"England",                 goals:1},
+      {player:"Marcus Rashford",       country:"England",                 goals:1},
       {player:"Mohammad Mohebi",       country:"Iran",                    goals:1},
       {player:"Bradley Barcola",       country:"Frankrike",               goals:1},
       {player:"Aymen Hussein",         country:"Irak",                    goals:1},
@@ -315,6 +319,8 @@ const POOL_DATA = {
       {player:"Keito Nakamura",        country:"Japan",                   goals:1},
       {player:"Ali Olwan",             country:"Jordanien",               goals:1},
       {player:"Cyle Larin",            country:"Kanada",                  goals:1},
+      {player:"Martin Baturina",       country:"Kroatien",                goals:1},
+      {player:"Petar Musa",            country:"Kroatien",                goals:1},
       {player:"Ismael Saibari",        country:"Marocko",                 goals:1},
       {player:"Julián Quiñones",       country:"Mexiko",                  goals:1},
       {player:"Raúl Jiménez",          country:"Mexiko",                  goals:1},
@@ -323,6 +329,7 @@ const POOL_DATA = {
       {player:"Leo Østigård",          country:"Norge",                   goals:1},
       {player:"Självmål",              country:"Norge",                   goals:1},
       {player:"Maurício",              country:"Paraguay",                goals:1},
+      {player:"João Neves",            country:"Portugal",                goals:1},
       {player:"Självmål",              country:"Qatar",                   goals:1},
       {player:"Abdulelah Al Amri",     country:"Saudiarabien",            goals:1},
       {player:"Breel Embolo",          country:"Schweiz",                 goals:1},
@@ -346,7 +353,7 @@ const POOL_DATA = {
       {player:"Marko Arnautovic",      country:"Österrike",               goals:1},
       {player:"Romano Schmid",         country:"Österrike",               goals:1},
       {player:"Självmål",              country:"Österrike",               goals:1},
-    ]
+    ] 
   }
 };
 
