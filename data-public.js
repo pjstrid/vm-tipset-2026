@@ -292,6 +292,7 @@ const POOL_DATA = {
     haaland_goals: 2,
     et_matches: 0,
     top_scorers: [
+      {player:"Lionel Messi",          country:"Argentina",               goals:3},
       {player:"Kylian Mbappé",         country:"Frankrike",               goals:2},
       {player:"Erling Haaland",        country:"Norge",                   goals:2},
       {player:"Elijah Just",           country:"Nya Zeeland",             goals:2},
@@ -312,6 +313,7 @@ const POOL_DATA = {
       {player:"Ramin Rezaeian",        country:"Iran",                    goals:1},
       {player:"Daichi Kamada",         country:"Japan",                   goals:1},
       {player:"Keito Nakamura",        country:"Japan",                   goals:1},
+      {player:"Ali Olwan",             country:"Jordanien",               goals:1},
       {player:"Cyle Larin",            country:"Kanada",                  goals:1},
       {player:"Ismael Saibari",        country:"Marocko",                 goals:1},
       {player:"Julián Quiñones",       country:"Mexiko",                  goals:1},
@@ -340,7 +342,8 @@ const POOL_DATA = {
       {player:"Nico Schlotterbeck",    country:"Tyskland",                goals:1},
       {player:"Maximiliano Araújo",    country:"Uruguay",                 goals:1},
       {player:"Giovanni Reyna",        country:"USA",                     goals:1},
-      {player:"Självmål",              country:"USA",                     goals:1}
+      {player:"Självmål",              country:"USA",                     goals:1},
+      {player:"Romano Schmid",         country:"Österrike",               goals:1},
     ]
   }
 };
