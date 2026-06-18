@@ -288,7 +288,7 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32},
     ],
   live_stats: {
-    penalties: 4,
+    penalties: 5,
     haaland_goals: 2,
     et_matches: 0,
     top_scorers: [
@@ -342,9 +342,11 @@ const POOL_DATA = {
       {player:"Alexander Isak",        country:"Sverige",                 goals:1},
       {player:"Mattias Svanberg",      country:"Sverige",                 goals:1},
       {player:"Viktor Gyökeres",       country:"Sverige",                 goals:1},
+      {player:"Teboho Mokoena",        country:"Sydafrika",               goals:1},
       {player:"Hwang In-Beom",         country:"Sydkorea",                goals:1},
       {player:"Oh Hyeon-gyu",          country:"Sydkorea",                goals:1},
       {player:"Ladislav Krejci",       country:"Tjeckien",                goals:1},
+      {player:"Michal Sadílek",        country:"Tjeckien",                goals:1},
       {player:"Omar Rekik",            country:"Tunisien",                goals:1},
       {player:"Deniz Undav",           country:"Tyskland",                goals:1},
       {player:"Felix Nmecha",          country:"Tyskland",                goals:1},
