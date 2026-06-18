@@ -37,7 +37,7 @@ const POOL_DATA = {
   tiebreaker: {
     type: "number_closest",
     prompt: "Hur många straffar blir det under VM? (gäller ordinarie tid + förlängning, EJ straffläggningar)",
-    correct: 5
+    correct: 6
   },
   participants: [
     {name:"Solveig Norin",contact:{phone:"",email:""},
