@@ -16,7 +16,7 @@ const POOL_DATA = {
     { id: 4,  kickoff: "2026-06-16T21:00", home: "Frankrike",       away: "Senegal",      result: "1", score: "3-1" },
     { id: 5,  kickoff: "2026-06-17T19:00", home: "Portugal",        away: "DR Kongo",     result: "X", score: "1-1" },
     { id: 6,  kickoff: "2026-06-17T22:00", home: "England",         away: "Kroatien",     result: "1", score: "4-2" },
-    { id: 7,  kickoff: "2026-06-19T03:00", home: "Mexiko",          away: "Sydkorea",     result: null, score: null },
+    { id: 7,  kickoff: "2026-06-19T03:00", home: "Mexiko",          away: "Sydkorea",     result: "1", score: "1-0" },
     { id: 8,  kickoff: "2026-06-19T21:00", home: "USA",             away: "Australien",   result: null, score: null },
     { id: 9,  kickoff: "2026-06-21T18:00", home: "Spanien",         away: "Saudiarabien", result: null, score: null },
     { id: 10, kickoff: "2026-06-24T21:00", home: "Schweiz",         away: "Kanada",       result: null, score: null },
@@ -293,12 +293,14 @@ const POOL_DATA = {
     et_matches: 0,
     top_scorers: [
       {player:"Lionel Messi",          country:"Argentina",               goals:3},
+      {player:"Jonathan David",        country:"Kanada",                  goals:3},
       {player:"Harry Kane",            country:"England",                 goals:2},
       {player:"Kylian Mbappé",         country:"Frankrike",               goals:2},
+      {player:"Cyle Larin",            country:"Kanada",                  goals:2},
       {player:"Erling Haaland",        country:"Norge",                   goals:2},
       {player:"Elijah Just",           country:"Nya Zeeland",             goals:2},
-      {player:"Yasin Ayari",           country:"Sverige",                 goals:2},
       {player:"Johan Manzambi",        country:"Schweiz",                 goals:2},
+      {player:"Yasin Ayari",           country:"Sverige",                 goals:2},
       {player:"Kai Havertz",           country:"Tyskland",                goals:2},
       {player:"Folarin Balogun",       country:"USA",                     goals:2},
       {player:"Connor Metcalfe",       country:"Australien",              goals:1},
@@ -318,17 +320,19 @@ const POOL_DATA = {
       {player:"Marcus Rashford",       country:"England",                 goals:1},
       {player:"Bradley Barcola",       country:"Frankrike",               goals:1},
       {player:"Caleb Yirenkyi",        country:"Ghana",                   goals:1},
-      {player:"Mohammad Mohebi",       country:"Iran",                    goals:1},
       {player:"Aymen Hussein",         country:"Irak",                    goals:1},
+      {player:"Mohammad Mohebi",       country:"Iran",                    goals:1},
       {player:"Ramin Rezaeian",        country:"Iran",                    goals:1},
       {player:"Daichi Kamada",         country:"Japan",                   goals:1},
       {player:"Keito Nakamura",        country:"Japan",                   goals:1},
       {player:"Ali Olwan",             country:"Jordanien",               goals:1},
-      {player:"Cyle Larin",            country:"Kanada",                  goals:1},
+      {player:"Nathan Saliba",         country:"Kanada",                  goals:1},
+      {player:"Självmål",              country:"Kanada",                  goals:1},
       {player:"Martin Baturina",       country:"Kroatien",                goals:1},
       {player:"Petar Musa",            country:"Kroatien",                goals:1},
       {player:"Ismael Saibari",        country:"Marocko",                 goals:1},
       {player:"Julián Quiñones",       country:"Mexiko",                  goals:1},
+      {player:"Luis Romo",             country:"Mexiko",                  goals:1},
       {player:"Raúl Jiménez",          country:"Mexiko",                  goals:1},
       {player:"Crysencio Summerville", country:"Nederländerna",           goals:1},
       {player:"Virgil van Dijk",       country:"Nederländerna",           goals:1},
@@ -363,8 +367,8 @@ const POOL_DATA = {
       {player:"Abbosbek fayzullaev",   country:"Uzbekistan",              goals:1},
       {player:"Marko Arnautovic",      country:"Österrike",               goals:1},
       {player:"Romano Schmid",         country:"Österrike",               goals:1},
-      {player:"Självmål",              country:"Österrike",               goals:1},
-    ] 
+      {player:"Självmål",              country:"Österrike",               goals:1}
+    ]
   }
 };
 
