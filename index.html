@@ -294,7 +294,9 @@
   .toggle.t-bad{border-color:var(--bad);color:var(--bad);background:rgba(207,59,34,.12)}
 
   /* Sign buttons inside the detail modal (read-only coupon view) */
-  .dteams{flex:1;font-weight:600;font-size:12.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dteams{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+  .dkickoff{font-size:9px;color:var(--ink-soft);font-family:"Oswald";letter-spacing:.05em;font-weight:500;white-space:nowrap}
+  .dteams-nm{font-weight:600;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .dsigns{display:flex;gap:3px;flex:none}
   /* Match-clock style score: two paper squares with a dash inside a single black frame */
   .dscore{display:inline-flex;align-items:center;flex:none;border:2px solid var(--ink);
@@ -785,6 +787,13 @@ function renderFacit(){
 }
 
 /* ---------- detail modal ---------- */
+function fmtKickoff(str){
+  if(!str) return '';
+  const months=['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'];
+  const [date,time] = str.split('T');
+  const [,mm,dd] = date.split('-');
+  return `${parseInt(dd)} ${months[parseInt(mm)-1]} · ${time}`;
+}
 function shortQ(q){
   let t = q.prompt.replace(/<br>/gi, " ");
   if(q.id !== "F" && q.id !== "B") t = t.replace(/\s*\([^)]*\)/g, "");
@@ -810,7 +819,10 @@ function buildDetailHtml(p, s, idx){
     const scoreBox = `<span class="dscore"><span class="sc">${h}</span><span class="sep">-</span><span class="sc">${a}</span></span>`;
     return `<div class="drow">
       <span class="lab">${x.m.id}</span>
-      <span class="dteams">${esc(x.m.home)} – ${esc(x.m.away)}</span>
+      <span class="dteams">
+        <span class="dkickoff">${fmtKickoff(x.m.kickoff)}</span>
+        <span class="dteams-nm">${esc(x.m.home)} – ${esc(x.m.away)}</span>
+      </span>
       ${scoreBox}
       <span class="dsigns">${signs}</span>
       ${pts}</div>`;
