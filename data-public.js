@@ -18,7 +18,7 @@ const POOL_DATA = {
     { id: 6,  kickoff: "2026-06-17T22:00", home: "England",         away: "Kroatien",     result: "1", score: "4-2" },
     { id: 7,  kickoff: "2026-06-19T03:00", home: "Mexiko",          away: "Sydkorea",     result: "1", score: "1-0" },
     { id: 8,  kickoff: "2026-06-19T21:00", home: "USA",             away: "Australien",   result: "1", score: "2-0" },
-    { id: 9,  kickoff: "2026-06-21T18:00", home: "Spanien",         away: "Saudiarabien", result: null, score: null },
+    { id: 9,  kickoff: "2026-06-21T18:00", home: "Spanien",         away: "Saudiarabien", result: null, score: "3-0" },
     { id: 10, kickoff: "2026-06-24T21:00", home: "Schweiz",         away: "Kanada",       result: null, score: null },
     { id: 11, kickoff: "2026-06-25T00:00", home: "Skottland",       away: "Brasilien",    result: null, score: null },
     { id: 12, kickoff: "2026-06-26T01:00", home: "Japan",           away: "Sverige",      result: null, score: null },
