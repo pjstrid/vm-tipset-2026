@@ -608,7 +608,7 @@ function renderStats(){
     ? lsHdr + top3.map(s=>`<div class="ls-scorer-row">
         <span class="ls-scorer-rank">${s.rank??''}</span>
         <span class="ls-scorer-name">${esc(s.player)}</span>
-        <span class="ls-scorer-country${s.country==='Sverige'?' se-hi':''}">${esc(s.country)}</span>
+        <span class="ls-scorer-country${s.country==='Sverige 🇸🇪'?' se-hi':''}">${esc(s.country)}</span>
         <span class="ls-scorer-goals">${s.goals}</span>
       </div>`).join("")
     : lsHdr + `<div class="ls-scorer-row"><span class="ls-scorer-rank"></span><span class="ls-scorer-name" style="color:var(--ink-soft)">–</span></div>`;
@@ -636,7 +636,7 @@ function openScorers(){
     ? hdr + top10.map(s=>`<div class="scorer-row">
         <div class="scorer-rank">${s.rank??''}</div>
         <div class="scorer-name">${esc(s.player)}</div>
-        <div class="scorer-country${s.country==='Sverige'?' se-hi':''}">${esc(s.country)}</div>
+        <div class="scorer-country${s.country==='Sverige 🇸🇪'?' se-hi':''}">${esc(s.country)}</div>
         <div class="scorer-goals">${s.goals}</div>
       </div>`).join("")
     : `<p style="color:var(--ink-soft);font-size:14px;padding:8px 0">Inga mål registrerade ännu.</p>`;
@@ -659,7 +659,7 @@ function openStats(){
     ? hdr + top10.map(s=>`<div class="scorer-row">
         <div class="scorer-rank">${s.rank??''}</div>
         <div class="scorer-name">${esc(s.player)}</div>
-        <div class="scorer-country${s.country==='Sverige'?' se-hi':''}">${esc(s.country)}</div>
+        <div class="scorer-country${s.country==='Sverige 🇸🇪'?' se-hi':''}">${esc(s.country)}</div>
         <div class="scorer-goals">${s.goals}</div>
       </div>`).join("")
     : `<p style="color:var(--ink-soft);font-size:14px;padding:8px 0">Inga mål registrerade ännu.</p>`;
