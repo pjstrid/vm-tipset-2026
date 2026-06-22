@@ -26,7 +26,7 @@ const POOL_DATA = {
   ],
   questions: [
     { id: "A", type: "text",    points: 2,              prompt: "Vem gör Sveriges första mål i VM?",                                                                                   correct:"Yasin Ayari"},
-    { id: "B", type: "number",  points: 2, tolerance: 0, prompt: "Hur många gula kort blir det i Argentina–Österrike? (mån 22 juni 19:00)",                                           correct: null },
+    { id: "B", type: "number",  points: 2, tolerance: 0, prompt: "Hur många gula kort blir det i Argentina–Österrike? (mån 22 juni 19:00)",                                           correct: "4" },
     { id: "C", type: "number",  points: 2, tolerance: 0, prompt: "Hur många mål gör Erling Haaland i VM? (mål under avgörande straffläggning räknas EJ)",                             correct: null },
     { id: "D", type: "twoteam", points: 4, scoring: "per_team_unordered", prompt: "Vilka två lag kommer 1:a och 2:a i grupp F?", options: ["Nederländerna","Japan","Sverige","Tunisien"], correct: null },
     { id: "E", type: "twoteam", points: 4, scoring: "per_team_unordered", prompt: "Vilka två lag kommer 1:a och 2:a i grupp I?", options: ["Frankrike","Irak","Norge","Senegal"],      correct: null },
@@ -37,7 +37,7 @@ const POOL_DATA = {
   tiebreaker: {
     type: "number_closest",
     prompt: "Hur många straffar blir det under VM? (gäller ordinarie tid + förlängning, EJ straffläggningar)",
-    correct: 6
+    correct: 7
   },
   participants: [
     {name:"Solveig Norin",contact:{phone:"",email:""},
@@ -288,11 +288,11 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32},
     ],
   live_stats: {
-    penalties: 6,
+    penalties: 7,
     haaland_goals: 2,
     et_matches: 0,
     top_scorers: [
-      {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:3},
+      {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:5},
       {player:"Jonathan David",        country:"Kanada 🇨🇦",                  goals:3},
       {player:"Deniz Undav",           country:"Tyskland 🇩🇪",                goals:3},
       {player:"Matheus Cunha",         country:"Brasilien 🇧🇷",               goals:2},
