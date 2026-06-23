@@ -365,6 +365,8 @@ const POOL_DATA = {
       {player:"Maurício",              country:"Paraguay 🇵🇾",                goals:1},
       {player:"João Neves",            country:"Portugal 🇵🇹",                goals:1},
       {player:"Nuno Mendes",           country:"Portugal 🇵🇹",                goals:1},
+      {player:"Rafael Leão",           country:"Portugal 🇵🇹",                goals:1},
+      {player:"Självmål",              country:"Portugal 🇵🇹",                goals:1},
       {player:"Självmål",              country:"Qatar 🇶🇦",                   goals:1},
       {player:"Abdulelah Al-Amri",     country:"Saudiarabien 🇸🇦",            goals:1},
       {player:"Breel Embolo",          country:"Schweiz 🇨🇭",                 goals:1},
