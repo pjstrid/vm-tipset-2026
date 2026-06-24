@@ -394,7 +394,7 @@ const POOL_DATA = {
       {player:"Agustín Canobbio",      country:"Uruguay 🇺🇾",                 goals:1},
       {player:"Alex Freeman",          country:"USA 🇺🇸",                     goals:1},
       {player:"Giovanni Reyna",        country:"USA 🇺🇸",                     goals:1},
-      {player:"Abbosbek fayzullaev",   country:"Uzbekistan 🇺🇿",              goals:1},
+      {player:"Abbosbek Fayzullaev",   country:"Uzbekistan 🇺🇿",              goals:1},
       {player:"Marko Arnautovic",      country:"Österrike 🇦🇹",               goals:1},
       {player:"Romano Schmid",         country:"Österrike 🇦🇹",               goals:1},
       {player:"Självmål",              country:"Österrike 🇦🇹",               goals:1}
