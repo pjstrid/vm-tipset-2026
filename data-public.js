@@ -37,7 +37,7 @@ const POOL_DATA = {
   tiebreaker: {
     type: "number_closest",
     prompt: "Hur många straffar blir det under VM? (gäller ordinarie tid + förlängning, EJ straffläggningar)",
-    correct: 9
+    correct: 10
   },
   participants: [
     {name:"Solveig Norin",contact:{phone:"",email:""},
@@ -288,7 +288,7 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32},
     ],
   live_stats: {
-    penalties: 9,
+    penalties: 10,
     haaland_goals: 4,
     et_matches: 0,
     top_scorers: [
@@ -299,6 +299,7 @@ const POOL_DATA = {
       {player:"Erling Haaland",        country:"Norge 🇳🇴",                   goals:4},
       {player:"Matheus Cunha",         country:"Brasilien 🇧🇷",               goals:3},
       {player:"Harry Kane",            country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:3},
+      {player:"Yoane Wissa",           country:"DR Kongo 🇨🇩",                goals:3},
       {player:"Jonathan David",        country:"Kanada 🇨🇦",                  goals:3},
       {player:"Ismael Saibari",        country:"Marocko 🇲🇦",                 goals:3},
       {player:"Cody Gakpo",            country:"Nederländerna 🇳🇱",           goals:3},
@@ -342,7 +343,7 @@ const POOL_DATA = {
       {player:"Jaminton Campaz",       country:"Colombia 🇨🇴",                goals:1},
       {player:"Luis Díaz",             country:"Colombia 🇨🇴",                goals:1},
       {player:"Livano Comenencia",     country:"Curaçao 🇨🇼",                 goals:1},
-      {player:"Yoane Wissa",           country:"DR Kongo 🇨🇩",                goals:1},
+      {player:"Fiston Mayele",         country:"DR Kongo 🇨🇩",                goals:1},
       {player:"Gonzalo Plata",         country:"Ecuador 🇪🇨",                 goals:1},
       {player:"Nilson Angulo",         country:"Ecuador 🇪🇨",                 goals:1},
       {player:"Emam Ashour",           country:"Egypten 🇪🇬",                 goals:1},
@@ -434,6 +435,7 @@ const POOL_DATA = {
       {player:"Giovanni Reyna",        country:"USA 🇺🇸",                     goals:1},
       {player:"Sebastian Berhalter",   country:"USA 🇺🇸",                     goals:1},
       {player:"Abbosbek Fayzullaev",   country:"Uzbekistan 🇺🇿",              goals:1},
+      {player:"Eldor Shomurodov",      country:"Uzbekistan 🇺🇿",              goals:1},
       {player:"Marko Arnautovic",      country:"Österrike 🇦🇹",               goals:1},
       {player:"Romano Schmid",         country:"Österrike 🇦🇹",               goals:1},
       {player:"Självmål",              country:"Österrike 🇦🇹",               goals:1}
