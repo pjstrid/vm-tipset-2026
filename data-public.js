@@ -22,7 +22,7 @@ const POOL_DATA = {
     { id: 10, kickoff: "2026-06-24T21:00", home: "Schweiz",         away: "Kanada",       result: "1", score: "2-1" },
     { id: 11, kickoff: "2026-06-25T00:00", home: "Skottland",       away: "Brasilien",    result: "2", score: "0-3" },
     { id: 12, kickoff: "2026-06-26T01:00", home: "Japan",           away: "Sverige",      result: "X", score: "1-1" },
-    { id: 13, kickoff: "2026-06-28T04:00", home: "Algeriet",        away: "Österrike",    result: null, score: null }
+    { id: 13, kickoff: "2026-06-28T04:00", home: "Algeriet",        away: "Österrike",    result: "X", score: "3-3" }
   ],
   questions: [
     { id: "A", type: "text",    points: 2,              prompt: "Vem gör Sveriges första mål i VM?",                                                                                   correct:"Yasin Ayari"},
@@ -37,7 +37,7 @@ const POOL_DATA = {
   tiebreaker: {
     type: "number_closest",
     prompt: "Hur många straffar blir det under VM? (gäller ordinarie tid + förlängning, EJ straffläggningar)",
-    correct: 10
+    correct: 11
   },
   participants: [
     {name:"Solveig Norin",contact:{phone:"",email:""},
@@ -288,11 +288,11 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32},
     ],
   live_stats: {
-    penalties: 10,
+    penalties: 11,
     haaland_goals: 4,
     et_matches: 0,
     top_scorers: [
-      {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:5},
+      {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:6},
       {player:"Vinícius Júnior",       country:"Brasilien 🇧🇷",               goals:4},
       {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:4},
       {player:"Ousmane Dembélé",       country:"Frankrike 🇫🇷",               goals:4},
@@ -307,6 +307,7 @@ const POOL_DATA = {
       {player:"Johan Manzambi",        country:"Schweiz 🇨🇭",                 goals:3},
       {player:"Ismaïla Sarr",          country:"Senegal 🇸🇳",                 goals:3},
       {player:"Deniz Undav",           country:"Tyskland 🇩🇪",                goals:3},
+      {player:"Riyad Mahrez",          country:"Algeriet 🇩🇿",                goals:2},
       {player:"Leandro Trossard",      country:"Belgien 🇧🇪",                 goals:2},
       {player:"Ermin Mahmic",          country:"Bosnien och Herzegovina 🇧🇦", goals:2},
       {player:"Daniel Muñoz",          country:"Colombia 🇨🇴",                goals:2},
@@ -329,8 +330,12 @@ const POOL_DATA = {
       {player:"Maximiliano Araújo",    country:"Uruguay 🇺🇾",                 goals:2},
       {player:"Folarin Balogun",       country:"USA 🇺🇸",                     goals:2},
       {player:"Självmål",              country:"USA 🇺🇸",                     goals:2},
+      {player:"Marko Arnautovic",      country:"Österrike 🇦🇹",               goals:2},
       {player:"Amine Gouiri",          country:"Algeriet 🇩🇿",                goals:1},
       {player:"Nadhir Benbouali",      country:"Algeriet 🇩🇿",                goals:1},
+      {player:"Rafik Belghali",        country:"Algeriet 🇩🇿",                goals:1},
+      {player:"Giovani Lo Celso",      country:"Argentina 🇦🇷",               goals:1},
+      {player:"Lautaro Martínez",      country:"Argentina 🇦🇷",               goals:1},
       {player:"Connor Metcalfe",       country:"Australien 🇦🇺",              goals:1},
       {player:"Nestory Irankunda",     country:"Australien 🇦🇺",              goals:1},
       {player:"Àlexis Saelemaekers",   country:"Belgien 🇧🇪",                 goals:1},
@@ -366,6 +371,7 @@ const POOL_DATA = {
       {player:"Junya Ito",             country:"Japan 🇯🇵",                   goals:1},
       {player:"Keito Nakamura",        country:"Japan 🇯🇵",                   goals:1},
       {player:"Ali Olwan",             country:"Jordanien 🇯🇴",               goals:1},
+      {player:"Mousa Al Tamari",       country:"Jordanien 🇯🇴",               goals:1},
       {player:"Nizar Al Rashdan",      country:"Jordanien 🇯🇴",               goals:1}, 
       {player:"Nathan Saliba",         country:"Kanada 🇨🇦",                  goals:1},
       {player:"Promise David",         country:"Kanada 🇨🇦",                  goals:1},
@@ -436,8 +442,9 @@ const POOL_DATA = {
       {player:"Sebastian Berhalter",   country:"USA 🇺🇸",                     goals:1},
       {player:"Abbosbek Fayzullaev",   country:"Uzbekistan 🇺🇿",              goals:1},
       {player:"Eldor Shomurodov",      country:"Uzbekistan 🇺🇿",              goals:1},
-      {player:"Marko Arnautovic",      country:"Österrike 🇦🇹",               goals:1},
+      {player:"Marcel Sabitzer",       country:"Österrike 🇦🇹",               goals:1},
       {player:"Romano Schmid",         country:"Österrike 🇦🇹",               goals:1},
+      {player:"Saša Kalajdžić",        country:"Österrike 🇦🇹",               goals:1},
       {player:"Självmål",              country:"Österrike 🇦🇹",               goals:1}
     ]
   }
