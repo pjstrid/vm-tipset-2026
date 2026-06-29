@@ -427,8 +427,8 @@
   .ptm:hover{box-shadow:0 3px 10px rgba(27,26,22,.14)}
   .ptm.ptm-final{border-color:var(--gold);border-width:2px}
   .ptm.ptm-bronze{opacity:.88}
-  .ptm.ptm-et{border-color:var(--gold)!important;background:rgba(199,154,58,.1)}
-  .ptm.ptm-ps{border-color:#8b4fb8!important;background:rgba(139,79,184,.09)}
+  .ptm.ptm-et{border-color:#083017!important;background:#116a332c}
+  .ptm.ptm-ps{border-color:#083017!important;background:#116a332c}
   /* card header */
   .ptm-hdr{display:flex;align-items:center;justify-content:space-between;
     padding:3px 8px 2px;border-bottom:1px solid rgba(203,191,159,.45);
@@ -448,6 +448,8 @@
   .ptm-score{font-family:"Anton";font-size:15px;color:var(--pitch);
     min-width:16px;text-align:right;flex:none;line-height:1}
   .ptm-team.ptm-win .ptm-score{color:var(--pitch-dark)}
+  .ptm-pen{font-family:"Oswald";font-size:10px;color:var(--ink-soft);flex:none;line-height:1;letter-spacing:.02em}
+  .ptm-team.ptm-win .ptm-pen{color:var(--pitch-dark)}
   /* status boxes */
   .ptm-status{display:flex;gap:4px;padding:4px 7px;
     border-top:1px solid var(--line);background:rgba(27,26,22,.02)}
@@ -540,6 +542,12 @@
   <div class="pt-modal">
     <div class="pt-head">
       <h2>Slutspels<span>Träd</span></h2>
+
+      <div class="pt-legend" style="display:flex;align-items:center;gap:8px;font-size:13px;color:#444;">
+        <span style="display:inline-block;width:16px;height:16px;border-radius:3px;border:2px solid;border-color:#083017!important;background:#116a332c"></span>
+        <span>Matchen gick till förlängning eller straffar</span>
+      </div>
+
       <button class="pt-close" onclick="closePT()">×</button>
     </div>
     <div class="pt-body">
@@ -1231,10 +1239,12 @@ function ptFillCard(el,m){
     <div class="ptm-team${w&&w.side==='home'?' ptm-win':''}">
       <span class="ptm-name${ptIsph(m.home)?' ptm-ph':''}">${esc(m.home)}</span>
       <span class="ptm-score">${m.home_score!==null?m.home_score:'–'}</span>
+      ${m.penalty_shootout?`<span class="ptm-pen">(${m.home_penalty??0})</span>`:''}
     </div>
     <div class="ptm-team${w&&w.side==='away'?' ptm-win':''}">
       <span class="ptm-name${ptIsph(m.away)?' ptm-ph':''}">${esc(m.away)}</span>
       <span class="ptm-score">${m.away_score!==null?m.away_score:'–'}</span>
+      ${m.penalty_shootout?`<span class="ptm-pen">(${m.away_penalty??0})</span>`:''}
     </div>
     <div class="ptm-status">
       <div class="ptm-sb${ordTid?' ptm-son':''}">Ord. tid</div>
@@ -1287,37 +1297,38 @@ function ptDrawLines(){
    PLAYOFF BRACKET
 ══════════════════════════════════════════════════════ */
 const PT_RAW = [
-  {id:73,round:"R32",date:"2026-06-28",time_swe:"21:00",home:"SYDAFRIKA 🇿🇦",away:"KANADA 🇨🇦",home_score:0,away_score:1,extra_time:false,penalty_shootout:false,next_match:90},
-  {id:74,round:"R32",date:"2026-06-29",time_swe:"19:00",home:"BRASILIEN 🇧🇷",away:"JAPAN 🇯🇵",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:89},
-  {id:75,round:"R32",date:"2026-06-29",time_swe:"22:30",home:"TYSKLAND 🇩🇪",away:"PARAGUAY 🇵🇾",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:90},
-  {id:76,round:"R32",date:"2026-06-30",time_swe:"03:00",home:"NEDERLÄNDERNA 🇳🇱",away:"MAROCKO 🇲🇦",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:91},
-  {id:77,round:"R32",date:"2026-06-30",time_swe:"19:00",home:"ELFENBENSKUSTEN 🇨🇮",away:"NORGE 🇳🇴",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:89},
-  {id:78,round:"R32",date:"2026-06-30",time_swe:"23:00",home:"FRANKRIKE 🇫🇷",away:"SVERIGE 🇸🇪",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:91},
-  {id:79,round:"R32",date:"2026-07-01",time_swe:"03:00",home:"MEXIKO 🇲🇽",away:"ECUADOR 🇪🇨",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:92},
-  {id:80,round:"R32",date:"2026-07-01",time_swe:"18:00",home:"ENGLAND 🏴󠁧󠁢󠁥󠁮󠁧󠁿",away:"DR KONGO 🇨🇩",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:92},
-  {id:81,round:"R32",date:"2026-07-01",time_swe:"22:00",home:"BELGIEN 🇧🇪",away:"SENEGAL 🇸🇳",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:94},
-  {id:82,round:"R32",date:"2026-07-02",time_swe:"02:00",home:"USA 🇺🇸",away:"BOSNIEN & HERZ. 🇧🇦",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:94},
-  {id:83,round:"R32",date:"2026-07-02",time_swe:"21:00",home:"SPANIEN 🇪🇸",away:"ÖSTERRIKE 🇦🇹",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:93},
-  {id:84,round:"R32",date:"2026-07-03",time_swe:"01:00",home:"PORTUGAL 🇵🇹",away:"KROATIEN 🇭🇷",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:93},
-  {id:85,round:"R32",date:"2026-07-03",time_swe:"05:00",home:"SCHWEIZ 🇨🇭",away:"ALGERIET 🇩🇿",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:96},
-  {id:86,round:"R32",date:"2026-07-03",time_swe:"20:00",home:"AUSTRALIEN 🇦🇺",away:"EGYPTEN 🇪🇬",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:95},
-  {id:87,round:"R32",date:"2026-07-04",time_swe:"00:00",home:"ARGENTINA 🇦🇷",away:"KAP VERDE 🇨🇻",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:96},
-  {id:88,round:"R32",date:"2026-07-04",time_swe:"03:30",home:"COLOMBIA 🇨🇴",away:"GHANA 🇬🇭",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:95}, {id:89,round:"R16",date:"2026-07-05",time_swe:"22:00",home:"Vinnare M74",away:"Vinnare M77",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:97},
-  {id:90,round:"R16",date:"2026-07-06",time_swe:"02:00",home:"KANADA 🇨🇦",away:"Vinnare M75",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:97},
-  {id:91,round:"R16",date:"2026-07-06",time_swe:"21:00",home:"Vinnare M76",away:"Vinnare M78",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:99},
-  {id:92,round:"R16",date:"2026-07-07",time_swe:"02:00",home:"Vinnare M79",away:"Vinnare M80",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:99},
-  {id:93,round:"R16",date:"2026-07-07",time_swe:"18:00",home:"Vinnare M83",away:"Vinnare M84",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:98},
-  {id:94,round:"R16",date:"2026-07-07",time_swe:"22:00",home:"Vinnare M81",away:"Vinnare M82",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:98},
-  {id:95,round:"R16",date:"2026-07-08",time_swe:"18:00",home:"Vinnare M86",away:"Vinnare M88",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:100},
-  {id:96,round:"R16",date:"2026-07-08",time_swe:"22:00",home:"Vinnare M85",away:"Vinnare M87",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:100},
-  {id:97,round:"QF",date:"2026-07-09",time_swe:"22:00",home:"Vinnare M89",away:"Vinnare M90",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:101},
-  {id:98,round:"QF",date:"2026-07-10",time_swe:"21:00",home:"Vinnare M93",away:"Vinnare M94",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:101},
-  {id:99,round:"QF",date:"2026-07-11",time_swe:"23:00",home:"Vinnare M91",away:"Vinnare M92",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:102},
-  {id:100,round:"QF",date:"2026-07-12",time_swe:"03:00",home:"Vinnare M95",away:"Vinnare M96",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:102},
-  {id:101,round:"SF",date:"2026-07-14",time_swe:"21:00",home:"Vinnare M97",away:"Vinnare M98",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:104},
-  {id:102,round:"SF",date:"2026-07-15",time_swe:"21:00",home:"Vinnare M99",away:"Vinnare M100",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:104},
-  {id:103,round:"Bronze",date:"2026-07-18",time_swe:"23:00",home:"Förlorare M101",away:"Förlorare M102",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:null},
-  {id:104,round:"Final",date:"2026-07-19",time_swe:"21:00",home:"Vinnare M101",away:"Vinnare M102",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:null}
+  {id:73,round:"R32",date:"2026-06-28",time_swe:"21:00",home:"SYDAFRIKA 🇿🇦",away:"KANADA 🇨🇦",home_score:0,away_score:1,extra_time:false,penalty_shootout:false,next_match:90, home_penalty: "0", away_penalty: "0"},
+  {id:74,round:"R32",date:"2026-06-29",time_swe:"19:00",home:"BRASILIEN 🇧🇷",away:"JAPAN 🇯🇵",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:89, home_penalty: "0", away_penalty: "0"},
+  {id:75,round:"R32",date:"2026-06-29",time_swe:"22:30",home:"TYSKLAND 🇩🇪",away:"PARAGUAY 🇵🇾",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:90, home_penalty: "0", away_penalty: "0"},
+  {id:76,round:"R32",date:"2026-06-30",time_swe:"03:00",home:"NEDERLÄNDERNA 🇳🇱",away:"MAROCKO 🇲🇦",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:91, home_penalty: "0", away_penalty: "0"},
+  {id:77,round:"R32",date:"2026-06-30",time_swe:"19:00",home:"ELFENBENSKUSTEN 🇨🇮",away:"NORGE 🇳🇴",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:89, home_penalty: "0", away_penalty: "0"},
+  {id:78,round:"R32",date:"2026-06-30",time_swe:"23:00",home:"FRANKRIKE 🇫🇷",away:"SVERIGE 🇸🇪",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:91, home_penalty: "0", away_penalty: "0"},
+  {id:79,round:"R32",date:"2026-07-01",time_swe:"03:00",home:"MEXIKO 🇲🇽",away:"ECUADOR 🇪🇨",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:92, home_penalty: "0", away_penalty: "0"},
+  {id:80,round:"R32",date:"2026-07-01",time_swe:"18:00",home:"ENGLAND 🏴󠁧󠁢󠁥󠁮󠁧󠁿",away:"DR KONGO 🇨🇩",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:92, home_penalty: "0", away_penalty: "0"},
+  {id:81,round:"R32",date:"2026-07-01",time_swe:"22:00",home:"BELGIEN 🇧🇪",away:"SENEGAL 🇸🇳",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:94, home_penalty: "0", away_penalty: "0"},
+  {id:82,round:"R32",date:"2026-07-02",time_swe:"02:00",home:"USA 🇺🇸",away:"BOSNIEN & HERZ. 🇧🇦",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:94, home_penalty: "0", away_penalty: "0"},
+  {id:83,round:"R32",date:"2026-07-02",time_swe:"21:00",home:"SPANIEN 🇪🇸",away:"ÖSTERRIKE 🇦🇹",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:93, home_penalty: "0", away_penalty: "0"},
+  {id:84,round:"R32",date:"2026-07-03",time_swe:"01:00",home:"PORTUGAL 🇵🇹",away:"KROATIEN 🇭🇷",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:93, home_penalty: "0", away_penalty: "0"},
+  {id:85,round:"R32",date:"2026-07-03",time_swe:"05:00",home:"SCHWEIZ 🇨🇭",away:"ALGERIET 🇩🇿",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:96, home_penalty: "0", away_penalty: "0"},
+  {id:86,round:"R32",date:"2026-07-03",time_swe:"20:00",home:"AUSTRALIEN 🇦🇺",away:"EGYPTEN 🇪🇬",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:95, home_penalty: "0", away_penalty: "0"},
+  {id:87,round:"R32",date:"2026-07-04",time_swe:"00:00",home:"ARGENTINA 🇦🇷",away:"KAP VERDE 🇨🇻",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:96, home_penalty: "0", away_penalty: "0"},
+  {id:88,round:"R32",date:"2026-07-04",time_swe:"03:30",home:"COLOMBIA 🇨🇴",away:"GHANA 🇬🇭",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:95, home_penalty: "0", away_penalty: "0"}, 
+  {id:89,round:"R16",date:"2026-07-05",time_swe:"22:00",home:"Vinnare M74",away:"Vinnare M77",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:97, home_penalty: "0", away_penalty: "0"},
+  {id:90,round:"R16",date:"2026-07-06",time_swe:"02:00",home:"KANADA 🇨🇦",away:"Vinnare M75",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:97, home_penalty: "0", away_penalty: "0"},
+  {id:91,round:"R16",date:"2026-07-06",time_swe:"21:00",home:"Vinnare M76",away:"Vinnare M78",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:99, home_penalty: "0", away_penalty: "0"},
+  {id:92,round:"R16",date:"2026-07-07",time_swe:"02:00",home:"Vinnare M79",away:"Vinnare M80",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:99, home_penalty: "0", away_penalty: "0"},
+  {id:93,round:"R16",date:"2026-07-07",time_swe:"18:00",home:"Vinnare M83",away:"Vinnare M84",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:98, home_penalty: "0", away_penalty: "0"},
+  {id:94,round:"R16",date:"2026-07-07",time_swe:"22:00",home:"Vinnare M81",away:"Vinnare M82",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:98, home_penalty: "0", away_penalty: "0"},
+  {id:95,round:"R16",date:"2026-07-08",time_swe:"18:00",home:"Vinnare M86",away:"Vinnare M88",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:100, home_penalty: "0", away_penalty: "0"},
+  {id:96,round:"R16",date:"2026-07-08",time_swe:"22:00",home:"Vinnare M85",away:"Vinnare M87",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:100, home_penalty: "0", away_penalty: "0"},
+  {id:97,round:"QF",date:"2026-07-09",time_swe:"22:00",home:"Vinnare M89",away:"Vinnare M90",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:101, home_penalty: "0", away_penalty: "0"},
+  {id:98,round:"QF",date:"2026-07-10",time_swe:"21:00",home:"Vinnare M93",away:"Vinnare M94",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:101, home_penalty: "0", away_penalty: "0"},
+  {id:99,round:"QF",date:"2026-07-11",time_swe:"23:00",home:"Vinnare M91",away:"Vinnare M92",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:102, home_penalty: "0", away_penalty: "0"},
+  {id:100,round:"QF",date:"2026-07-12",time_swe:"03:00",home:"Vinnare M95",away:"Vinnare M96",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:102, home_penalty: "0", away_penalty: "0"},
+  {id:101,round:"SF",date:"2026-07-14",time_swe:"21:00",home:"Vinnare M97",away:"Vinnare M98",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:104, home_penalty: "0", away_penalty: "0"},
+  {id:102,round:"SF",date:"2026-07-15",time_swe:"21:00",home:"Vinnare M99",away:"Vinnare M100",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:104, home_penalty: "0", away_penalty: "0"},
+  {id:103,round:"Bronze",date:"2026-07-18",time_swe:"23:00",home:"Förlorare M101",away:"Förlorare M102",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:null, home_penalty: "0", away_penalty: "0"},
+  {id:104,round:"Final",date:"2026-07-19",time_swe:"21:00",home:"Vinnare M101",away:"Vinnare M102",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:null, home_penalty: "0", away_penalty: "0"}
 ];
 
 /* ---------- boot ---------- */
