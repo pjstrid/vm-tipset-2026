@@ -376,6 +376,7 @@ const POOL_DATA = {
       {player:"Nathan Saliba",         country:"Kanada 🇨🇦",                  goals:1},
       {player:"Promise David",         country:"Kanada 🇨🇦",                  goals:1},
       {player:"Självmål",              country:"Kanada 🇨🇦",                  goals:1},
+      {player:"Stephen Eustaquio",     country:"Kanada 🇨🇦",                  goals:1},
       {player:"Hélio Varela",          country:"Kap Verde 🇨🇻",               goals:1},
       {player:"Kevin Pina",            country:"Kap Verde 🇨🇻",               goals:1},
       {player:"Ante Budimir",          country:"Kroatien 🇭🇷",                goals:1},
