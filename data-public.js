@@ -290,7 +290,7 @@ const POOL_DATA = {
   live_stats: {
     penalties: 11,
     haaland_goals: 4,
-    et_matches: 0,
+    et_matches: 1,
     top_scorers: [
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:6},
       {player:"Vinícius Júnior",       country:"Brasilien 🇧🇷",               goals:4},
@@ -307,6 +307,7 @@ const POOL_DATA = {
       {player:"Johan Manzambi",        country:"Schweiz 🇨🇭",                 goals:3},
       {player:"Ismaïla Sarr",          country:"Senegal 🇸🇳",                 goals:3},
       {player:"Deniz Undav",           country:"Tyskland 🇩🇪",                goals:3},
+      {player:"Kai Havertz",           country:"Tyskland 🇩🇪",                goals:3},
       {player:"Riyad Mahrez",          country:"Algeriet 🇩🇿",                goals:2},
       {player:"Leandro Trossard",      country:"Belgien 🇧🇪",                 goals:2},
       {player:"Ermin Mahmic",          country:"Bosnien & Herzegovina 🇧🇦",   goals:2},
@@ -326,7 +327,6 @@ const POOL_DATA = {
       {player:"Mikel Oyarzabal",       country:"Spanien 🇪🇸",                 goals:2},
       {player:"Anthony Elanga",        country:"Sverige 🇸🇪",                 goals:2},
       {player:"Yasin Ayari",           country:"Sverige 🇸🇪",                 goals:2},
-      {player:"Kai Havertz",           country:"Tyskland 🇩🇪",                goals:2},
       {player:"Maximiliano Araújo",    country:"Uruguay 🇺🇾",                 goals:2},
       {player:"Folarin Balogun",       country:"USA 🇺🇸",                     goals:2},
       {player:"Självmål",              country:"USA 🇺🇸",                     goals:2},
@@ -402,6 +402,7 @@ const POOL_DATA = {
       {player:"Självmål",              country:"Norge 🇳🇴",                   goals:1},
       {player:"Thelo Aasgaard",        country:"Norge 🇳🇴",                   goals:1},
       {player:"Finn Surman",           country:"Nya Zeeland 🇳🇿",             goals:1},
+      {player:"Julio Enciso",          country:"Paraguay 🇵🇾",                goals:1},
       {player:"Matías Galarza",        country:"Paraguay 🇵🇾",                goals:1},
       {player:"Maurício",              country:"Paraguay 🇵🇾",                goals:1},
       {player:"João Neves",            country:"Portugal 🇵🇹",                goals:1},
