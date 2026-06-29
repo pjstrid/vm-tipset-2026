@@ -397,6 +397,70 @@
   .p2 .podium-block{height:96px;background:#6e6e6e;color:#fff}
   .p3 .podium-block{height:76px;background:#a06830;color:#fff}
   .podium-floor{height:4px;width:calc(100% + 6px);background:var(--line);border-radius:0 0 3px 3px}
+
+  /* ── Playoff bracket overlay ── */
+  .pt-overlay{position:fixed;inset:0;background:rgba(27,26,22,.72);backdrop-filter:blur(5px);
+    z-index:150;display:none;align-items:flex-start;justify-content:center;
+    padding:12px;overflow:auto}
+  .pt-overlay.show{display:flex}
+  .pt-modal{background:var(--paper);border:2.5px solid var(--ink);border-radius:14px;
+    width:100%;max-width:1440px;max-height:calc(100vh - 24px);display:flex;flex-direction:column;
+    box-shadow:0 24px 64px rgba(0,0,0,.4);overflow:hidden}
+  .pt-head{display:flex;align-items:center;gap:10px;padding:12px 18px 10px;
+    border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--paper);z-index:2;
+    border-radius:14px 14px 0 0;flex-wrap:wrap;gap:8px}
+  .pt-head h2{font-family:"Anton";text-transform:uppercase;font-size:22px;line-height:1}
+  .pt-head h2 span{color:var(--goal)}
+  .pt-close{border:none;background:var(--ink);color:var(--paper);width:30px;height:30px;
+    border-radius:7px;font-size:16px;cursor:pointer;flex:none;margin-left:auto}
+  .pt-legend{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .pt-leg{display:flex;align-items:center;gap:5px;font-family:"Oswald";text-transform:uppercase;
+    letter-spacing:.08em;font-size:9.5px;color:var(--ink-soft);font-weight:600}
+  .pt-leg-dot{width:9px;height:9px;border-radius:2px;flex:none}
+  .pt-body{overflow:auto;-webkit-overflow-scrolling:touch;flex:1;padding:24px 16px 24px}
+  .pt-bracket-wrap{position:relative}
+  /* match card */
+  .ptm{position:absolute;background:var(--paper-2);border:1.5px solid var(--line);
+    border-radius:8px;overflow:hidden;
+    box-shadow:0 2px 6px rgba(27,26,22,.09),0 1px 2px rgba(27,26,22,.04);
+    cursor:default}
+  .ptm:hover{box-shadow:0 3px 10px rgba(27,26,22,.14)}
+  .ptm.ptm-final{border-color:var(--gold);border-width:2px}
+  .ptm.ptm-bronze{opacity:.88}
+  .ptm.ptm-et{border-color:var(--gold)!important;background:rgba(199,154,58,.1)}
+  .ptm.ptm-ps{border-color:#8b4fb8!important;background:rgba(139,79,184,.09)}
+  /* card header */
+  .ptm-hdr{display:flex;align-items:center;justify-content:space-between;
+    padding:3px 8px 2px;border-bottom:1px solid rgba(203,191,159,.45);
+    background:rgba(27,26,22,.025)}
+  .ptm-mid{font-family:"Oswald";font-size:8px;font-weight:700;
+    color:var(--pitch);letter-spacing:.06em}
+  .ptm-dt{font-family:"Oswald";font-size:8px;color:var(--ink-soft);letter-spacing:.02em}
+  /* team rows */
+  .ptm-team{display:flex;align-items:center;gap:5px;padding:0 8px;
+    height:26px;border-bottom:1px solid rgba(203,191,159,.5);min-width:0}
+  .ptm-team:last-of-type{border-bottom:none}
+  .ptm-team.ptm-win{background:rgba(31,107,65,.11)}
+  .ptm-team.ptm-win .ptm-name{font-weight:700;color:var(--pitch-dark)}
+  .ptm-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    font-size:11px;font-weight:500}
+  .ptm-name.ptm-ph{color:var(--ink-soft);font-style:italic;font-weight:400;font-size:10px}
+  .ptm-score{font-family:"Anton";font-size:15px;color:var(--pitch);
+    min-width:16px;text-align:right;flex:none;line-height:1}
+  .ptm-team.ptm-win .ptm-score{color:var(--pitch-dark)}
+  /* status boxes */
+  .ptm-status{display:flex;gap:4px;padding:4px 7px;
+    border-top:1px solid var(--line);background:rgba(27,26,22,.02)}
+  .ptm-sb{flex:1;height:15px;border-radius:3px;border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Oswald";font-size:7.5px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+  .ptm-sb.ptm-son{background:var(--pitch);border-color:var(--pitch);color:#fff}
+  .pt-rlbl{position:absolute;font-family:"Oswald";text-transform:uppercase;letter-spacing:.1em;
+    font-size:9px;color:var(--ink-soft);font-weight:700;text-align:center;pointer-events:none}
+  .pt-elbl{position:absolute;font-family:"Oswald";text-transform:uppercase;letter-spacing:.08em;
+    font-size:9px;color:var(--ink-soft);font-weight:600;text-align:center;pointer-events:none}
+  #pt-svg{position:absolute;inset:0;pointer-events:none;overflow:visible}
 </style>
 </head>
 <body>
@@ -434,6 +498,7 @@
   <nav class="tabs">
     <button id="tab-table" class="active" onclick="showTab('table')">Tabell</button>
     <button id="tab-facit" style="display:none" onclick="showTab('facit')">Facit &amp; rättning</button>
+    <button onclick="openPT()" style="flex:none;font-family:'Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px;padding:11px 14px;border:2px solid var(--pitch);background:var(--pitch);color:#fff;border-radius:9px;cursor:pointer;white-space:nowrap">🏆 Slutspel</button>
     <button class="admin-btn" id="admin-btn" onclick="tryAdmin()" title="Admin-inloggning"><span class="admin-icon">✏</span></button>
   </nav>
 
@@ -468,6 +533,21 @@
   </section>
 
   <footer>VM-tipset 2026 · lokal rättningssida · ingen data lämnar din dator</footer>
+</div>
+
+<!-- Playoff bracket overlay -->
+<div class="pt-overlay" id="pt-overlay" onclick="if(event.target===this)closePT()">
+  <div class="pt-modal">
+    <div class="pt-head">
+      <h2>Slutspels<span>Träd</span></h2>
+      <button class="pt-close" onclick="closePT()">×</button>
+    </div>
+    <div class="pt-body">
+      <div class="pt-bracket-wrap" id="pt-bracket">
+        <svg id="pt-svg"></svg>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Admin password modal -->
@@ -1001,8 +1081,238 @@ function showTab(t){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){ closeModal(); closePw(); closeScorers(); closeStats(); }
+  if(e.key==="Escape"){ closeModal(); closePw(); closeScorers(); closeStats(); closePT(); }
 });
+
+/* ══════════════════════════════════════════════════════
+   PLAYOFF BRACKET
+══════════════════════════════════════════════════════ */
+const PT_RAW = [
+  {id:73,round:"R32",date:"2026-06-28",time_swe:"21:00",home:"Sydafrika",away:"Kanada",home_score:0,away_score:1,extra_time:false,penalty_shootout:false,next_match:90},
+  {id:74,round:"R32",date:"2026-06-29",time_swe:"19:00",home:"Brasilien",away:"Japan",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:89},
+  {id:75,round:"R32",date:"2026-06-29",time_swe:"22:30",home:"Tyskland",away:"Paraguay",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:90},
+  {id:76,round:"R32",date:"2026-06-30",time_swe:"03:00",home:"Nederländerna",away:"Marocko",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:91},
+  {id:77,round:"R32",date:"2026-06-30",time_swe:"19:00",home:"Elfenbenskusten",away:"Norge",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:89},
+  {id:78,round:"R32",date:"2026-06-30",time_swe:"23:00",home:"Frankrike",away:"Sverige",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:91},
+  {id:79,round:"R32",date:"2026-07-01",time_swe:"03:00",home:"Mexiko",away:"Ecuador",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:92},
+  {id:80,round:"R32",date:"2026-07-01",time_swe:"18:00",home:"England",away:"Kongo-Kinshasa",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:92},
+  {id:81,round:"R32",date:"2026-07-01",time_swe:"22:00",home:"Belgien",away:"Senegal",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:94},
+  {id:82,round:"R32",date:"2026-07-02",time_swe:"02:00",home:"USA",away:"Bosnien-Hercegovina",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:94},
+  {id:83,round:"R32",date:"2026-07-02",time_swe:"21:00",home:"Spanien",away:"Österrike",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:93},
+  {id:84,round:"R32",date:"2026-07-03",time_swe:"01:00",home:"Portugal",away:"Kroatien",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:93},
+  {id:85,round:"R32",date:"2026-07-03",time_swe:"05:00",home:"Schweiz",away:"Algeriet",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:96},
+  {id:86,round:"R32",date:"2026-07-03",time_swe:"20:00",home:"Australien",away:"Egypten",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:95},
+  {id:87,round:"R32",date:"2026-07-04",time_swe:"00:00",home:"Argentina",away:"Kap Verde",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:96},
+  {id:88,round:"R32",date:"2026-07-04",time_swe:"03:30",home:"Colombia",away:"Ghana",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:95},
+  {id:89,round:"R16",date:"2026-07-05",time_swe:"22:00",home:"Vinnare M74",away:"Vinnare M77",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:97},
+  {id:90,round:"R16",date:"2026-07-06",time_swe:"02:00",home:"Kanada",away:"Vinnare M75",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:97},
+  {id:91,round:"R16",date:"2026-07-06",time_swe:"21:00",home:"Vinnare M76",away:"Vinnare M78",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:99},
+  {id:92,round:"R16",date:"2026-07-07",time_swe:"02:00",home:"Vinnare M79",away:"Vinnare M80",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:99},
+  {id:93,round:"R16",date:"2026-07-07",time_swe:"18:00",home:"Vinnare M83",away:"Vinnare M84",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:98},
+  {id:94,round:"R16",date:"2026-07-07",time_swe:"22:00",home:"Vinnare M81",away:"Vinnare M82",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:98},
+  {id:95,round:"R16",date:"2026-07-08",time_swe:"18:00",home:"Vinnare M86",away:"Vinnare M88",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:100},
+  {id:96,round:"R16",date:"2026-07-08",time_swe:"22:00",home:"Vinnare M85",away:"Vinnare M87",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:100},
+  {id:97,round:"QF",date:"2026-07-09",time_swe:"22:00",home:"Vinnare M89",away:"Vinnare M90",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:101},
+  {id:98,round:"QF",date:"2026-07-10",time_swe:"21:00",home:"Vinnare M93",away:"Vinnare M94",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:101},
+  {id:99,round:"QF",date:"2026-07-11",time_swe:"23:00",home:"Vinnare M91",away:"Vinnare M92",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:102},
+  {id:100,round:"QF",date:"2026-07-12",time_swe:"03:00",home:"Vinnare M95",away:"Vinnare M96",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:102},
+  {id:101,round:"SF",date:"2026-07-14",time_swe:"21:00",home:"Vinnare M97",away:"Vinnare M98",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:104},
+  {id:102,round:"SF",date:"2026-07-15",time_swe:"21:00",home:"Vinnare M99",away:"Vinnare M100",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:104},
+  {id:103,round:"Bronze",date:"2026-07-18",time_swe:"23:00",home:"Förlorare M101",away:"Förlorare M102",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:null},
+  {id:104,round:"Final",date:"2026-07-19",time_swe:"21:00",home:"Vinnare M101",away:"Vinnare M102",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:null}
+];
+
+/* --- state --- */
+let ptMatches = [];
+
+function ptInit(){
+  ptMatches=PT_RAW.map(r=>({...r}));
+  ptMatches.forEach(m=>{if(m.home_score!==null&&m.away_score!==null)ptPropagate(m.id);});
+}
+function ptGet(id){ return ptMatches.find(m=>m.id===id); }
+function ptWinner(m){
+  if(!m||m.home_score===null||m.away_score===null)return null;
+  if(m.home_score>m.away_score)return{name:m.home,side:'home'};
+  if(m.away_score>m.home_score)return{name:m.away,side:'away'};
+  return null;
+}
+function ptIsph(n){ return !n||/Vinnare|Förlorare/.test(n); }
+function ptPropagate(id){
+  const m=ptGet(id); if(!m||!m.next_match)return;
+  const w=ptWinner(m), nx=ptGet(m.next_match); if(!nx)return;
+  const refH=(nx.home||'').match(/M(\d+)/), refA=(nx.away||'').match(/M(\d+)/);
+  const rhId=refH?+refH[1]:null, raId=refA?+refA[1]:null;
+  if(w){
+    if(rhId===id) nx.home=w.name;
+    else if(raId===id) nx.away=w.name;
+  } else {
+    if(rhId===id) nx.home=`Vinnare M${id}`;
+    else if(raId===id) nx.away=`Vinnare M${id}`;
+  }
+  ptPropagate(m.next_match);
+}
+function ptFmtDate(d){
+  const mo=['jan','feb','mar','apr','maj','jun','jul','aug','sep','okt','nov','dec'];
+  const [,mm,dd]=d.split('-'); return `${+dd} ${mo[+mm-1]}`;
+}
+
+/* --- layout --- */
+const PT={MW:132,MH:96,GAP:28,ARM:14,YOFF:24};
+PT.STEP=PT.MW+PT.GAP;
+const PTC={
+  LR32:0, LR16:PT.STEP, LQF:PT.STEP*2, LSF:PT.STEP*3,
+  FC:PT.STEP*4+10, RSF:PT.STEP*5+20, RQF:PT.STEP*6+20, RR16:PT.STEP*7+20, RR32:PT.STEP*8+20
+};
+PTC.TW=PTC.RR32+PT.MW;
+PTC.TH=8*PT.MH;
+
+function ptR32y(i){return i*PT.MH;}
+function ptR16y(i){return PT.MH*.5+i*PT.MH*2;}
+function ptQFy(i) {return PT.MH*1.5+i*PT.MH*4;}
+const ptSFy=PT.MH*3.5, ptFy=PT.MH*2.5-PT.GAP, ptBrnY=PT.MH*4.5+PT.GAP;
+function ptAy(y){return PT.YOFF+y;}
+
+const PT_LR32=[74,77,73,75,83,84,81,82];
+const PT_LR16=[89,90,93,94];
+const PT_LQF=[97,98];
+const PT_LSF=[101];
+const PT_FIN=104, PT_BRN=103;
+const PT_RSF=[102];
+const PT_RQF=[99,100];
+const PT_RR16=[91,92,95,96];
+const PT_RR32=[76,78,79,80,86,88,85,87];
+
+function ptPos(id){
+  let i;
+  if((i=PT_LR32.indexOf(id))>=0)return{x:PTC.LR32,y:ptAy(ptR32y(i))};
+  if((i=PT_LR16.indexOf(id))>=0)return{x:PTC.LR16,y:ptAy(ptR16y(i))};
+  if((i=PT_LQF.indexOf(id))>=0) return{x:PTC.LQF, y:ptAy(ptQFy(i))};
+  if((i=PT_LSF.indexOf(id))>=0) return{x:PTC.LSF, y:ptAy(ptSFy)};
+  if(id===PT_FIN)               return{x:PTC.FC,  y:ptAy(ptFy)};
+  if(id===PT_BRN)               return{x:PTC.FC,  y:ptAy(ptBrnY)};
+  if((i=PT_RSF.indexOf(id))>=0) return{x:PTC.RSF, y:ptAy(ptSFy)};
+  if((i=PT_RQF.indexOf(id))>=0) return{x:PTC.RQF, y:ptAy(ptQFy(i))};
+  if((i=PT_RR16.indexOf(id))>=0)return{x:PTC.RR16,y:ptAy(ptR16y(i))};
+  if((i=PT_RR32.indexOf(id))>=0)return{x:PTC.RR32,y:ptAy(ptR32y(i))};
+  return null;
+}
+
+/* --- DOM map --- */
+const ptDom={};
+
+function openPT(){
+  ptInit();
+  document.getElementById('pt-overlay').classList.add('show');
+  document.body.style.overflow='hidden';
+  ptRender();
+}
+function closePT(){
+  document.getElementById('pt-overlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+
+function ptRender(){
+  const wrap=document.getElementById('pt-bracket');
+  const totalH=ptAy(PTC.TH)+20;
+  wrap.style.width=PTC.TW+'px';
+  wrap.style.height=totalH+'px';
+  Array.from(wrap.children).forEach(c=>{if(c.id!=='pt-svg')c.remove();});
+  Object.keys(ptDom).forEach(k=>delete ptDom[k]);
+
+  [{x:PTC.LR32,t:'16-delsfinal'},{x:PTC.LR16,t:'8-delsfinal'},{x:PTC.LQF,t:'Kvartsfinal'},
+   {x:PTC.LSF,t:'Semifinal'},{x:PTC.FC,t:'Final'},
+   {x:PTC.RSF,t:'Semifinal'},{x:PTC.RQF,t:'Kvartsfinal'},{x:PTC.RR16,t:'8-delsfinal'},{x:PTC.RR32,t:'16-delsfinal'}
+  ].forEach(({x,t})=>{
+    const d=document.createElement('div');
+    d.className='pt-rlbl';d.textContent=t;
+    Object.assign(d.style,{left:x+'px',top:'4px',width:PT.MW+'px'});
+    wrap.appendChild(d);
+  });
+  const bl=document.createElement('div');bl.className='pt-elbl';bl.textContent='Bronsmatch';
+  Object.assign(bl.style,{left:PTC.FC+'px',top:(ptAy(ptBrnY)-14)+'px',width:PT.MW+'px'});
+  wrap.appendChild(bl);
+
+  [...PT_LR32,...PT_LR16,...PT_LQF,...PT_LSF,PT_FIN,PT_BRN,...PT_RSF,...PT_RQF,...PT_RR16,...PT_RR32]
+    .forEach(id=>{const el=ptMakeCard(id);wrap.appendChild(el);ptDom[id]=el;});
+
+  ptDrawLines();
+}
+
+function ptMakeCard(id){
+  const pos=ptPos(id), m=ptGet(id);
+  const el=document.createElement('div');
+  el.className='ptm'+(id===PT_FIN?' ptm-final':'')+(id===PT_BRN?' ptm-bronze':'');
+  el.dataset.id=id;
+  Object.assign(el.style,{left:pos.x+'px',top:pos.y+'px',width:PT.MW+'px',height:PT.MH+'px'});
+  ptFillCard(el,m);
+  return el;
+}
+
+function ptFillCard(el,m){
+  const w=ptWinner(m);
+  const hasResult=m.home_score!==null&&m.away_score!==null;
+  const ordTid=hasResult&&!m.extra_time&&!m.penalty_shootout;
+  el.classList.toggle('ptm-et',m.extra_time&&!m.penalty_shootout);
+  el.classList.toggle('ptm-ps',!!m.penalty_shootout);
+  el.innerHTML=`
+    <div class="ptm-hdr">
+      <span class="ptm-mid">M${m.id}</span>
+      <span class="ptm-dt">${ptFmtDate(m.date)} · ${m.time_swe}</span>
+    </div>
+    <div class="ptm-team${w&&w.side==='home'?' ptm-win':''}">
+      <span class="ptm-name${ptIsph(m.home)?' ptm-ph':''}">${esc(m.home)}</span>
+      <span class="ptm-score">${m.home_score!==null?m.home_score:'–'}</span>
+    </div>
+    <div class="ptm-team${w&&w.side==='away'?' ptm-win':''}">
+      <span class="ptm-name${ptIsph(m.away)?' ptm-ph':''}">${esc(m.away)}</span>
+      <span class="ptm-score">${m.away_score!==null?m.away_score:'–'}</span>
+    </div>
+    <div class="ptm-status">
+      <div class="ptm-sb${ordTid?' ptm-son':''}">Ord. tid</div>
+      <div class="ptm-sb${m.extra_time?' ptm-son':''}">Förl.</div>
+      <div class="ptm-sb${m.penalty_shootout?' ptm-son':''}">Straff</div>
+    </div>`;
+}
+
+function ptDrawLines(){
+  const svg=document.getElementById('pt-svg');if(!svg)return;
+  const wrap=document.getElementById('pt-bracket');
+  const h=parseInt(wrap.style.height||700);
+  svg.setAttribute('width',PTC.TW);svg.setAttribute('height',h);
+  svg.style.height=h+'px';
+  svg.innerHTML='';
+
+  function ptCY(id){const el=ptDom[id];return el?parseInt(el.style.top)+PT.MH/2:0;}
+  function L(x1,y1,x2,y2){
+    const l=document.createElementNS('http://www.w3.org/2000/svg','line');
+    l.setAttribute('x1',x1.toFixed(1));l.setAttribute('y1',y1.toFixed(1));
+    l.setAttribute('x2',x2.toFixed(1));l.setAttribute('y2',y2.toFixed(1));
+    l.setAttribute('stroke','var(--line)');l.setAttribute('stroke-width','1.5');
+    l.setAttribute('stroke-linecap','round');svg.appendChild(l);
+  }
+  function arm(tId,bId,nId,right){
+    const ty=ptCY(tId),by=ptCY(bId),my=(ty+by)/2;
+    if(right){
+      const xs=ptPos(tId).x+PT.MW, xd=ptPos(nId).x, xv=xs+PT.ARM;
+      L(xs,ty,xv,ty);L(xs,by,xv,by);L(xv,ty,xv,by);L(xv,my,xd,my);
+    }else{
+      const xs=ptPos(tId).x, xd=ptPos(nId).x+PT.MW, xv=xs-PT.ARM;
+      L(xv,ty,xs,ty);L(xv,by,xs,by);L(xv,ty,xv,by);L(xd,my,xv,my);
+    }
+  }
+  arm(74,77,89,true);arm(73,75,90,true);arm(83,84,93,true);arm(81,82,94,true);
+  arm(89,90,97,true);arm(93,94,98,true);arm(97,98,101,true);
+  arm(76,78,91,false);arm(79,80,92,false);arm(86,88,95,false);arm(85,87,96,false);
+  arm(91,92,99,false);arm(95,96,100,false);arm(99,100,102,false);
+  // Left SF → Final (above) and Bronze (below): T-connector
+  {const sx=ptPos(101).x+PT.MW, sy=ptCY(101), ax=sx+PT.ARM,
+     fy=ptCY(104), by=ptCY(103), cx=PTC.FC;
+   L(sx,sy,ax,sy); L(ax,fy,cx,fy); L(ax,by,cx,by); L(ax,fy,ax,by);}
+  // Right SF → Final (above) and Bronze (below): T-connector (mirror)
+  {const sx=ptPos(102).x, sy=ptCY(102), ax=sx-PT.ARM,
+     fy=ptCY(104), by=ptCY(103), cx=PTC.FC+PT.MW;
+   L(ax,sy,sx,sy); L(cx,fy,ax,fy); L(cx,by,ax,by); L(ax,fy,ax,by);}
+}
 
 /* ---------- boot ---------- */
 if(!state.text_overrides) state.text_overrides={};
