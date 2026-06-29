@@ -418,17 +418,17 @@
     letter-spacing:.08em;font-size:9.5px;color:var(--ink-soft);font-weight:600}
   .pt-leg-dot{width:9px;height:9px;border-radius:2px;flex:none}
   .pt-body{overflow:auto;-webkit-overflow-scrolling:touch;flex:1;padding:12px 4px}
-  .pt-bracket-wrap{position:relative}
+  .pt-bracket-wrap{position:relative;margin:0 auto}
   /* match card */
-  .ptm{position:absolute;background:var(--paper-2);border:1.5px solid var(--line);
+  .ptm{position:absolute;background:var(--paper-2);border:1.5px solid var(--ink-soft);
     border-radius:8px;overflow:hidden;
     box-shadow:0 2px 6px rgba(27,26,22,.09),0 1px 2px rgba(27,26,22,.04);
     cursor:default}
   .ptm:hover{box-shadow:0 3px 10px rgba(27,26,22,.14)}
   .ptm.ptm-final{border-color:var(--gold);border-width:2px}
   .ptm.ptm-bronze{opacity:.88}
-  .ptm.ptm-et{border-color:#083017!important;background:#116a332c}
-  .ptm.ptm-ps{border-color:#083017!important;background:#116a332c}
+  .ptm.ptm-et{border-color:#083017!important;background:#116a331c}
+  .ptm.ptm-ps{border-color:#083017!important;background:#116a331c}
   /* card header */
   .ptm-hdr{display:flex;align-items:center;justify-content:space-between;
     padding:3px 8px 2px;border-bottom:1px solid rgba(203,191,159,.45);
@@ -440,7 +440,7 @@
   .ptm-team{display:flex;align-items:center;gap:5px;padding:0 8px;
     height:26px;border-bottom:1px solid rgba(203,191,159,.5);min-width:0}
   .ptm-team:last-of-type{border-bottom:none}
-  .ptm-team.ptm-win{background:rgba(31,107,65,.11)}
+  .ptm-team.ptm-win{border-radius:3px;border-top:1.5px solid var(--ink-soft);border-bottom:1.5px solid var(--ink-soft);background:rgba(31,107,65,.20)}
   .ptm-team.ptm-win .ptm-name{font-weight:700;color:var(--pitch-dark)}
   .ptm-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
     font-size:11px;font-weight:500}
@@ -1128,19 +1128,20 @@ function ptFmtDate(d){
 }
 
 /* --- layout --- */
-const PT={MW:148,MH:96,GAP:20,ARM:10,YOFF:24};
+const PT={MW:148,MH:96,GAP:20,ARM:10,YOFF:24,VS:2};
 PT.STEP=PT.MW+PT.GAP;
+PT.MS=PT.MH+PT.VS;
 const PTC={
   LR32:0, LR16:PT.STEP, LQF:PT.STEP*2, LSF:PT.STEP*3,
   FC:PT.STEP*4+10, RSF:PT.STEP*5+20, RQF:PT.STEP*6+20, RR16:PT.STEP*7+20, RR32:PT.STEP*8+20
 };
 PTC.TW=PTC.RR32+PT.MW;
-PTC.TH=8*PT.MH;
+PTC.TH=8*PT.MS;
 
-function ptR32y(i){return i*PT.MH;}
-function ptR16y(i){return PT.MH*.5+i*PT.MH*2;}
-function ptQFy(i) {return PT.MH*1.5+i*PT.MH*4;}
-const ptSFy=PT.MH*3.5, ptFy=PT.MH*2.5-PT.GAP, ptBrnY=PT.MH*4.5+PT.GAP;
+function ptR32y(i){return i*PT.MS;}
+function ptR16y(i){return PT.MS*.5+i*PT.MS*2;}
+function ptQFy(i) {return PT.MS*1.5+i*PT.MS*4;}
+const ptSFy=PT.MS*3.5, ptFy=PT.MS*2.5-PT.GAP, ptBrnY=PT.MS*4.5+PT.GAP;
 function ptAy(y){return PT.YOFF+y;}
 
 const PT_LR32=[74,77,73,75,83,84,81,82];
@@ -1247,9 +1248,8 @@ function ptFillCard(el,m){
       ${m.penalty_shootout?`<span class="ptm-pen">(${m.away_penalty??0})</span>`:''}
     </div>
     <div class="ptm-status">
-      <div class="ptm-sb${ordTid?' ptm-son':''}">Ord. tid</div>
-      <div class="ptm-sb${m.extra_time?' ptm-son':''}">Förl.</div>
-      <div class="ptm-sb${m.penalty_shootout?' ptm-son':''}">Straff.</div>
+      <div class="ptm-sb${m.extra_time?' ptm-son':''}">Förlängning</div>
+      <div class="ptm-sb${m.penalty_shootout?' ptm-son':''}">Straffar</div>
     </div>`;
 }
 
@@ -1297,8 +1297,8 @@ function ptDrawLines(){
    PLAYOFF BRACKET
 ══════════════════════════════════════════════════════ */
 const PT_RAW = [
-  {id:73,round:"R32",date:"2026-06-28",time_swe:"21:00",home:"SYDAFRIKA 🇿🇦",away:"KANADA 🇨🇦",home_score:0,away_score:1,extra_time:false,penalty_shootout:false,next_match:90, home_penalty: "0", away_penalty: "0"},
-  {id:76,round:"R32",date:"2026-06-29",time_swe:"19:00",home:"BRASILIEN 🇧🇷",away:"JAPAN 🇯🇵",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:91, home_penalty: "0", away_penalty: "0"},
+  {id:73,round:"R32",date:"2026-06-28",time_swe:"21:00",home:"SYDAFRIKA 🇿🇦",away:"KANADA 🇨🇦",home_score:0,away_score:1,extra_time:false,penalty_shootout:true,next_match:90, home_penalty: "0", away_penalty: "0"},
+  {id:76,round:"R32",date:"2026-06-29",time_swe:"19:00",home:"BRASILIEN 🇧🇷",away:"JAPAN 🇯🇵",home_score:2,away_score:1,extra_time:false,penalty_shootout:false,next_match:91, home_penalty: "0", away_penalty: "0"},
   {id:74,round:"R32",date:"2026-06-29",time_swe:"22:30",home:"TYSKLAND 🇩🇪",away:"PARAGUAY 🇵🇾",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:89, home_penalty: "0", away_penalty: "0"},
   {id:75,round:"R32",date:"2026-06-30",time_swe:"03:00",home:"NEDERLÄNDERNA 🇳🇱",away:"MAROCKO 🇲🇦",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:90, home_penalty: "0", away_penalty: "0"},
   {id:78,round:"R32",date:"2026-06-30",time_swe:"19:00",home:"ELFENBENSKUSTEN 🇨🇮",away:"NORGE 🇳🇴",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:91, home_penalty: "0", away_penalty: "0"},
