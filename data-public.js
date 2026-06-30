@@ -290,7 +290,7 @@ const POOL_DATA = {
   live_stats: {
     penalties: 11,
     haaland_goals: 4,
-    et_matches: 1,
+    et_matches: 2,
     top_scorers: [
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:6},
       {player:"Vinícius Júnior",       country:"Brasilien 🇧🇷",               goals:4},
@@ -303,6 +303,7 @@ const POOL_DATA = {
       {player:"Jonathan David",        country:"Kanada 🇨🇦",                  goals:3},
       {player:"Ismael Saibari",        country:"Marocko 🇲🇦",                 goals:3},
       {player:"Brian Brobbey",         country:"Nederländerna 🇳🇱",           goals:3},
+      {player:"Cody Gakpo",            country:"Nederländerna 🇳🇱",           goals:3},
       {player:"Elijah Just",           country:"Nya Zeeland 🇳🇿",             goals:3},
       {player:"Johan Manzambi",        country:"Schweiz 🇨🇭",                 goals:3},
       {player:"Ismaïla Sarr",          country:"Senegal 🇸🇳",                 goals:3},
@@ -319,7 +320,6 @@ const POOL_DATA = {
       {player:"Daichi Kamada",         country:"Japan 🇯🇵",                   goals:2},
       {player:"Cyle Larin",            country:"Kanada 🇨🇦",                  goals:2},
       {player:"Julián Quiñones",       country:"Mexiko 🇲🇽",                  goals:2},
-      {player:"Cody Gakpo",            country:"Nederländerna 🇳🇱",           goals:2},
       {player:"Crysencio Summerville", country:"Nederländerna 🇳🇱",           goals:2},
       {player:"Cristiano Ronaldo",     country:"Portugal 🇵🇹",                goals:2},
       {player:"Rubén Vargas",          country:"Schweiz 🇨🇭",                 goals:2},
@@ -389,6 +389,7 @@ const POOL_DATA = {
       {player:"Petar Sucic",           country:"Kroatien 🇭🇷",                goals:1},
       {player:"Achraf Hakimi",         country:"Marocko 🇲🇦",                 goals:1},
       {player:"Gessime Yassine",       country:"Marocko 🇲🇦",                 goals:1},
+      {player:"Issa Diop",             country:"Marocko 🇲🇦",                 goals:1},
       {player:"Soufiane Rahimi",       country:"Marocko 🇲🇦",                 goals:1},
       {player:"Àlvaro Fidalgo",        country:"Mexiko 🇲🇽",                  goals:1},
       {player:"Luis Romo",             country:"Mexiko 🇲🇽",                  goals:1},
