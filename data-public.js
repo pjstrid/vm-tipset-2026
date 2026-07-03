@@ -290,7 +290,7 @@ const POOL_DATA = {
   live_stats: {
     penalties: 13,
     haaland_goals: 5,
-    et_matches: 3,
+    et_matches: 4,
     
 top_scorers: [
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:6},
@@ -320,6 +320,7 @@ top_scorers: [
       {player:"Youri Tielemans",       country:"Belgien 🇧🇪",                 goals:2},
       {player:"Ermin Mahmic",          country:"Bosnien & Herzegovina 🇧🇦",   goals:2},
       {player:"Daniel Muñoz",          country:"Colombia 🇨🇴",                goals:2},
+      {player:"Emam Ashour",           country:"Egypten 🇪🇬",                 goals:2},
       {player:"Amad Diallo",           country:"Elfenbenskusten 🇨🇮",         goals:2},
       {player:"Nicolas Pépé",          country:"Elfenbenskusten 🇨🇮",         goals:2},
       {player:"Jude Bellingham",       country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:2},
@@ -346,6 +347,7 @@ top_scorers: [
       {player:"Lautaro Martínez",      country:"Argentina 🇦🇷",               goals:1},
       {player:"Connor Metcalfe",       country:"Australien 🇦🇺",              goals:1},
       {player:"Nestory Irankunda",     country:"Australien 🇦🇺",              goals:1},
+      {player:"Självmål",              country:"Australien 🇦🇺",              goals:1},
       {player:"Àlexis Saelemaekers",   country:"Belgien 🇧🇪",                 goals:1},
       {player:"Kevin De Bruyne",       country:"Belgien 🇧🇪",                 goals:1},
       {player:"Självmål",              country:"Belgien 🇧🇪",                 goals:1},      
@@ -361,7 +363,6 @@ top_scorers: [
       {player:"Fiston Mayele",         country:"DR Kongo 🇨🇩",                goals:1},
       {player:"Gonzalo Plata",         country:"Ecuador 🇪🇨",                 goals:1},
       {player:"Nilson Angulo",         country:"Ecuador 🇪🇨",                 goals:1},
-      {player:"Emam Ashour",           country:"Egypten 🇪🇬",                 goals:1},
       {player:"Mahmoud Saber",         country:"Egypten 🇪🇬",                 goals:1},
       {player:"Mohamed Salah",         country:"Egypten 🇪🇬",                 goals:1},
       {player:"Mostafa Zico",          country:"Egypten 🇪🇬",                 goals:1},
