@@ -393,7 +393,7 @@ top_scorers: [
       {player:"Deroy Duarte",          country:"Kap Verde 🇨🇻",               goals:1},
       {player:"Hélio Varela",          country:"Kap Verde 🇨🇻",               goals:1},
       {player:"Kevin Pina",            country:"Kap Verde 🇨🇻",               goals:1},
-      {player:"Sidny Cabral",          country:"Kap Verde 🇨🇻",               goals:1},
+      {player:"Sidny Lopes Cabral",    country:"Kap Verde 🇨🇻",               goals:1},
       {player:"Ante Budimir",          country:"Kroatien 🇭🇷",                goals:1},
       {player:"Ivan Perisic",          country:"Kroatien 🇭🇷",                goals:1},
       {player:"Martin Baturina",       country:"Kroatien 🇭🇷",                goals:1},
