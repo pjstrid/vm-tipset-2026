@@ -37,7 +37,7 @@ const POOL_DATA = {
   tiebreaker: {
     type: "number_closest",
     prompt: "Hur många straffar blir det under VM? (gäller ordinarie tid + förlängning, EJ straffläggningar)",
-    correct: 13
+    correct: 14
   },
   participants: [
     {name:"Solveig Norin",contact:{phone:"",email:""},
@@ -288,13 +288,13 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32, submitted:"26-06-14, 23:43"},
     ],
   live_stats: {
-    penalties: 13,
+    penalties: 14,
     haaland_goals: 5,
     et_matches: 5,
     
 top_scorers: [
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:7},
-      {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:6},
+      {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:7},
       {player:"Harry Kane",            country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:5},
       {player:"Erling Haaland",        country:"Norge 🇳🇴",                   goals:5},
       {player:"Vinícius Júnior",       country:"Brasilien 🇧🇷",               goals:4},
@@ -328,6 +328,7 @@ top_scorers: [
       {player:"Ramin Rezaeian",        country:"Iran 🇮🇷",                    goals:2},
       {player:"Ayase Ueda",            country:"Japan 🇯🇵",                   goals:2},
       {player:"Daichi Kamada",         country:"Japan 🇯🇵",                   goals:2},
+      {player:"Azzedine Ounahi",       country:"Kanada 🇨🇦",                  goals:2},
       {player:"Cyle Larin",            country:"Kanada 🇨🇦",                  goals:2},
       {player:"Raúl Jiménez",          country:"Mexiko 🇲🇽",                  goals:2},
       {player:"Crysencio Summerville", country:"Nederländerna 🇳🇱",           goals:2},
@@ -389,6 +390,7 @@ top_scorers: [
       {player:"Nathan Saliba",         country:"Kanada 🇨🇦",                  goals:1},
       {player:"Promise David",         country:"Kanada 🇨🇦",                  goals:1},
       {player:"Självmål",              country:"Kanada 🇨🇦",                  goals:1},
+      {player:"Soufiane Rahimi",       country:"Kanada 🇨🇦",                  goals:1},
       {player:"Stephen Eustaquio",     country:"Kanada 🇨🇦",                  goals:1},
       {player:"Deroy Duarte",          country:"Kap Verde 🇨🇻",               goals:1},
       {player:"Hélio Varela",          country:"Kap Verde 🇨🇻",               goals:1},
