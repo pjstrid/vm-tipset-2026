@@ -37,7 +37,7 @@ const POOL_DATA = {
   tiebreaker: {
     type: "number_closest",
     prompt: "Hur många straffar blir det under VM? (gäller ordinarie tid + förlängning, EJ straffläggningar)",
-    correct: 14
+    correct: 16
   },
   participants: [
     {name:"Solveig Norin",contact:{phone:"",email:""},
@@ -288,15 +288,15 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32, submitted:"26-06-14, 23:43"},
     ],
   live_stats: {
-    penalties: 14,
-    haaland_goals: 5,
+    penalties: 16,
+    haaland_goals: 7,
     et_matches: 5,
     
 top_scorers: [
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:7},
       {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:7},
+      {player:"Erling Haaland",        country:"Norge 🇳🇴",                   goals:7},
       {player:"Harry Kane",            country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:5},
-      {player:"Erling Haaland",        country:"Norge 🇳🇴",                   goals:5},
       {player:"Vinícius Júnior",       country:"Brasilien 🇧🇷",               goals:4},
       {player:"Ousmane Dembélé",       country:"Frankrike 🇫🇷",               goals:4},
       {player:"Ismaïla Sarr",          country:"Senegal 🇸🇳",                 goals:4},
