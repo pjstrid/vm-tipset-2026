@@ -436,6 +436,7 @@ top_scorers: [
       {player:"John McGinn",           country:"Skottland 🏴󠁧󠁢󠁳󠁣󠁴󠁿",               goals:1},
       {player:"Àlex Baena",            country:"Spanien 🇪🇸",                 goals:1},
       {player:"Lamine Yamal",          country:"Spanien 🇪🇸",                 goals:1},
+      {player:"Mikel Merino",          country:"Spanien 🇪🇸",                 goals:1},
       {player:"Pedro Porro",           country:"Spanien 🇪🇸",                 goals:1},
       {player:"Självmål",              country:"Spanien 🇪🇸",                 goals:1},
       {player:"Alexander Isak",        country:"Sverige 🇸🇪",                 goals:1},
