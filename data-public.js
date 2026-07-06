@@ -37,7 +37,7 @@ const POOL_DATA = {
   tiebreaker: {
     type: "number_closest",
     prompt: "Hur många straffar blir det under VM? (gäller ordinarie tid + förlängning, EJ straffläggningar)",
-    correct: 16
+    correct: 18
   },
   participants: [
     {name:"Solveig Norin",contact:{phone:"",email:""},
@@ -288,7 +288,7 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32, submitted:"26-06-14, 23:43"},
     ],
   live_stats: {
-    penalties: 16,
+    penalties: 18,
     haaland_goals: 7,
     et_matches: 5,
     
@@ -296,16 +296,18 @@ top_scorers: [
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:7},
       {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:7},
       {player:"Erling Haaland",        country:"Norge 🇳🇴",                   goals:7},
-      {player:"Harry Kane",            country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:5},
+      {player:"Harry Kane",            country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:6},
       {player:"Vinícius Júnior",       country:"Brasilien 🇧🇷",               goals:4},
+      {player:"Jude Bellingham",       country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:4},
       {player:"Ousmane Dembélé",       country:"Frankrike 🇫🇷",               goals:4},
+      {player:"Julián Quiñones",       country:"Mexiko 🇲🇽",                  goals:4},
       {player:"Ismaïla Sarr",          country:"Senegal 🇸🇳",                 goals:4},
       {player:"Mikel Oyarzabal",       country:"Spanien 🇪🇸",                 goals:4},
       {player:"Matheus Cunha",         country:"Brasilien 🇧🇷",               goals:3},
       {player:"Yoane Wissa",           country:"DR Kongo 🇨🇩",                goals:3},
       {player:"Jonathan David",        country:"Kanada 🇨🇦",                  goals:3},
       {player:"Ismael Saibari",        country:"Marocko 🇲🇦",                 goals:3},
-      {player:"Julián Quiñones",       country:"Mexiko 🇲🇽",                  goals:3},
+      {player:"Raúl Jiménez",          country:"Mexiko 🇲🇽",                  goals:3},
       {player:"Brian Brobbey",         country:"Nederländerna 🇳🇱",           goals:3},
       {player:"Cody Gakpo",            country:"Nederländerna 🇳🇱",           goals:3},
       {player:"Elijah Just",           country:"Nya Zeeland 🇳🇿",             goals:3},
@@ -323,14 +325,12 @@ top_scorers: [
       {player:"Emam Ashour",           country:"Egypten 🇪🇬",                 goals:2},
       {player:"Amad Diallo",           country:"Elfenbenskusten 🇨🇮",         goals:2},
       {player:"Nicolas Pépé",          country:"Elfenbenskusten 🇨🇮",         goals:2},
-      {player:"Jude Bellingham",       country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:2},
       {player:"Bradley Barcola",       country:"Frankrike 🇫🇷",               goals:2},
       {player:"Ramin Rezaeian",        country:"Iran 🇮🇷",                    goals:2},
       {player:"Ayase Ueda",            country:"Japan 🇯🇵",                   goals:2},
       {player:"Daichi Kamada",         country:"Japan 🇯🇵",                   goals:2},
       {player:"Azzedine Ounahi",       country:"Kanada 🇨🇦",                  goals:2},
       {player:"Cyle Larin",            country:"Kanada 🇨🇦",                  goals:2},
-      {player:"Raúl Jiménez",          country:"Mexiko 🇲🇽",                  goals:2},
       {player:"Crysencio Summerville", country:"Nederländerna 🇳🇱",           goals:2},
       {player:"Breel Embolo",          country:"Schweiz 🇨🇭",                 goals:2},
       {player:"Rubén Vargas",          country:"Schweiz 🇨🇭",                 goals:2},
