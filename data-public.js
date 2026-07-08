@@ -290,7 +290,7 @@ const POOL_DATA = {
   live_stats: {
     penalties: 19,
     haaland_goals: 7,
-    et_matches: 5,
+    et_matches: 6,
     
 top_scorers: [
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:8},
