@@ -290,16 +290,16 @@ const POOL_DATA = {
   live_stats: {
     penalties: 20,
     haaland_goals: 7,
-    et_matches: 6,
+    et_matches: 7,
     
 top_scorers: [
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:8},
       {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:8},
       {player:"Erling Haaland",        country:"Norge 🇳🇴",                   goals:7},
       {player:"Harry Kane",            country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:6},
+      {player:"Jude Bellingham",       country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:5},
       {player:"Ousmane Dembélé",       country:"Frankrike 🇫🇷",               goals:5},
       {player:"Vinícius Júnior",       country:"Brasilien 🇧🇷",               goals:4},
-      {player:"Jude Bellingham",       country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:4},
       {player:"Julián Quiñones",       country:"Mexiko 🇲🇽",                  goals:4},
       {player:"Ismaïla Sarr",          country:"Senegal 🇸🇳",                 goals:4},
       {player:"Mikel Oyarzabal",       country:"Spanien 🇪🇸",                 goals:4},
@@ -419,6 +419,7 @@ top_scorers: [
       {player:"Jan Paul van Hecke",    country:"Nederländerna 🇳🇱",           goals:1},
       {player:"Självmål",              country:"Nederländerna 🇳🇱",           goals:1},
       {player:"Virgil van Dijk",       country:"Nederländerna 🇳🇱",           goals:1},
+      {player:"Andreas Schjelderup",   country:"Norge 🇳🇴",                   goals:1},
       {player:"Antonio Nusa",          country:"Norge 🇳🇴",                   goals:1},
       {player:"Leo Østigård",          country:"Norge 🇳🇴",                   goals:1},
       {player:"Marcus Pedersen",       country:"Norge 🇳🇴",                   goals:1},
