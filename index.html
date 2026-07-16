@@ -646,7 +646,7 @@ function score(p, idx){
     }
     else if(q.type==="text"){
       const set = q.correct!=null && q.correct!=="";
-      const auto = set && ans!=null && ans!=="" ? norm(ans)===norm(q.correct) : null;
+      const auto = set && ans!=null && ans!=="" ? (Array.isArray(q.correct)?q.correct.some(c=>norm(ans)===norm(c)):norm(ans)===norm(q.correct)) : null;
       const ov = overrides[idx]?.[q.id];
       const eff = ov===undefined ? auto : ov;
       if(!set) status="pending";
@@ -862,7 +862,7 @@ function renderFacit(){
            ${q.options.map(o=>`<option ${((q.correct||[])[i]===o)?"selected":""}>${esc(o)}</option>`).join("")}
          </select>`).join("")}</div>`;
     else
-      field = `<input type="text" value="${esc(q.correct??"")}" placeholder="rätt svar" oninput="setQ('${q.id}',this.value,'text')">`;
+      field = `<input type="text" value="${esc(Array.isArray(q.correct)?q.correct.join(' / '):(q.correct??""))}" placeholder="rätt svar" oninput="setQ('${q.id}',this.value,'text')">`;
     return `<div class="card q">
       <div class="qhead"><span class="qid">${q.id}</span><span class="qtext">${esc(q.prompt).replace(/&lt;br&gt;/g,'<br>')}</span><span class="pts">${q.points}p</span></div>
       ${field}
@@ -929,7 +929,7 @@ function buildDetailHtml(p, s, idx){
     let ptsCell;
     if(x.q.type==="text" && x.q.correct){
       const ov=overrides[idx]?.[x.q.id];
-      const autoV=x.ans?norm(String(x.ans))===norm(x.q.correct):false;
+      const autoV=x.ans?(Array.isArray(x.q.correct)?x.q.correct.some(c=>norm(String(x.ans))===norm(c)):norm(String(x.ans))===norm(x.q.correct)):false;
       const eff=ov===undefined?autoV:ov;
       ptsCell=`<button class="toggle ${eff?"t-ok":"t-bad"}" onclick="toggleText(${idx},'${x.q.id}')">${eff?"✓ Rätt":"✗ Fel"}</button>`;
     } else {
@@ -1017,7 +1017,8 @@ function closeCompare(){
 function toggleText(idx, qid){
   overrides[idx]=overrides[idx]||{};
   const p=state.participants[idx], q=state.questions.find(x=>x.id===qid);
-  const autoV=q.correct&&p.answers?.[qid]?norm(String(p.answers[qid]))===norm(q.correct):false;
+  const _tans=p.answers?.[qid];
+  const autoV=q.correct&&_tans?(Array.isArray(q.correct)?q.correct.some(c=>norm(String(_tans))===norm(c)):norm(String(_tans))===norm(q.correct)):false;
   const cur=overrides[idx][qid];
   const eff=cur===undefined?autoV:cur;
   overrides[idx][qid]=!eff;
