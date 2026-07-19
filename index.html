@@ -959,7 +959,7 @@ function buildDetailHtml(p, s, idx){
       text-transform:uppercase;letter-spacing:.1em;font-weight:600">Skiljefråga</span>
   </div>`;
   html += `<table class="qtable"><thead><tr>
-    <th></th><th>Svar</th><th>Just nu</th><th></th>
+    <th></th><th>Svar</th><th>Facit</th><th></th>
   </tr></thead><tbody><tr>
     <td class="qtd-id" style="font-size:13px;color:var(--ink-soft)">★</td>
     <td class="qtd-ans"><div class="qtd-qlbl">${esc(shortQ(state.tiebreaker))}</div>${p.tiebreaker!=null ? p.tiebreaker+' straffar' : '–'}</td>
@@ -1335,7 +1335,7 @@ const PT_RAW = [
   {id:101,round:"SF",date:"2026-07-14",time_swe:"21:00",home:"FRANKRIKE 🇫🇷",away:"SPANIEN 🇪🇸",    home_score:0,away_score:2,extra_time:false,penalty_shootout:false,next_match:104, home_penalty: 0, away_penalty: 0},
   {id:102,round:"SF",date:"2026-07-15",time_swe:"21:00",home:"ENGLAND 🏴󠁧󠁢󠁥󠁮󠁧󠁿",away:"ARGENTINA 🇦🇷",    home_score:1,away_score:2,extra_time:false,penalty_shootout:false,next_match:104, home_penalty: 0, away_penalty: 0},
   {id:103,round:"Bronze",date:"2026-07-18",time_swe:"23:00",home:"FRANKRIKE 🇫🇷",away:"ENGLAND 🏴󠁧󠁢󠁥󠁮󠁧󠁿",home_score:4,away_score:6,extra_time:false,penalty_shootout:false,next_match:null, home_penalty: 0, away_penalty: 0},
-  {id:104,round:"Final",date:"2026-07-19",time_swe:"21:00",home:"SPANIEN 🇪🇸",away:"ARGENTINA 🇦🇷",home_score:null,away_score:null,extra_time:false,penalty_shootout:false,next_match:null, home_penalty: 0, away_penalty: 0},
+  {id:104,round:"Final",date:"2026-07-19",time_swe:"21:00",home:"SPANIEN 🇪🇸",away:"ARGENTINA 🇦🇷",home_score:1,away_score:0,extra_time:true,penalty_shootout:false,next_match:null, home_penalty: 0, away_penalty: 0},
 ];
 
 

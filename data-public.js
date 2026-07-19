@@ -30,9 +30,9 @@ const POOL_DATA = {
     { id: "C", type: "number",  points: 2, tolerance: 0, prompt: "Hur många mål gör Erling Haaland i VM? (mål under avgörande straffläggning räknas EJ)",                             correct: 7 },
     { id: "D", type: "twoteam", points: 4, scoring: "per_team_unordered", prompt: "Vilka två lag kommer 1:a och 2:a i grupp F?", options: ["Nederländerna","Japan","Sverige","Tunisien"], correct: ["Japan", "Nederländerna"] },
     { id: "E", type: "twoteam", points: 4, scoring: "per_team_unordered", prompt: "Vilka två lag kommer 1:a och 2:a i grupp I?", options: ["Frankrike","Irak","Norge","Senegal"],      correct: ["Frankrike", "Norge"] },
-    { id: "F", type: "number",  points: 2, tolerance: 1, prompt: "Hur många av slutspelets 32 matcher går till förlängning eller straffläggning?<br>(+/- 1 match ger rätt)",             correct: null },
-    { id: "G", type: "text",    points: 2,              prompt: "Vem vinner VM:s skytteliga? (delad skytteligavinst räknas som korrekt)",                                             correct: null },
-    { id: "H", type: "text",    points: 2,              prompt: "Vilket land blir världsmästare?",                                                                                     correct: null }
+    { id: "F", type: "number",  points: 2, tolerance: 1, prompt: "Hur många av slutspelets 32 matcher går till förlängning eller straffläggning?<br>(+/- 1 match ger rätt)",             correct: 9 },
+    { id: "G", type: "text",    points: 2,              prompt: "Vem vinner VM:s skytteliga? (delad skytteligavinst räknas som korrekt)",                                             correct: "Kylian Mbappé" },
+    { id: "H", type: "text",    points: 2,              prompt: "Vilket land blir världsmästare?",                                                                                     correct: "Spanien" }
   ],
   tiebreaker: {
     type: "number_closest",
@@ -290,7 +290,7 @@ const POOL_DATA = {
   live_stats: {
     penalties: 22,
     haaland_goals: 7,
-    et_matches: 8,
+    et_matches: 9,
     
 top_scorers: [
       {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:10},
@@ -451,6 +451,7 @@ top_scorers: [
       {player:"John McGinn",           country:"Skottland 🏴󠁧󠁢󠁳󠁣󠁴󠁿",               goals:1},
       {player:"Àlex Baena",            country:"Spanien 🇪🇸",                 goals:1},
       {player:"Fabián Ruiz",           country:"Spanien 🇪🇸",                 goals:1},
+      {player:"Ferran Torres",         country:"Spanien 🇪🇸",                 goals:1},
       {player:"Lamine Yamal",          country:"Spanien 🇪🇸",                 goals:1},
       {player:"Självmål",              country:"Spanien 🇪🇸",                 goals:1},
       {player:"Alexander Isak",        country:"Sverige 🇸🇪",                 goals:1},
