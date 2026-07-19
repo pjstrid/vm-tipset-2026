@@ -885,7 +885,7 @@ function fmtKickoff(str){
 }
 function shortQ(q){
   let t = q.prompt.replace(/<br>/gi, " ");
-  if(q.id !== "F" && q.id !== "B") t = t.replace(/\s*\([^)]*\)/g, "");
+  if(q.id !== "F" && q.id !== "B" && q.id !== "G") t = t.replace(/\s*\([^)]*\)/g, "");
   return t.trim();
 }
 function buildDetailHtml(p, s, idx){
