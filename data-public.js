@@ -37,7 +37,7 @@ const POOL_DATA = {
   tiebreaker: {
     type: "number_closest",
     prompt: "Hur många straffar blir det under VM? (gäller ordinarie tid + förlängning, EJ straffläggningar)",
-    correct: 21
+    correct: 22
   },
   participants: [
     {name:"Solveig Norin",contact:{phone:"",email:""},
@@ -288,17 +288,17 @@ const POOL_DATA = {
      answers:{A:"Alexander Isak",B:5,C:6,D:["Nederländerna","Japan"],E:["Frankrike","Norge"],F:12,G:"Ferran Torres",H:"Spanien"},tiebreaker:32, submitted:"26-06-14, 23:43"},
     ],
   live_stats: {
-    penalties: 21,
+    penalties: 22,
     haaland_goals: 7,
     et_matches: 8,
     
 top_scorers: [
+      {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:10},
       {player:"Lionel Messi",          country:"Argentina 🇦🇷",               goals:8},
-      {player:"Kylian Mbappé",         country:"Frankrike 🇫🇷",               goals:8},
+      {player:"Jude Bellingham",       country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:7},
       {player:"Erling Haaland",        country:"Norge 🇳🇴",                   goals:7},
       {player:"Harry Kane",            country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:6},
-      {player:"Jude Bellingham",       country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:6},
-      {player:"Ousmane Dembélé",       country:"Frankrike 🇫🇷",               goals:5},
+      {player:"Ousmane Dembélé",       country:"Frankrike 🇫🇷",               goals:6},
       {player:"Mikel Oyarzabal",       country:"Spanien 🇪🇸",                 goals:5},
       {player:"Vinícius Júnior",       country:"Brasilien 🇧🇷",               goals:4},
       {player:"Julián Quiñones",       country:"Mexiko 🇲🇽",                  goals:4},
@@ -308,6 +308,8 @@ top_scorers: [
       {player:"Romelu Lukaku",         country:"Belgien 🇧🇪",                 goals:3},
       {player:"Matheus Cunha",         country:"Brasilien 🇧🇷",               goals:3},
       {player:"Yoane Wissa",           country:"DR Kongo 🇨🇩",                goals:3},
+      {player:"Bukayo Saka",           country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:3},
+      {player:"Bradley Barcola",       country:"Frankrike 🇫🇷",               goals:3},
       {player:"Jonathan David",        country:"Kanada 🇨🇦",                  goals:3},
       {player:"Ismael Saibari",        country:"Marocko 🇲🇦",                 goals:3},
       {player:"Raúl Jiménez",          country:"Mexiko 🇲🇽",                  goals:3},
@@ -329,7 +331,6 @@ top_scorers: [
       {player:"Mostafa Zico",          country:"Egypten 🇪🇬",                 goals:2},
       {player:"Amad Diallo",           country:"Elfenbenskusten 🇨🇮",         goals:2},
       {player:"Nicolas Pépé",          country:"Elfenbenskusten 🇨🇮",         goals:2},
-      {player:"Bradley Barcola",       country:"Frankrike 🇫🇷",               goals:2},
       {player:"Ramin Rezaeian",        country:"Iran 🇮🇷",                    goals:2},
       {player:"Ayase Ueda",            country:"Japan 🇯🇵",                   goals:2},
       {player:"Daichi Kamada",         country:"Japan 🇯🇵",                   goals:2},
@@ -384,6 +385,8 @@ top_scorers: [
       {player:"Yasser Ibrahim",        country:"Egypten 🇪🇬",                 goals:1},
       {player:"Franck Kessié",         country:"Elfenbenskusten 🇨🇮",         goals:1},
       {player:"Anthony Gordon",        country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:1},
+      {player:"Declan Rice",           country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:1},
+      {player:"Ezri Konsa",            country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:1},
       {player:"Marcus Rashford",       country:"England 🏴󠁧󠁢󠁥󠁮󠁧󠁿",                 goals:1},
       {player:"Désiré Doué",           country:"Frankrike 🇫🇷",               goals:1},
       {player:"Caleb Yirenkyi",        country:"Ghana 🇬🇭",                   goals:1},
